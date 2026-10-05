@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="80" height="80" viewBox="0 0 80 80" fill="none" stroke="#bc9c5c" stroke-width="0.6">
+  <!-- Khatam: eight-pointed star from two overlapping squares, tiled -->
+  <g transform="translate(40 40)">
+    <rect x="-17" y="-17" width="34" height="34"/>
+    <rect x="-17" y="-17" width="34" height="34" transform="rotate(45)"/>
+    <circle r="7"/>
+  </g>
+  <path d="M0 0 L12 12 M80 0 L68 12 M0 80 L12 68 M80 80 L68 68"/>
+  <path d="M40 0 V6 M40 74 V80 M0 40 H6 M74 40 H80"/>
+</svg>
