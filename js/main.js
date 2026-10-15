@@ -80,7 +80,7 @@
       toast((root.lang === 'ar' ? 'أُضيف إلى الحقيبة' : 'Added to bag') + (size ? ' — ' + size.value : ''));
     });
     // Keep the displayed price in sync with the selected size.
-    var priceEl = addForm.querySelector('.price');
+    var priceEl = addForm.querySelector('.buy__price');
     addForm.querySelectorAll('input[name="size"]').forEach(function (input) {
       input.addEventListener('change', function () {
         if (priceEl && input.dataset.price) priceEl.textContent = '$' + input.dataset.price;
@@ -98,10 +98,20 @@
       var ok = input && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
       var ar = root.lang === 'ar';
       note.textContent = ok
-        ? (ar ? 'أهلاً بك في المجلس.' : 'Welcome to the Majlis. Ahlan wa sahlan.')
+        ? (ar ? 'أهلاً بك في المجلس.' : 'Welcome to the Majlis.')
         : (ar ? 'يرجى إدخال بريد إلكتروني صحيح.' : 'Please enter a valid email address.');
       if (ok) input.value = '';
     });
+  }
+
+  // ---- Transparent header over the hero turns solid once scrolled ----
+  var header = document.querySelector('.header');
+  if (header && !header.classList.contains('header--solid')) {
+    var onScroll = function () {
+      header.classList.toggle('is-stuck', window.scrollY > window.innerHeight * 0.85);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
   }
 
   // ---- Reveal on scroll ----

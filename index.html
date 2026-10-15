@@ -3,358 +3,383 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>USUL — أصول · Apparel &amp; Fragrance</title>
-  <meta name="description" content="USUL is a house of apparel and fragrance drawn from the culture and history of the Arab world — oud, frankincense, Al Sadu weaving and the geometry of the desert night.">
-  <meta name="theme-color" content="#f3ece1">
+  <title>USUL — أصول</title>
+  <meta name="description" content="USUL is a house of apparel and fragrance drawn from the culture and history of the Arab world.">
+  <meta name="theme-color" content="#000000">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/fonts.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-
-<!-- Shared drawings -->
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+<!-- Monochrome art-directed scenes. Stand-ins for photography; see README. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
-    <symbol id="mark" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1">
-      <circle cx="20" cy="20" r="19"/>
-      <rect x="10" y="10" width="20" height="20"/>
-      <rect x="10" y="10" width="20" height="20" transform="rotate(45 20 20)"/>
-      <circle cx="20" cy="20" r="3.2"/>
+    <!-- Shared gradients -->
+    <linearGradient id="g-night" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#000"/><stop offset=".55" stop-color="#060606"/><stop offset=".8" stop-color="#2c2c2c"/><stop offset="1" stop-color="#3a3a3a"/>
+    </linearGradient>
+    <radialGradient id="g-moonglow"><stop offset="0" stop-color="#fff" stop-opacity=".22"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <linearGradient id="g-dune-far" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#5a5a5a"/><stop offset="1" stop-color="#151515"/></linearGradient>
+    <linearGradient id="g-dune-mid" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a8a8a"/><stop offset=".35" stop-color="#2a2a2a"/><stop offset="1" stop-color="#070707"/></linearGradient>
+    <linearGradient id="g-dune-near" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1c1c1c"/><stop offset="1" stop-color="#000"/></linearGradient>
+
+    <radialGradient id="g-spot-dark" cx=".5" cy=".42" r=".62"><stop offset="0" stop-color="#3c3c3c"/><stop offset=".55" stop-color="#0c0c0c"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <radialGradient id="g-spot-light" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#ffffff"/><stop offset=".7" stop-color="#efefeb"/><stop offset="1" stop-color="#e2e2dd"/></radialGradient>
+    <linearGradient id="g-glass-dark" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#181818"/><stop offset=".1" stop-color="#5c5c5c"/><stop offset=".22" stop-color="#121212"/><stop offset=".7" stop-color="#0a0a0a"/><stop offset=".9" stop-color="#404040"/><stop offset="1" stop-color="#121212"/>
+    </linearGradient>
+    <linearGradient id="g-glass-clear" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#cfcfca"/><stop offset=".1" stop-color="#ffffff"/><stop offset=".24" stop-color="#d4d4cf"/><stop offset=".7" stop-color="#e6e6e1"/><stop offset=".9" stop-color="#b4b4af"/><stop offset="1" stop-color="#d6d6d1"/>
+    </linearGradient>
+    <linearGradient id="g-liquid-dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#262626"/><stop offset="1" stop-color="#050505"/></linearGradient>
+    <linearGradient id="g-liquid-clear" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#d9d9d4"/><stop offset="1" stop-color="#9e9e99"/></linearGradient>
+    <linearGradient id="g-cap" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#030303"/><stop offset=".18" stop-color="#505050"/><stop offset=".32" stop-color="#090909"/><stop offset=".85" stop-color="#262626"/><stop offset="1" stop-color="#030303"/>
+    </linearGradient>
+    <linearGradient id="g-floor-dark" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#101010"/><stop offset="1" stop-color="#000"/></linearGradient>
+    <linearGradient id="g-floor-light" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e4e4df"/><stop offset="1" stop-color="#f4f4f0"/></linearGradient>
+    <radialGradient id="g-shadow"><stop offset="0" stop-color="#000" stop-opacity=".35"/><stop offset="1" stop-color="#000" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-sheen"><stop offset="0" stop-color="#fff" stop-opacity=".09"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
+    <radialGradient id="g-ember" cx=".5" cy="1" r=".9"><stop offset="0" stop-color="#2e2e2e"/><stop offset=".6" stop-color="#070707"/><stop offset="1" stop-color="#000"/></radialGradient>
+    <linearGradient id="g-burner" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0a0a"/><stop offset=".25" stop-color="#5e5e5e"/><stop offset=".45" stop-color="#1a1a1a"/><stop offset="1" stop-color="#050505"/></linearGradient>
+    <filter id="f-smoke" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
+    <filter id="f-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5"/></filter>
+    <linearGradient id="g-fold-dark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#050505"/><stop offset=".45" stop-color="#4a4a4a"/><stop offset=".6" stop-color="#1a1a1a"/><stop offset="1" stop-color="#050505"/></linearGradient>
+    <linearGradient id="g-fold-light" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b9b9b4"/><stop offset=".45" stop-color="#fbfbf8"/><stop offset=".62" stop-color="#d9d9d4"/><stop offset="1" stop-color="#a9a9a4"/></linearGradient>
+    <pattern id="p-sadu-tri" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 60 30 0 60 60z" fill="#000"/></pattern>
+    <pattern id="p-sadu-dia" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M40 6 74 40 40 74 6 40z" fill="none" stroke="#000" stroke-width="6"/><path d="M40 28 52 40 40 52 28 40z" fill="#000"/></pattern>
+    <pattern id="p-sadu-tooth" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 0h20v20H0zM20 20h20v20H20z" fill="#000"/></pattern>
+
+    <!-- Night dunes under a full moon -->
+    <symbol id="s-dunes" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <rect width="1600" height="1000" fill="url(#g-night)"/>
+      <circle cx="930" cy="250" r="260" fill="url(#g-moonglow)"/>
+      <circle cx="930" cy="250" r="44" fill="#f2f2f2"/>
+      <g fill="#fff"><circle cx="180" cy="120" r="1.3" opacity=".8"/><circle cx="390" cy="210" r="1" opacity=".6"/><circle cx="610" cy="90" r="1.2" opacity=".7"/><circle cx="820" cy="170" r=".9" opacity=".5"/><circle cx="1400" cy="110" r="1.2" opacity=".7"/><circle cx="1500" cy="320" r=".9" opacity=".5"/><circle cx="90" cy="360" r=".9" opacity=".5"/><circle cx="700" cy="330" r=".8" opacity=".4"/></g>
+      <path d="M0 700 C220 640 420 650 640 690 S1100 760 1600 660 V1000 H0Z" fill="url(#g-dune-far)"/>
+      <path d="M0 700 C220 640 420 650 640 690 S1100 760 1600 660" fill="none" stroke="#cfcfcf" stroke-opacity=".45" stroke-width="1.2"/>
+      <path d="M-40 1000 C120 860 320 780 560 770 C760 762 900 820 1040 880 C1180 940 1380 940 1640 860 V1000Z" fill="url(#g-dune-mid)"/>
+      <path d="M-40 1000 C120 860 320 780 560 770 C760 762 900 820 1040 880" fill="none" stroke="#e6e6e6" stroke-opacity=".55" stroke-width="1.4"/>
+      <path d="M560 770 C600 840 640 930 700 1000 H1640 V860 C1380 940 1180 940 1040 880 C900 820 760 762 560 770Z" fill="#000" opacity=".55"/>
+      <path d="M0 1000 C300 930 600 940 900 975 S1400 990 1600 960 V1000Z" fill="url(#g-dune-near)"/>
     </symbol>
-    <!-- Bottle I: faceted flacon with domed cap -->
-    <symbol id="bottle-1" viewBox="0 0 120 220" fill="none" stroke="currentColor" stroke-width="1.1">
-      <path d="M44 8h32v10H44z"/><path d="M40 18h40l-4 26H44z"/>
-      <path d="M50 44h20v12H50z"/>
-      <path d="M22 70 50 56h20l28 14v128a14 14 0 0 1-14 14H36a14 14 0 0 1-14-14z"/>
-      <path d="M60 92 76 108 60 124 44 108z"/><path d="M60 98 70 108 60 118 50 108z"/>
-      <path d="M34 150h52M34 156h52" opacity=".55"/>
+
+    <!-- Black glass flacon, spotlit on black -->
+    <symbol id="s-bottle-dark" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="url(#g-spot-dark)"/>
+      <rect y="900" width="900" height="300" fill="url(#g-floor-dark)"/>
+      <ellipse cx="450" cy="904" rx="250" ry="22" fill="url(#g-sheen)"/>
+      <rect x="300" y="430" width="300" height="472" rx="5" fill="url(#g-glass-dark)"/>
+      <rect x="318" y="468" width="264" height="416" rx="3" fill="url(#g-liquid-dark)" opacity=".85"/>
+      <rect x="331" y="448" width="12" height="438" fill="#fff" opacity=".28"/>
+      <rect x="566" y="448" width="3" height="438" fill="#fff" opacity=".14"/>
+      <rect x="410" y="396" width="80" height="36" fill="#1c1c1c"/>
+      <rect x="370" y="250" width="160" height="148" rx="2" fill="url(#g-cap)"/>
+      <rect x="388" y="262" width="7" height="124" fill="#fff" opacity=".18"/>
+      <text x="450" y="660" text-anchor="middle" fill="#f4f4f4" font-family="Bodoni Moda, Didot, serif" font-size="34" letter-spacing="12">USUL</text>
+      <text x="450" y="712" text-anchor="middle" fill="#cfcfcf" font-family="Amiri, serif" font-size="26">أصول</text>
+      <path d="M300 902 h300 v40 h-300z" fill="#fff" opacity=".035"/>
     </symbol>
-    <!-- Bottle II: tall arch flacon -->
-    <symbol id="bottle-2" viewBox="0 0 120 220" fill="none" stroke="currentColor" stroke-width="1.1">
-      <path d="M52 4h16v8H52z"/><path d="M48 12h24v26H48z"/><path d="M54 38h12v10H54z"/>
-      <path d="M30 212V96a30 30 0 0 1 60 0v116z"/>
-      <path d="M40 202V100a20 20 0 0 1 40 0v102z" opacity=".55"/>
-      <circle cx="60" cy="140" r="9"/>
+
+    <!-- Clear glass flacon on white -->
+    <symbol id="s-bottle-light" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="url(#g-spot-light)"/>
+      <rect y="900" width="900" height="300" fill="url(#g-floor-light)"/>
+      <ellipse cx="460" cy="906" rx="260" ry="26" fill="url(#g-shadow)"/>
+      <rect x="300" y="430" width="300" height="472" rx="5" fill="url(#g-glass-clear)"/>
+      <rect x="318" y="520" width="264" height="364" rx="3" fill="url(#g-liquid-clear)" opacity=".75"/>
+      <rect x="331" y="448" width="12" height="438" fill="#fff" opacity=".9"/>
+      <rect x="566" y="448" width="3" height="438" fill="#fff" opacity=".6"/>
+      <rect x="410" y="396" width="80" height="36" fill="#bdbdb8"/>
+      <rect x="370" y="250" width="160" height="148" rx="2" fill="url(#g-cap)"/>
+      <rect x="388" y="262" width="7" height="124" fill="#fff" opacity=".2"/>
+      <text x="450" y="660" text-anchor="middle" fill="#111" font-family="Bodoni Moda, Didot, serif" font-size="34" letter-spacing="12">USUL</text>
+      <text x="450" y="712" text-anchor="middle" fill="#333" font-family="Amiri, serif" font-size="26">أصول</text>
     </symbol>
-    <!-- Bottle III: round attar flask (dahn al oud) -->
-    <symbol id="bottle-3" viewBox="0 0 120 220" fill="none" stroke="currentColor" stroke-width="1.1">
-      <path d="M56 6c0-3 8-3 8 0l4 30H52z"/><path d="M50 36h20v10H50z"/>
-      <path d="M54 46v14"/><path d="M66 46v14"/>
-      <circle cx="60" cy="130" r="72"/><circle cx="60" cy="130" r="60" opacity=".55"/>
-      <path d="M60 92 68 122 98 130 68 138 60 168 52 138 22 130 52 122z"/>
+
+    <!-- Round attar flask with dropper, on black -->
+    <symbol id="s-flask-dark" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="url(#g-spot-dark)"/>
+      <rect y="900" width="900" height="300" fill="url(#g-floor-dark)"/>
+      <ellipse cx="450" cy="904" rx="200" ry="18" fill="url(#g-sheen)"/>
+      <circle cx="450" cy="730" r="172" fill="url(#g-glass-dark)"/>
+      <circle cx="450" cy="745" r="146" fill="url(#g-liquid-dark)" opacity=".85"/>
+      <path d="M330 640 A150 150 0 0 1 400 575" fill="none" stroke="#fff" stroke-opacity=".35" stroke-width="9" stroke-linecap="round"/>
+      <rect x="420" y="530" width="60" height="34" fill="#1c1c1c"/>
+      <path d="M432 530 L440 300 Q450 270 460 300 L468 530Z" fill="url(#g-cap)"/>
+      <text x="450" y="760" text-anchor="middle" fill="#ececec" font-family="Amiri, serif" font-size="40">عود</text>
+    </symbol>
+
+    <!-- Round attar flask on white -->
+    <symbol id="s-flask-light" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="url(#g-spot-light)"/>
+      <rect y="900" width="900" height="300" fill="url(#g-floor-light)"/>
+      <ellipse cx="460" cy="906" rx="220" ry="24" fill="url(#g-shadow)"/>
+      <circle cx="450" cy="730" r="172" fill="url(#g-glass-clear)"/>
+      <circle cx="450" cy="760" r="140" fill="url(#g-liquid-clear)" opacity=".7"/>
+      <path d="M330 640 A150 150 0 0 1 400 575" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round"/>
+      <rect x="420" y="530" width="60" height="34" fill="#bdbdb8"/>
+      <path d="M432 530 L440 300 Q450 270 460 300 L468 530Z" fill="url(#g-cap)"/>
+      <text x="450" y="770" text-anchor="middle" fill="#1a1a1a" font-family="Amiri, serif" font-size="40">مسك</text>
+    </symbol>
+
+    <!-- Bakhoor smoke rising from a mabkhara -->
+    <symbol id="s-smoke" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
+      <rect width="1600" height="1000" fill="url(#g-ember)"/>
+      <g fill="none" stroke="#fff" stroke-linecap="round" filter="url(#f-smoke)">
+        <path d="M800 760 C760 650 860 590 810 480 S720 300 800 180 S900 40 840 -40" stroke-width="22" stroke-opacity=".16"/>
+        <path d="M800 760 C840 660 760 600 820 500 S900 340 830 230 S760 60 820 -40" stroke-width="12" stroke-opacity=".22"/>
+        <path d="M800 760 C780 690 700 640 720 540 S640 380 700 280" stroke-width="16" stroke-opacity=".1"/>
+        <path d="M800 760 C830 700 930 650 900 540 S980 400 940 300 S1020 160 980 60" stroke-width="10" stroke-opacity=".12"/>
+      </g>
+      <g fill="none" stroke="#fff" stroke-linecap="round">
+        <path d="M800 760 C790 700 830 650 812 590 S770 500 800 430" stroke-width="1.6" stroke-opacity=".5"/>
+        <path d="M800 760 C812 712 780 668 796 620" stroke-width="1" stroke-opacity=".6"/>
+      </g>
+      <path d="M730 760 h140 l-14 34 h-112z" fill="url(#g-burner)"/>
+      <path d="M756 794 h88 v70 h-88z" fill="url(#g-burner)"/>
+      <path d="M716 864 h168 l10 30 h-188z" fill="url(#g-burner)"/>
+      <path d="M700 894 h200 v26 h-200z" fill="url(#g-burner)"/>
+      <ellipse cx="800" cy="760" rx="70" ry="6" fill="#fff" opacity=".18"/>
+    </symbol>
+
+    <!-- Draped dark wool (bisht) -->
+    <symbol id="s-drape-dark" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="#080808"/>
+      <g filter="url(#f-soft)">
+        <path d="M-40 -20 C80 300 20 700 120 1220 H-40Z" fill="url(#g-fold-dark)"/>
+        <path d="M60 -20 C220 260 120 640 260 1220 H120 C40 760 120 360 -20 -20Z" fill="url(#g-fold-dark)"/>
+        <path d="M230 -20 C380 300 300 700 440 1220 H270 C150 700 260 300 120 -20Z" fill="url(#g-fold-dark)"/>
+        <path d="M420 -20 C560 340 480 760 620 1220 H450 C330 740 420 340 300 -20Z" fill="url(#g-fold-dark)"/>
+        <path d="M600 -20 C740 300 660 740 800 1220 H630 C520 760 600 320 480 -20Z" fill="url(#g-fold-dark)"/>
+        <path d="M780 -20 C900 320 840 760 960 1220 H810 C690 760 780 320 660 -20Z" fill="url(#g-fold-dark)"/>
+      </g>
+    </symbol>
+
+    <!-- Washed linen in daylight -->
+    <symbol id="s-drape-light" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="#e7e7e2"/>
+      <g filter="url(#f-soft)">
+        <path d="M-40 -20 C60 280 0 720 90 1220 H-40Z" fill="url(#g-fold-light)"/>
+        <path d="M40 -20 C190 300 110 680 230 1220 H90 C20 760 100 380 -20 -20Z" fill="url(#g-fold-light)"/>
+        <path d="M210 -20 C350 320 270 720 400 1220 H240 C130 720 230 320 100 -20Z" fill="url(#g-fold-light)"/>
+        <path d="M390 -20 C540 300 460 760 590 1220 H420 C300 740 390 340 270 -20Z" fill="url(#g-fold-light)"/>
+        <path d="M580 -20 C720 320 640 740 780 1220 H610 C500 760 580 320 460 -20Z" fill="url(#g-fold-light)"/>
+        <path d="M760 -20 C880 300 820 760 940 1220 H790 C670 760 760 320 640 -20Z" fill="url(#g-fold-light)"/>
+      </g>
+      <path d="M300 160 h300 v24 h-300z" fill="#111" opacity=".9"/>
+      <g fill="#111"><circle cx="450" cy="260" r="7"/><circle cx="450" cy="340" r="7"/><circle cx="450" cy="420" r="7"/></g>
+    </symbol>
+
+    <!-- Al Sadu weave bands, black on white -->
+    <symbol id="s-sadu" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
+      <rect width="900" height="1200" fill="#f4f4f0"/>
+      <rect y="80" width="900" height="60" fill="url(#p-sadu-tri)"/>
+      <rect y="170" width="900" height="16" fill="#000"/>
+      <rect y="216" width="900" height="80" fill="url(#p-sadu-dia)"/>
+      <rect y="326" width="900" height="16" fill="#000"/>
+      <rect y="372" width="900" height="40" fill="url(#p-sadu-tooth)"/>
+      <rect y="442" width="900" height="300" fill="#000"/>
+      <g fill="#f4f4f0"><path d="M450 480 560 592 450 704 340 592z"/><path d="M150 520 222 592 150 664 78 592z"/><path d="M750 520 822 592 750 664 678 592z"/></g>
+      <path d="M450 530 512 592 450 654 388 592z" fill="#000"/>
+      <rect y="772" width="900" height="40" fill="url(#p-sadu-tooth)"/>
+      <rect y="842" width="900" height="16" fill="#000"/>
+      <rect y="888" width="900" height="80" fill="url(#p-sadu-dia)"/>
+      <rect y="998" width="900" height="16" fill="#000"/>
+      <rect y="1044" width="900" height="60" fill="url(#p-sadu-tri)"/>
     </symbol>
   </defs>
 </svg>
 
-<div class="marquee" role="region" aria-label="Announcements">
-  <div class="marquee__track">
-    <span data-ar="شحن مجاني للطلبات فوق ٢٠٠ دولار">Complimentary shipping on orders over $200</span>
-    <span data-ar="عيّنات مجانية مع كل عطر">Two samples with every fragrance</span>
-    <span data-ar="تغليف هدايا يدوي">Hand-wrapped in Sadu-woven cloth</span>
-    <span data-ar="مجموعة الليل متوفرة الآن">The Night Collection is here</span>
-    <span aria-hidden="true" data-ar="شحن مجاني للطلبات فوق ٢٠٠ دولار">Complimentary shipping on orders over $200</span>
-    <span aria-hidden="true" data-ar="عيّنات مجانية مع كل عطر">Two samples with every fragrance</span>
-    <span aria-hidden="true" data-ar="تغليف هدايا يدوي">Hand-wrapped in Sadu-woven cloth</span>
-    <span aria-hidden="true" data-ar="مجموعة الليل متوفرة الآن">The Night Collection is here</span>
-  </div>
-</div>
+
+<div class="announce caps micro" data-ar="شحن مجاني على جميع الطلبات · عيّنتان مع كل عطر">Complimentary shipping on all orders · Two samples with every fragrance</div>
 
 <header class="header" id="top">
-  <div class="wrap header__row">
-    <nav class="nav" aria-label="Primary">
-      <a href="#apparel" data-ar="الأزياء">Apparel</a>
-      <a href="#fragrance" data-ar="العطور">Fragrance</a>
-      <a href="#heritage" data-ar="الإرث">Heritage</a>
-      <a href="#journal" data-ar="المجلة">Journal</a>
+  <div class="header__row">
+    <nav class="nav caps" aria-label="Primary">
+      <a href="index.html#apparel" data-ar="الأزياء">Apparel</a>
+      <a href="index.html#fragrance" data-ar="العطور">Fragrance</a>
+      <a href="index.html#heritage" data-ar="الدار">The House</a>
     </nav>
-    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav"><span></span></button>
-    <a class="brand" href="index.html" aria-label="USUL home">
-      <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
-      <span class="brand__words"><span class="brand__en">USUL</span><span class="brand__ar">أصول</span></span>
-    </a>
-    <div class="utility">
+    <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav"></button>
+    <a class="wordmark" href="index.html" aria-label="USUL home">USUL<span class="ar">أصول</span></a>
+    <div class="utility caps">
       <button class="lang-toggle" type="button" aria-label="Switch to Arabic">عربي</button>
       <a class="hide-sm" href="#" data-ar="الحساب">Account</a>
-      <a href="#" class="bag-link"><span data-ar="الحقيبة">Bag</span> (<span class="bag-count">0</span>)</a>
+      <a href="#"><span data-ar="الحقيبة">Bag</span> <span class="bag-count">0</span></a>
     </div>
   </div>
-  <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile">
-    <a href="#apparel">Apparel <span class="ar">الأزياء</span></a>
-    <a href="#fragrance">Fragrance <span class="ar">العطور</span></a>
-    <a href="#heritage">Heritage <span class="ar">الإرث</span></a>
-    <a href="#journal">Journal <span class="ar">المجلة</span></a>
+  <nav class="mobile-nav caps" id="mobile-nav" aria-label="Mobile">
+    <a href="index.html#apparel"><span>Apparel</span><span class="ar">الأزياء</span></a>
+    <a href="index.html#fragrance"><span>Fragrance</span><span class="ar">العطور</span></a>
+    <a href="index.html#heritage"><span>The House</span><span class="ar">الدار</span></a>
+    <a href="#"><span>Account</span><span class="ar">الحساب</span></a>
   </nav>
 </header>
 
 <main>
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero__text">
-      <div class="hero__kicker label"><span data-ar="المجموعة الأولى">Collection I</span><span data-ar="خريف ٢٠٢٦">Autumn 2026</span></div>
-      <div>
-        <h1 class="hero__title reveal" data-ar="منسوج من ذاكرة الصحراء.">Woven from the <em>memory</em> of the desert.</h1>
-        <p class="hero__ar reveal">مِنَ الأصلِ نَبدأ</p>
-        <p class="hero__lede reveal" data-ar="أزياء وعطور مستوحاة من ثقافة العالم العربي وتاريخه — العود واللبان ونسيج السدو وهندسة ليل الصحراء.">Apparel and fragrance drawn from the culture and history of the Arab world — oud and frankincense, Al Sadu weaving, and the geometry of the desert night.</p>
-        <div class="hero__actions reveal">
-          <a class="cta" href="#fragrance" data-ar="اكتشف العطور">Discover the fragrances</a>
-          <a class="cta" href="#apparel" data-ar="تسوّق الأزياء">Shop apparel</a>
-        </div>
-      </div>
-      <div class="hero__foot label"><span>N 23°25′ · E 53°50′</span><span data-ar="الربع الخالي">The Empty Quarter</span></div>
-    </div>
-
-    <div class="hero__plate plate" aria-label="Campaign image: dunes beneath a setting sun" role="img">
-      <svg class="scene" viewBox="0 0 900 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-        <defs>
-          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0" stop-color="#0d0a07"/>
-            <stop offset=".45" stop-color="#5a2a14"/>
-            <stop offset=".7" stop-color="#d0743a"/>
-            <stop offset=".82" stop-color="#f2c47a"/>
-          </linearGradient>
-          <radialGradient id="sun" cx=".62" cy=".64" r=".32">
-            <stop offset="0" stop-color="#fff6c8"/>
-            <stop offset=".14" stop-color="#f5e78d" stop-opacity=".95"/>
-            <stop offset=".4" stop-color="#f0a956" stop-opacity=".45"/>
-            <stop offset="1" stop-color="#f0a956" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="dune1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#7a3d1c"/><stop offset="1" stop-color="#2a130a"/></linearGradient>
-          <linearGradient id="dune2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#3b1a0c"/><stop offset="1" stop-color="#0a0503"/></linearGradient>
-        </defs>
-        <rect width="900" height="900" fill="url(#sky)"/>
-        <rect width="900" height="900" fill="url(#sun)"/>
-        <circle cx="558" cy="578" r="46" fill="#fff3c4"/>
-        <path d="M0 640 C140 590 260 600 380 630 S640 700 900 610 V900 H0Z" fill="url(#dune1)"/>
-        <path d="M0 640 C140 590 260 600 380 630" stroke="#f5e78d" stroke-opacity=".5" fill="none"/>
-        <path d="M0 760 C180 700 330 690 470 730 S760 800 900 720 V900 H0Z" fill="url(#dune2)"/>
-        <path d="M470 730 C620 770 760 800 900 720" stroke="#f0a956" stroke-opacity=".35" fill="none"/>
-        <g fill="#f5e78d" opacity=".75">
-          <circle cx="120" cy="90" r="1.2"/><circle cx="240" cy="160" r=".9"/><circle cx="380" cy="70" r="1.1"/>
-          <circle cx="520" cy="130" r=".8"/><circle cx="690" cy="60" r="1.3"/><circle cx="800" cy="190" r=".9"/>
-          <circle cx="60" cy="250" r=".8"/><circle cx="300" cy="260" r=".7"/><circle cx="760" cy="300" r=".7"/>
-        </g>
-      </svg>
-      <div class="wordmark">USUL<span class="ar">أصول</span></div>
-      <div class="plate__caption label"><span data-ar="عطر «ليل» — عود وعنبر">Layl — oud &amp; ambergris</span><span>01 / 03</span></div>
+  <section class="hero plate" aria-label="Campaign: dunes under a full moon">
+    <svg class="art" aria-hidden="true"><use href="#s-dunes" width="100%" height="100%"/></svg>
+    <div class="caption">
+      <span class="caps" data-ar="خريف وشتاء ٢٠٢٦">Autumn Winter 2026</span>
+      <h1 class="serif" style="margin:0;font-size:clamp(34px,4vw,60px);line-height:1.05;font-weight:300" data-ar="منسوج من ذاكرة الصحراء">Woven from the memory of the desert</h1>
+      <a class="link" href="#apparel" data-ar="اكتشف المجموعة">Discover the collection</a>
     </div>
   </section>
 
-  <!-- TWO HOUSES -->
-  <section class="section" id="houses">
-    <div class="wrap">
-      <div class="section-title reveal"><span class="ar">بيتان، أصلٌ واحد</span><h2 data-ar="بيتان، أصلٌ واحد">Two houses, one origin</h2></div>
-    </div>
-    <div class="houses">
-      <a class="house reveal" href="#apparel">
-        <div class="plate plate--pattern arch" style="--plate-bg: linear-gradient(180deg,#1d2a3a,#0b1018); --glyph: #f5e78d;">
-          <div class="plate__glyph" aria-hidden="true">ث</div>
-        </div>
-        <div class="house__meta">
-          <h3 class="house__name"><span data-ar="الأزياء">Apparel</span> <span class="ar">ثياب</span></h3>
-          <span class="cta" data-ar="ادخل">Enter</span>
-        </div>
-      </a>
-      <a class="house reveal" href="#fragrance">
-        <div class="plate plate--pattern arch" style="--plate-bg: linear-gradient(180deg,#c98b4c,#6e3418); --glyph: #fbf3d6;">
-          <div class="plate__glyph" aria-hidden="true">ع</div>
-        </div>
-        <div class="house__meta">
-          <h3 class="house__name"><span data-ar="العطور">Fragrance</span> <span class="ar">عطور</span></h3>
-          <span class="cta" data-ar="ادخل">Enter</span>
-        </div>
-      </a>
-    </div>
+  <section class="diptych" aria-label="The two houses">
+    <a href="#apparel" class="plate">
+      <svg class="art" aria-hidden="true"><use href="#s-drape-dark" width="100%" height="100%"/></svg>
+      <div class="caption"><h2 data-ar="الأزياء">Apparel</h2><span class="link" data-ar="تسوّق">Shop</span></div>
+    </a>
+    <a href="#fragrance" class="plate plate--light">
+      <svg class="art" aria-hidden="true"><use href="#s-bottle-light" width="100%" height="100%"/></svg>
+      <div class="caption"><h2 data-ar="العطور">Fragrance</h2><span class="link" data-ar="تسوّق">Shop</span></div>
+    </a>
   </section>
 
-  <!-- FRAGRANCE GRID -->
-  <section class="section" id="fragrance" style="padding-top:0">
-    <div class="wrap">
-      <div class="section-title reveal"><span class="ar">العطور</span><h2 data-ar="العطور">The Fragrances</h2></div>
-      <div class="tabs" role="tablist" aria-label="Fragrance families">
-        <button role="tab" aria-selected="true" data-tab="eau" data-ar="ماء العطر">Eaux de Parfum</button>
-        <button role="tab" aria-selected="false" data-tab="attar" data-ar="دهن العطر">Attars &amp; Oils</button>
-      </div>
-    </div>
-    <div class="grid3" data-panel="eau">
-      <a class="product reveal" href="product.html">
-        <div class="product__plate"><span class="product__badge" data-ar="جديد">New</span><svg aria-hidden="true"><use href="#bottle-1"/></svg></div>
-        <div class="product__row">
-          <h3 class="product__name">Layl <span class="ar">ليل</span></h3><span class="price">$245</span>
-        </div>
-        <p class="product__notes">Oud · Ambergris · Black Saffron</p>
-      </a>
-      <a class="product reveal" href="product.html">
-        <div class="product__plate"><svg aria-hidden="true"><use href="#bottle-2"/></svg></div>
-        <div class="product__row">
-          <h3 class="product__name">Luban <span class="ar">لُبان</span></h3><span class="price">$220</span>
-        </div>
-        <p class="product__notes">Omani Frankincense · Myrrh · Cedar</p>
-      </a>
-      <a class="product reveal" href="product.html">
-        <div class="product__plate"><svg aria-hidden="true"><use href="#bottle-1"/></svg></div>
-        <div class="product__row">
-          <h3 class="product__name">Ward Taifi <span class="ar">ورد طائفي</span></h3><span class="price">$235</span>
-        </div>
-        <p class="product__notes">Taif Rose · Cardamom · Musk</p>
-      </a>
-    </div>
-    <div class="grid3" data-panel="attar" hidden>
-      <a class="product" href="product.html">
-        <div class="product__plate"><svg aria-hidden="true"><use href="#bottle-3"/></svg></div>
-        <div class="product__row"><h3 class="product__name">Dahn al Oud <span class="ar">دهن العود</span></h3><span class="price">$310</span></div>
-        <p class="product__notes">Aged Oud Oil · 3ml Attar</p>
-      </a>
-      <a class="product" href="product.html">
-        <div class="product__plate"><svg aria-hidden="true"><use href="#bottle-3"/></svg></div>
-        <div class="product__row"><h3 class="product__name">Musk Tahara <span class="ar">مسك الطهارة</span></h3><span class="price">$95</span></div>
-        <p class="product__notes">White Musk · Rose Water</p>
-      </a>
-      <a class="product" href="product.html">
-        <div class="product__plate"><svg aria-hidden="true"><use href="#bottle-3"/></svg></div>
-        <div class="product__row"><h3 class="product__name">Bakhoor <span class="ar">بخور</span></h3><span class="price">$80</span></div>
-        <p class="product__notes">Incense Chips · Sandalwood · Amber</p>
-      </a>
-    </div>
-  </section>
-
-  <!-- STATEMENT (DS&D oversized type) -->
   <section class="statement">
-    <span class="side-label" aria-hidden="true">Layl — Eau de Parfum</span>
-    <div class="wrap">
-      <div class="statement__inner">
-        <h2 class="reveal">Smoke,<br><em>saffron</em>,<br>stars.</h2>
-        <div class="statement__side reveal">
-          <span class="label" data-ar="عطر الشهر">Fragrance of the season</span>
-          <p data-ar="«ليل» هو صمت الصحراء بعد الغروب: عود محترق ببطء، زعفران على الجمر، وعنبر دافئ كرمل يحتفظ بحرارة النهار.">Layl is the silence of the desert after sunset — oud smouldering slowly, saffron over embers, and ambergris warm as sand that remembers the heat of the day.</p>
-          <a class="cta" href="product.html" data-ar="اكتشف ليل">Discover Layl</a>
+    <div class="statement__inner reveal">
+      <span class="caps muted" data-ar="أصول — الأصل والجذور">Usul — origins, roots</span>
+      <h2 data-ar="كل ما نصنعه يبدأ من الجذور.">Everything we make begins at the root.</h2>
+      <p class="ar-line" dir="rtl">مِنَ الأصلِ نَبدأ</p>
+      <p data-ar="أزياء وعطور مستوحاة من ثقافة العالم العربي وتاريخه: العود واللبان، ونسيج السدو، وصمت ليل الصحراء.">Apparel and fragrance drawn from the culture and history of the Arab world — oud and frankincense, the woven bands of Al Sadu, and the silence of the desert night.</p>
+      <a class="link" href="#heritage" data-ar="عن الدار">About the house</a>
+    </div>
+  </section>
+
+  <section id="fragrance">
+    <div class="section-head">
+      <h2 class="caps" style="margin:0" data-ar="العطور">Fragrance</h2>
+      <div class="tabs caps" role="tablist" aria-label="Fragrance families">
+        <button role="tab" aria-selected="true" data-tab="eau" data-ar="ماء العطر">Eaux de Parfum</button>
+        <button role="tab" aria-selected="false" data-tab="attar" data-ar="دهن العطر">Attars</button>
+      </div>
+    </div>
+    <div class="products" data-panel="eau">
+      <a class="tile" href="product.html">
+        <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-bottle-dark" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Layl <span class="ar">ليل</span></h3><p class="tile__sub">Oud · Ambergris · Saffron</p></div><span class="tile__price">$245</span></div>
+      </a>
+      <a class="tile" href="product.html">
+        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-bottle-light" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Luban <span class="ar">لُبان</span></h3><p class="tile__sub">Frankincense · Myrrh · Cedar</p></div><span class="tile__price">$220</span></div>
+      </a>
+      <a class="tile" href="product.html">
+        <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-bottle-dark" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Ward Taifi <span class="ar">ورد طائفي</span></h3><p class="tile__sub">Taif Rose · Cardamom · Musk</p></div><span class="tile__price">$235</span></div>
+      </a>
+      <a class="tile" href="product.html">
+        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-bottle-light" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Sahra <span class="ar">صحراء</span></h3><p class="tile__sub">Vetiver · Sand Accord · Iris</p></div><span class="tile__price">$220</span></div>
+      </a>
+    </div>
+    <div class="products" data-panel="attar" hidden>
+      <a class="tile" href="product.html">
+        <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-flask-dark" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Dahn al Oud <span class="ar">دهن العود</span></h3><p class="tile__sub">Aged oud oil · 3 ml</p></div><span class="tile__price">$310</span></div>
+      </a>
+      <a class="tile" href="product.html">
+        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-flask-light" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Musk Tahara <span class="ar">مسك الطهارة</span></h3><p class="tile__sub">White musk · Rose water</p></div><span class="tile__price">$95</span></div>
+      </a>
+      <a class="tile" href="product.html">
+        <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-flask-dark" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Anbar <span class="ar">عنبر</span></h3><p class="tile__sub">Ambergris · Labdanum</p></div><span class="tile__price">$180</span></div>
+      </a>
+      <a class="tile" href="product.html">
+        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-flask-light" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Bakhoor <span class="ar">بخور</span></h3><p class="tile__sub">Incense chips · Sandalwood</p></div><span class="tile__price">$80</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="band" aria-label="Featured fragrance: Layl">
+    <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-bottle-dark" width="100%" height="100%"/></svg></div>
+    <div class="band__text reveal">
+      <span class="caps" data-ar="ماء عطر">Eau de Parfum</span>
+      <h2 class="band__name">LAYL</h2>
+      <p class="band__ar">ليل</p>
+      <p class="band__desc" data-ar="صمت الصحراء بعد الغروب: عود يحترق ببطء، وزعفران على الجمر، وعنبر دافئ كرمل يحتفظ بحرارة النهار.">The silence of the desert after sunset. Oud smouldering slowly, saffron over embers, ambergris warm as sand that remembers the day.</p>
+      <dl class="notes caps micro">
+        <div><dt data-ar="المقدمة">Top</dt><dd>Saffron</dd></div>
+        <div><dt data-ar="القلب">Heart</dt><dd>Taif rose</dd></div>
+        <div><dt data-ar="القاعدة">Base</dt><dd>Oud, ambergris</dd></div>
+      </dl>
+      <a class="link" href="product.html" data-ar="اكتشف ليل">Discover Layl</a>
+    </div>
+  </section>
+
+  <section id="apparel" style="padding-top:var(--section)">
+    <div class="section-head">
+      <h2 class="caps" style="margin:0" data-ar="الأزياء">Apparel</h2>
+      <a class="link" href="#" data-ar="عرض الكل">View all</a>
+    </div>
+    <div class="products products--3">
+      <a class="tile" href="#">
+        <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-drape-dark" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">The Bisht Coat <span class="ar">بشت</span></h3><p class="tile__sub">Black camel wool</p></div><span class="tile__price">$890</span></div>
+      </a>
+      <a class="tile" href="#">
+        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-drape-light" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Linen Qamis Shirt <span class="ar">قميص</span></h3><p class="tile__sub">Washed white linen</p></div><span class="tile__price">$260</span></div>
+      </a>
+      <a class="tile" href="#">
+        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-sadu" width="100%" height="100%"/></svg></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Sadu Knit <span class="ar">سدو</span></h3><p class="tile__sub">Merino jacquard</p></div><span class="tile__price">$340</span></div>
+      </a>
+    </div>
+  </section>
+
+  <section class="ritual plate" style="margin-top:64px" aria-label="Bakhoor smoke rising from an incense burner">
+    <svg class="art" aria-hidden="true"><use href="#s-smoke" width="100%" height="100%"/></svg>
+    <div class="caption caption--top">
+      <h2 data-ar="طقس البخور">The ritual of bakhoor</h2>
+      <a class="link" href="#heritage" data-ar="اقرأ">Read</a>
+    </div>
+  </section>
+
+  <section class="heritage" id="heritage">
+    <div class="heritage__head reveal">
+      <span class="caps muted" data-ar="الدار">The House</span>
+      <h2 data-ar="أربعة أصول">Four origins</h2>
+    </div>
+    <div class="chapters">
+      <div class="chapter reveal"><span class="caps micro muted">I</span><h3>The Incense Route</h3><span class="ar">طريق البخور</span><p>Frankincense and myrrh, carried by caravan across Arabia for millennia. Every fragrance begins with resin.</p></div>
+      <div class="chapter reveal"><span class="caps micro muted">II</span><h3>Al Sadu</h3><span class="ar">السدو</span><p>The Bedouin weaving of tents and rugs. Its geometric bands become our jacquards, rendered here in black and white.</p></div>
+      <div class="chapter reveal"><span class="caps micro muted">III</span><h3>The Bisht</h3><span class="ar">البشت</span><p>The cloak of ceremony, cut in fine wool. We keep its open, unstructured line.</p></div>
+      <div class="chapter reveal"><span class="caps micro muted">IV</span><h3>The Majlis</h3><span class="ar">المجلس</span><p>A room for hospitality, where coffee is poured and scent is passed from guest to guest.</p></div>
+    </div>
+  </section>
+
+  <section class="letter">
+    <div class="reveal">
+      <span class="caps muted" data-ar="النشرة">Newsletter</span>
+      <h2 data-ar="انضم إلى المجلس">Join the Majlis</h2>
+      <p data-ar="إصدارات خاصة ودعوات وقصص من أصولنا.">Private releases, invitations and stories from our origins.</p>
+      <form class="newsletter" novalidate>
+        <div class="pill-field">
+          <label class="visually-hidden" for="email">Email address</label>
+          <input id="email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
+          <button class="caps" type="submit" data-ar="اشترك">Subscribe</button>
         </div>
-      </div>
-      <div class="pyramid reveal">
-        <div><span class="label" data-ar="المقدمة">Top</span><h3>Black saffron, pink pepper</h3><p>The first spark of the evening fire.</p></div>
-        <div><span class="label" data-ar="القلب">Heart</span><h3>Taif rose, smoked frankincense</h3><p>Petals carried along the old Incense Route.</p></div>
-        <div><span class="label" data-ar="القاعدة">Base</span><h3>Cambodian oud, ambergris</h3><p>Resin and warmth that stay until dawn.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- APPAREL -->
-  <section class="section" id="apparel">
-    <div class="wrap">
-      <div class="section-title reveal"><span class="ar">الأزياء</span><h2 data-ar="الأزياء">The Wardrobe</h2></div>
-    </div>
-    <div class="grid3">
-      <a class="product reveal" href="#">
-        <div class="product__plate plate plate--pattern" style="--plate-bg: linear-gradient(180deg,#2a1d14,#120c08); --glyph:#e9d6a7;"><span class="product__badge" style="z-index:5" data-ar="جديد">New</span><div class="plate__glyph" aria-hidden="true" style="font-size:180px">ب</div></div>
-        <div class="product__row"><h3 class="product__name">The Bisht Coat <span class="ar">بشت</span></h3><span class="price">$890</span></div>
-        <p class="product__notes">Camel wool · Hand-finished gold zari edge</p>
-      </a>
-      <a class="product reveal" href="#">
-        <div class="product__plate plate plate--pattern" style="--plate-bg: linear-gradient(180deg,#efe6d6,#d9c7a8); --glyph:#8a5a2b;"><div class="plate__glyph" aria-hidden="true" style="font-size:180px">ق</div></div>
-        <div class="product__row"><h3 class="product__name">Linen Qamis Shirt <span class="ar">قميص</span></h3><span class="price">$260</span></div>
-        <p class="product__notes">Washed linen · Band collar · Mother-of-pearl</p>
-      </a>
-      <a class="product reveal" href="#">
-        <div class="product__plate plate plate--pattern" style="--plate-bg: linear-gradient(180deg,#7d2a1b,#3a0f08); --glyph:#f5e78d;"><div class="plate__glyph" aria-hidden="true" style="font-size:180px">س</div></div>
-        <div class="product__row"><h3 class="product__name">Sadu Knit <span class="ar">سدو</span></h3><span class="price">$340</span></div>
-        <p class="product__notes">Merino jacquard · Al Sadu motif</p>
-      </a>
-    </div>
-    <div class="wrap" style="text-align:center; margin-top: var(--s6)">
-      <a class="cta" href="#" data-ar="عرض المجموعة كاملة">View the full wardrobe</a>
-    </div>
-  </section>
-
-  <!-- HERITAGE NIGHT BAND (Bedouin's Daughter) -->
-  <section class="night" id="heritage">
-    <div class="night__grid">
-      <div class="night__plate plate plate--pattern" style="--plate-bg: radial-gradient(circle at 50% 45%, #2b1a0a 0%, #000 70%); --glyph: #f5e78d;">
-        <div class="plate__glyph" aria-hidden="true">أصول</div>
-        <div class="plate__caption label"><span data-ar="الأصل">Origin, root, principle</span><span>أ · ص · ل</span></div>
-      </div>
-      <div class="night__text">
-        <span class="label" data-ar="الإرث">Heritage</span>
-        <h2 class="reveal" data-ar="كل ما نصنعه يبدأ من الجذور.">Everything we make begins at the root.</h2>
-        <p class="reveal" data-ar="«أصول» كلمة عربية تعني الأصل والجذور والمبادئ. نعود إلى طرق اللبان القديمة، وخيام السدو المنسوجة، وأسواق العطّارين، ونحملها إلى خزانة اليوم.">Usul is the Arabic word for origins, roots and first principles. We return to the ancient frankincense routes, the woven tents of Al Sadu and the souks of the perfumers — and carry them into the wardrobe of today.</p>
-        <p class="ar-quote reveal" dir="rtl">«مَن لا أصلَ له، لا فَرعَ له»</p>
-        <div><a class="pill" href="#journal" data-ar="اقرأ قصتنا">Read our story</a></div>
-      </div>
-    </div>
-    <div class="wrap">
-      <div class="pillars">
-        <div class="pillar reveal"><span class="num">i.</span><h3>The Incense Route <span class="ar">طريق البخور</span></h3><p>Frankincense and myrrh, traded by caravan across Arabia for millennia.</p></div>
-        <div class="pillar reveal"><span class="num">ii.</span><h3>Al Sadu <span class="ar">السدو</span></h3><p>The Bedouin weaving of tents and rugs, in bold bands of red, black and white.</p></div>
-        <div class="pillar reveal"><span class="num">iii.</span><h3>Geometry <span class="ar">الهندسة</span></h3><p>The eight-pointed khatam star, repeated without end, as our signature.</p></div>
-        <div class="pillar reveal"><span class="num">iv.</span><h3>Calligraphy <span class="ar">الخط</span></h3><p>Letterforms as ornament — every piece carries a word in Naskh script.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOURNAL -->
-  <section class="section" id="journal">
-    <div class="wrap">
-      <div class="section-title reveal"><span class="ar">المجلة</span><h2 data-ar="المجلة">The Journal</h2></div>
-    </div>
-    <div class="journal">
-      <a class="entry reveal" href="#">
-        <div class="plate plate--pattern" style="--plate-bg: linear-gradient(160deg,#d7a160,#7a3b17);"><div class="plate__glyph" aria-hidden="true" style="--glyph:#fff4d0">لُبان</div></div>
-        <span class="date label">Essay · 12 min</span>
-        <h3>Tears of the Boswellia tree: a journey along the Frankincense Trail</h3>
-        <span class="cta">Read</span>
-      </a>
-      <a class="entry reveal" href="#">
-        <div class="plate" style="--plate-bg: linear-gradient(180deg,#8c2a1a 0 25%,#0d0b09 25% 50%,#efe6d6 50% 75%,#8c2a1a 75%);"></div>
-        <span class="date label">Craft · 6 min</span>
-        <h3>The weavers of Al Sadu</h3>
-        <span class="cta">Read</span>
-      </a>
-      <a class="entry reveal" href="#">
-        <div class="plate plate--pattern" style="--plate-bg: #0b0a08;"><div class="plate__glyph" aria-hidden="true" style="--glyph:#bc9c5c; font-size:120px">عود</div></div>
-        <span class="date label">Guide · 4 min</span>
-        <h3>How to layer oud, the Gulf way</h3>
-        <span class="cta">Read</span>
-      </a>
-    </div>
-  </section>
-
-  <!-- NEWSLETTER -->
-  <section class="section" style="padding-top:0">
-    <div class="wrap">
-      <div class="letter reveal">
-        <span class="label gold" data-ar="رسائل من القافلة">Letters from the caravan</span>
-        <h2 data-ar="انضم إلى مجلسنا">Join the Majlis</h2>
-        <p data-ar="إصدارات خاصة، ودعوات إلى أمسيات العطور، وقصص من أصولنا.">Private releases, invitations to scent evenings, and stories from our origins.</p>
-        <form class="newsletter" novalidate>
-          <div class="field">
-            <label class="visually-hidden" for="email">Email address</label>
-            <input id="email" type="email" name="email" placeholder="Your email address" autocomplete="email" required>
-            <button type="submit" data-ar="اشترك">Subscribe</button>
-          </div>
-          <p class="form-note" aria-live="polite"></p>
-        </form>
-      </div>
+        <p class="form-note" aria-live="polite"></p>
+      </form>
     </div>
   </section>
 </main>
 
 <footer class="footer">
-  <div class="wrap">
-    <div class="footer__top">
-      <div>
-        <a class="brand" href="index.html" aria-label="USUL home">
-          <svg class="brand__mark" aria-hidden="true"><use href="#mark"/></svg>
-          <span class="brand__words"><span class="brand__en">USUL</span><span class="brand__ar">أصول</span></span>
-        </a>
-        <p>A house of apparel and fragrance rooted in the culture and history of the Arab world.</p>
-      </div>
-      <div><h4 class="label">Shop</h4><ul><li><a href="#fragrance">Fragrance</a></li><li><a href="#apparel">Apparel</a></li><li><a href="#">Gifts</a></li><li><a href="#">Discovery Set</a></li></ul></div>
-      <div><h4 class="label">House</h4><ul><li><a href="#heritage">Heritage</a></li><li><a href="#journal">Journal</a></li><li><a href="#">Ateliers</a></li><li><a href="#">Stockists</a></li></ul></div>
-      <div><h4 class="label">Care</h4><ul><li><a href="#">Contact</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Instagram</a></li></ul></div>
-    </div>
-    <div class="footer__bottom label"><span>© 2026 USUL</span><span class="ar" style="letter-spacing:0;font-size:15px">صُنع بحب، من الأصل</span></div>
+  <div class="footer__grid">
+    <div><a class="wordmark" href="index.html" aria-label="USUL home">USUL<span class="ar">أصول</span></a></div>
+    <div><h4 class="caps" data-ar="تسوّق">Shop</h4><ul class="caps"><li><a href="index.html#fragrance">Fragrance</a></li><li><a href="index.html#apparel">Apparel</a></li><li><a href="#">Gifts</a></li><li><a href="#">Discovery set</a></li></ul></div>
+    <div><h4 class="caps" data-ar="الدار">The House</h4><ul class="caps"><li><a href="index.html#heritage">Heritage</a></li><li><a href="#">Journal</a></li><li><a href="#">Stores</a></li></ul></div>
+    <div><h4 class="caps" data-ar="الخدمات">Services</h4><ul class="caps"><li><a href="#">Contact</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li><li><a href="#">Instagram</a></li></ul></div>
   </div>
+  <div class="footer__base caps micro"><span>© 2026 USUL</span><span>Apparel &amp; Fragrance</span></div>
 </footer>
 
-<div class="toast" role="status" aria-live="polite"></div>
+<div class="toast caps" role="status" aria-live="polite"></div>
 <script src="js/main.js"></script>
 </body>
 </html>

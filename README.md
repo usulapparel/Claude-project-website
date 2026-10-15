@@ -5,40 +5,40 @@ A website for an upscale apparel and fragrance house inspired by the culture and
 It's a plain static site with no build step. Open `index.html` in a browser, or deploy the folder to any static host (GitHub Pages, Netlify, Vercel).
 
 ```
-index.html      Home: hero, the two houses, fragrances, apparel, heritage, journal, newsletter
+index.html      Home: moonlit dunes hero, apparel/fragrance diptych, fragrances, LAYL feature, apparel, ritual, the house, newsletter
 product.html    Product page: the "Layl" Eau de Parfum
 css/styles.css  Design system and layout
-css/fonts.css   Self-hosted fonts (Bodoni Moda, Amiri, Jost; SIL Open Font License)
-js/main.js      Menu, English/Arabic (RTL) toggle, tabs, bag, newsletter, scroll reveals
-assets/         Khatam (eight-pointed star) pattern and favicon
+css/fonts.css   Self-hosted fonts (Bodoni Moda, Cormorant Garamond, Inter, Amiri; SIL Open Font License)
+js/main.js      Menu, English/Arabic (RTL) toggle, header on scroll, tabs, bag, newsletter, scroll reveals
+assets/         Favicon
 ```
 
 ## Design references (from styles.refero.design)
 
-These three styles in the Refero library were the closest match out of its 1,342 entries:
+The direction is stark black and white. From the 1,342 styles in the Refero library, these three were the closest match:
 
-1. **Bedouin's Daughter** (https://styles.refero.design/style/3043d3b9-6bcc-472b-b339-1013c37ef4ab)
-   A fashion brand with Bedouin heritage. "Sun flare over black velvet": black surfaces, desert-butter yellow (`#f5e78d`) type and hairlines, a scrolling announcement bar, and pill-shaped links over dark photography.
-   *Used for:* the announcement marquee, the heritage night band, the hero sunset plate and the footer.
-2. **D.S. & DURGA** (https://styles.refero.design/style/391bd401-06d7-4444-8243-8573e96eab24)
-   An independent perfumery laid out like a newspaper on bone-white paper. Oversized, tightly spaced display type, dusty-rose bands, vertical side labels, and no buttons or rounded corners.
-   *Used for:* the "Smoke, saffron, stars." fragrance statement, the scent pyramid and the warm canvas colour.
-3. **Franco Maria Ricci Editore** (https://styles.refero.design/style/6120469b-a1c8-46d3-b7fd-8aa6dc22c0d9)
-   An Art Deco art-book publisher: burnished-gold hairlines on vellum and a single Bodoni typeface. Text links are written in brackets like `{ ORDER NOW }`, and product grids are divided by 1px rules.
-   *Used for:* the typography, gold section rules, three-column product grids, the bracketed links and the split hero.
+1. **YSL** (https://styles.refero.design/style/bb2a2b0b-c84e-48ee-9dd9-7b623f81a422)
+   "A black-and-white cinema still": only pure black and pure white, full-screen photography, a plain centred wordmark, and a see-through menu laid over the hero.
+   *Used for:* the hero, the uppercase captions over images, the black LAYL band and the black footer.
+2. **Maison Margiela** (https://styles.refero.design/style/44a6d2a5-16ef-42cd-a69c-33a7af16638d)
+   "Gallery wall with a whisper": near-black ink on white and off-white, tiny widely spaced labels, serif product names, and underlined text links instead of buttons.
+   *Used for:* the announcement bar, the product tiles, the centred brand statement, the off-white heritage section and the rounded newsletter field.
+3. **AATHER** (https://styles.refero.design/style/3b080dc3-1992-43fe-91d6-2a721f934435)
+   A candle and scent studio in near-total monochrome ("quiet luxury held in stillness"): thin serif type over images, 1px underlined links and fine rules.
+   *Used for:* the "ritual of bakhoor" image with its thin serif caption, and the fine rules in the heritage section.
 
-Runners-up: Aesop (apothecary formulary), Adam Lippes (Optima on cream), Incommonwith (oxblood ink on cream) and Maison Margiela.
+Runners-up: SSENSE, Zara, COS and CHAIBOY.
 
 ## Arabic and cultural details
 
 - Bilingual throughout. The **عربي** button switches the whole site to Arabic and mirrors the layout right-to-left; the choice is remembered.
 - The Arabic font is Amiri (classical Naskh). Arabic text never gets letter-spacing, because spacing breaks the joined script.
-- Motifs: the eight-pointed *khatam* star pattern, arch (*mihrab*) shaped image frames, Al Sadu stripes, and large Arabic calligraphy plates.
+- Motifs, kept strictly black and white: the moonlit desert, bakhoor smoke rising from a *mabkhara* (incense burner), the bisht's drape, and Al Sadu weave bands.
 - Products and stories come from the region: oud, *luban* (frankincense), Taif rose, bakhoor, the bisht and the Incense Route.
 
 ## Placeholders to replace
 
-- **Imagery.** The calligraphy and gradient "plates" (`.plate`) and line-drawn bottles stand in for photography. Swap in campaign and product photos, using `<img>` inside the same containers or a `--plate-bg: url(...)` style.
+- **Imagery.** Every image is a grayscale SVG scene (moonlit dunes, black and clear glass bottles, attar flasks, bakhoor smoke, draped wool and linen, an Al Sadu weave), inlined at the top of each page. They stand in for black-and-white photography. To use a photo, replace the `<svg class="art">` inside a `.plate` with `<img src="..." alt="...">`; the CSS fills the frame and turns the image grayscale.
 - **Copy, prices and product names** are illustrative.
 - **The brand name.** "USUL / أصول" was inferred from the account name. Search for `USUL` and `أصول` to change it.
 - **Commerce.** The bag count and newsletter are front-end only. Connect them to Shopify or another store backend when ready.
