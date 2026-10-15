@@ -98,7 +98,7 @@
       var ok = input && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
       var ar = root.lang === 'ar';
       note.textContent = ok
-        ? (ar ? 'أهلاً بك في المجلس.' : 'Welcome to the Majlis.')
+        ? (ar ? 'أهلاً بك في المجموعة.' : 'Welcome to the Collective.')
         : (ar ? 'يرجى إدخال بريد إلكتروني صحيح.' : 'Please enter a valid email address.');
       if (ok) input.value = '';
     });
