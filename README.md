@@ -52,4 +52,5 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 
 - **Product imagery.** Bottles, flasks, fabric and the Al Sadu weave are drawn SVG scenes, toned to match the photography. To use a product photo, replace the `<svg class="art">` inside a `.plate` with `<img src="..." alt="...">`; the CSS fills the frame.
 - **Products, prices and descriptions** are illustrative.
-- **Commerce.** The bag count and newsletter are front-end only. Connect them to Shopify (or another store) and Klaviyo (or another email tool) when ready.
+- **Commerce.** The bag count is front-end only; connect it to Shopify (or another store) when ready.
+- **Newsletter.** The signup form subscribes emails to the Klaviyo "Newsletter" list (double opt-in, so subscribers confirm by email). The site and list IDs are at the top of the newsletter block in `js/main.js`.
