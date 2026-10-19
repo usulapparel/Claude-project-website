@@ -226,18 +226,48 @@
     });
   }
 
-  // ---- Newsletter ----
+  // ---- Newsletter: subscribes to the Klaviyo "Newsletter" list (double opt-in) ----
+  var KLAVIYO_SITE_ID = 'WcGiKb';
+  var KLAVIYO_LIST_ID = 'Rv3X3e';
   var letter = document.querySelector('.newsletter');
   if (letter) {
     letter.addEventListener('submit', function (e) {
       e.preventDefault();
       var input = letter.querySelector('input[type="email"]');
+      var button = letter.querySelector('button[type="submit"]');
       var note = letter.querySelector('.form-note');
-      var ok = input && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value.trim());
-      note.textContent = ok
-        ? (isAr() ? 'أهلاً بك في المجموعة.' : 'Welcome to the Collective.')
-        : (isAr() ? 'يرجى إدخال بريد إلكتروني صحيح.' : 'Please enter a valid email address.');
-      if (ok) input.value = '';
+      var email = input ? input.value.trim() : '';
+      var ar = isAr();
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        note.textContent = ar ? 'يرجى إدخال بريد إلكتروني صحيح.' : 'Please enter a valid email address.';
+        return;
+      }
+      button.disabled = true;
+      note.textContent = ar ? 'جارٍ الاشتراك…' : 'Subscribing…';
+      fetch('https://a.klaviyo.com/client/subscriptions?company_id=' + KLAVIYO_SITE_ID, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/vnd.api+json', revision: '2024-10-15' },
+        body: JSON.stringify({
+          data: {
+            type: 'subscription',
+            attributes: {
+              custom_source: 'Website newsletter form',
+              profile: { data: { type: 'profile', attributes: { email: email } } }
+            },
+            relationships: { list: { data: { type: 'list', id: KLAVIYO_LIST_ID } } }
+          }
+        })
+      }).then(function (res) {
+        if (!res.ok) throw new Error(res.status);
+        note.textContent = ar
+          ? 'أهلاً بك في المجموعة. تحقّق من بريدك لتأكيد الاشتراك.'
+          : 'Welcome to the Collective. Check your inbox to confirm.';
+        input.value = '';
+      }).catch(function () {
+        note.textContent = ar ? 'تعذّر الاشتراك. يرجى المحاولة مرة أخرى.' : 'Something went wrong. Please try again.';
+      }).then(function () {
+        button.disabled = false;
+      });
     });
   }
 
