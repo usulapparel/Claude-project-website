@@ -71,13 +71,36 @@
     toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
   }
 
-  // ---- Bag (front-end only; count and total persist in localStorage) ----
-  var bag = { count: 0, total: 0 };
-  try { bag = JSON.parse(localStorage.getItem('usul-bag-v2')) || bag; } catch (e) {}
-  function saveBag() {
-    try { localStorage.setItem('usul-bag-v2', JSON.stringify(bag)); } catch (e) {}
-    document.querySelectorAll('.bag-count').forEach(function (el) { el.textContent = bag.count; });
+  // ---- Bag ----
+  // Items are kept here (Shopify variant ID -> quantity) and handed to the Shopify store
+  // through a cart permalink (/cart/<variant>:<qty>,...) when the shopper checks out.
+  var SHOP_URL = 'https://usulapparel.com';
+  var bag = { count: 0, total: 0, lines: {} };
+  try { bag = JSON.parse(localStorage.getItem('usul-bag-v3')) || bag; } catch (e) {}
+  function checkoutUrl() {
+    var items = Object.keys(bag.lines).map(function (id) { return id + ':' + bag.lines[id]; });
+    return SHOP_URL + (items.length ? '/cart/' + items.join(',') : '/cart');
   }
+  function saveBag() {
+    try { localStorage.setItem('usul-bag-v3', JSON.stringify(bag)); } catch (e) {}
+    document.querySelectorAll('.bag-count').forEach(function (el) { el.textContent = bag.count; });
+    document.querySelectorAll('.bag-btn, [data-checkout]').forEach(function (el) { el.href = checkoutUrl(); });
+  }
+  function addLine(variant, n, price) {
+    bag.lines[variant] = (bag.lines[variant] || 0) + n;
+    bag.count += n;
+    bag.total += price * n;
+    saveBag();
+  }
+  // Once the items are handed to Shopify, the store's own cart holds them.
+  document.querySelectorAll('.bag-btn, [data-checkout]').forEach(function (el) {
+    el.addEventListener('click', function () {
+      if (!bag.count) return;
+      el.href = checkoutUrl();
+      bag = { count: 0, total: 0, lines: {} };
+      try { localStorage.setItem('usul-bag-v3', JSON.stringify(bag)); } catch (e) {}
+    });
+  });
   saveBag();
 
   // ---- Product gallery ----
@@ -149,11 +172,14 @@
     });
 
     var addedTimer;
+    function selectedVariant() {
+      try { return JSON.parse(form.getAttribute('data-variants'))[checked('color').value][checked('size').value]; } catch (e) { return null; }
+    }
     function addToBag() {
       var price = parseFloat(form.getAttribute('data-price')) || 0;
-      bag.count += qty;
-      bag.total += price * qty;
-      saveBag();
+      var variant = selectedVariant();
+      if (!variant) return;
+      addLine(variant, qty, price);
 
       var addBtn = form.querySelector('[data-add-label]');
       addBtn.classList.add('is-added');
@@ -186,9 +212,13 @@
     upsell.addEventListener('click', function (e) { if (e.target === upsell) upsell.close(); });
     upsell.querySelectorAll('[data-rec-add]').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        bag.count += 1;
-        bag.total += parseFloat(btn.getAttribute('data-price')) || 0;
-        saveBag();
+        // Apparel picks are added in the size chosen on this page.
+        var variant = btn.getAttribute('data-variant');
+        if (!variant && form) {
+          try { variant = JSON.parse(btn.getAttribute('data-variants'))[checked('size').value]; } catch (e) {}
+        }
+        if (!variant) return;
+        addLine(variant, 1, parseFloat(btn.getAttribute('data-price')) || 0);
         btn.disabled = true;
         btn.textContent = isAr() ? 'أُضيف ✓' : 'Added ✓';
         renderUpsell();
