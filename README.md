@@ -8,16 +8,16 @@ It's a plain static site with no build step. Open `index.html` in a browser, or 
 index.html      Home: tagline hero, Who We Are, Follow·Learn·Share, apparel/fragrance, products, quote, stories, newsletter
 product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with)
 css/styles.css  Design system and layout
-css/fonts.css   Self-hosted fonts (Josefin Sans, Reem Kufi, IBM Plex Sans Arabic; SIL Open Font License)
+css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, IBM Plex Sans Arabic; SIL Open Font License)
 js/main.js      Menu, English/Arabic (RTL) toggle, tabs, product options, bag + upsell dialog, newsletter, scroll reveals
 assets/         Logo mark, favicon, brand and product photography (assets/img)
 ```
 
 ## Brand (from the Usul Brand Guide and the Ṣumūd product design)
 
-Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (the scrolling clay announcement bar, the pine header with a centred wordmark, Josefin Sans headings, Reem Kufi Arabic display lines, square corners, the product page layout and the footer) follows the owner's Ṣumūd product design made in Claude Design.
+Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (the scrolling clay announcement bar, the pine header with a centred wordmark, Marcellus headings, Reem Kufi Arabic display lines, square corners, the product page layout and the footer) follows the owner's Ṣumūd product design made in Claude Design.
 
-- **Logo:** the **UṢŪL** wordmark, set in Josefin Sans and widely tracked. The teardrop أصول calligraphy mark from the guide is kept as `assets/logo-mark.svg` (inlined as `#logo` on the home page) and used on the newsletter panel.
+- **Logo:** the **UṢŪL** wordmark, set in Marcellus and widely tracked. The teardrop أصول calligraphy mark from the guide is kept as `assets/logo-mark.svg` (inlined as `#logo` on the home page) and used on the newsletter panel.
 - **Colours:**
 
   | Name | Hex | Used for |
@@ -28,7 +28,7 @@ Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (
   | Cream | `#F2E9CE` | Page background, type on pine |
   | Clay | `#A67C49` | Announcement bar, prices, Arabic sub-lines, primary buttons, footer headings |
 
-- **Type:** Helvetica for Latin text and Snaga Arabic Text for Arabic, as the guide specifies. Headings and the wordmark use Josefin Sans, a geometric sans chosen to match the construction of Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Josefin Sans has no precomposed Ṣ, but it carries the combining dot and browsers compose it, so UṢŪL and ṢUMŪD render in the face itself.
+- **Type:** Helvetica for Latin text and Snaga Arabic Text for Arabic, as the guide specifies. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
 - **Layout:** full-bleed, square-cornered sections stacked edge to edge, as in the product design.
 - **Photography:** the guide's sepia images (olive harvest, courtyard, scholar painting), in `assets/img`. The fourth image in the guide, a reel credited to @archiveafrica, is not used because it isn't Usul's to publish.
 - **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." and @usul_collective all come from the guide.

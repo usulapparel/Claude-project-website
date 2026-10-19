@@ -3,6 +3,11 @@
   var root = document.documentElement;
   var FREE_SHIP = 100; // free shipping threshold, in dollars
   var money = function (n) { return '$' + n.toFixed(2); };
+  // Marcellus (the display face) has no Ṣ: write it as an S with the dot drawn by CSS (see .dot in styles.css).
+  function dotted(text) {
+    return text.replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; })
+      .replace(/Ṣ/g, '<span class="dot">S</span>').replace(/ṣ/g, '<span class="dot">s</span>');
+  }
   var isAr = function () { return root.lang === 'ar'; };
 
   // ---- Mobile menu ----
@@ -158,7 +163,7 @@
 
       if (upsell && typeof upsell.showModal === 'function') {
         var name = form.getAttribute('data-name') + ' — ' + optionLabel('color') + ' / ' + optionLabel('size') + (qty > 1 ? ' × ' + qty : '');
-        upsell.querySelector('[data-added-name]').textContent = name;
+        upsell.querySelector('[data-added-name]').innerHTML = dotted(name);
         upsell.querySelector('.upsell__item img').src = form.getAttribute('data-img');
         renderUpsell();
         upsell.showModal();

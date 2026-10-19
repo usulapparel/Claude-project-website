@@ -21,10 +21,10 @@
   --rule-on-pine: rgba(166, 124, 73, .35);
 
   /* Helvetica for Latin text and Snaga Arabic Text for Arabic (Brand Guide);
-     Josefin Sans, a geometric sans that matches Reem Kufi's construction, for headings and the wordmark;
+     Marcellus, Roman inscriptional capitals with the same even stroke as Reem Kufi, for headings and the wordmark;
      Reem Kufi for Arabic display lines. */
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  --display: "Josefin Sans", Futura, "Century Gothic", Jost, sans-serif;
+  --display: "Marcellus", "Trajan Pro", "Cormorant Garamond", Georgia, serif;
   --arabic: "snaga-arabic-text", "Snaga Arabic Text", "IBM Plex Sans Arabic", "Geeza Pro", sans-serif;
   --kufi: "Reem Kufi", var(--arabic);
 
@@ -69,7 +69,10 @@ h1, h2, h3 { text-wrap: balance; }
 
 /* The UṢŪL wordmark */
 .brand { display: inline-flex; align-items: center; line-height: 1; }
-.wordmark { font-family: var(--display); font-weight: 400; font-size: 28px; letter-spacing: .28em; margin-inline-end: -.28em; padding-top: .12em; }
+.wordmark { font-family: var(--display); font-weight: 400; font-size: 27px; letter-spacing: .3em; margin-inline-end: -.3em; }
+/* Marcellus has no Ṣ, so the dotted S in UṢŪL and ṢUMŪD is a plain S with the dot drawn beneath it. */
+.dot { position: relative; display: inline-block; line-height: 1; }
+.dot::after { content: ""; position: absolute; left: 50%; top: .9em; width: .11em; height: .11em; margin-left: -.055em; border-radius: 50%; background: currentColor; }
 .brand__mark { fill: currentColor; }
 
 /* ---------- Announcement (scrolling) ---------- */
@@ -116,13 +119,13 @@ h1, h2, h3 { text-wrap: balance; }
 a:hover :is(.img-zoom, .art) { transform: scale(1.03); }
 
 .caption { position: absolute; z-index: 2; left: 0; right: 0; bottom: clamp(28px, 5vh, 56px); display: flex; flex-direction: column; align-items: center; gap: 12px; text-align: center; padding: 0 var(--gutter); }
-.caption h2, .caption h3 { margin: 0; font-family: var(--display); font-weight: 300; font-size: clamp(30px, 3vw, 44px); line-height: 1.12; }
+.caption h2, .caption h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3vw, 44px); line-height: 1.12; }
 
 /* ---------- Hero ---------- */
 .hero { height: calc(100vh - 110px); min-height: 560px; }
 .hero > img { object-position: 62% 50%; }
 .hero .caption { top: 50%; bottom: auto; transform: translateY(-40%); gap: 18px; }
-.hero h1 { margin: 0; font-family: var(--display); font-weight: 300; font-size: clamp(44px, 6.6vw, 104px); line-height: 1.06; color: var(--cream); }
+.hero h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(44px, 6.6vw, 104px); line-height: 1.06; color: var(--cream); }
 .hero__ar { font-family: var(--kufi); font-size: clamp(20px, 2vw, 28px); color: var(--cream); }
 .hero__ctas { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; margin-top: 10px; }
 
@@ -142,11 +145,11 @@ a:hover :is(.img-zoom, .art) { transform: scale(1.03); }
 .panel--cream { background: var(--cream); color: var(--pine); }
 .panel--pine { background: var(--pine); color: var(--cream); }
 .panel--olive { background: var(--olive); color: var(--cream); }
-.panel h2 { font-family: var(--display); font-weight: 300; font-size: clamp(38px, 4.6vw, 64px); line-height: 1.08; margin: 0 0 28px; }
+.panel h2 { font-family: var(--display); font-weight: 400; font-size: clamp(38px, 4.6vw, 64px); line-height: 1.08; margin: 0 0 28px; }
 
 /* Who We Are */
 .who { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
-.who__lead { font-family: var(--display); font-weight: 300; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.35; margin: 0; }
+.who__lead { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.2vw, 30px); line-height: 1.35; margin: 0; }
 .who__body p { font-size: 16.5px; line-height: 1.75; margin: 0 0 18px; max-width: 58ch; }
 .who__body .closing { font-family: var(--display); font-size: 21px; line-height: 1.45; margin-top: 28px; }
 .who__ar { font-family: var(--kufi); font-size: 22px; color: var(--clay); margin: 22px 0 0; }
@@ -195,7 +198,7 @@ html[dir="ltr"] .tile__name .ar { text-align: left; }
 .quote .plate { min-height: min(86vh, 820px); }
 .quote .plate > img { object-position: 50% 30%; }
 .quote__text { background: var(--pine); color: var(--cream); display: flex; flex-direction: column; justify-content: center; padding: clamp(40px, 6vw, 96px); }
-.quote blockquote { margin: 0; font-family: var(--display); font-weight: 300; font-size: clamp(30px, 3.4vw, 52px); line-height: 1.18; }
+.quote blockquote { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.4vw, 52px); line-height: 1.18; }
 .quote__ar { font-family: var(--kufi); font-size: 24px; color: var(--clay); margin: 28px 0 36px; line-height: 1.7; }
 
 /* ---------- Stories (courtyard) ---------- */
@@ -264,7 +267,7 @@ html[dir="ltr"] .chapter .ar { text-align: left; }
 .crumbs { color: rgba(242, 233, 206, .5); margin-bottom: 26px; }
 .crumbs a:hover { color: var(--clay); }
 .pdp__ar { font-family: var(--kufi); font-size: 24px; color: var(--clay); margin: 0 0 10px; }
-.pdp__title { font-family: var(--display); font-weight: 300; font-size: clamp(44px, 4vw, 58px); line-height: 1.05; margin: 0 0 14px; }
+.pdp__title { font-family: var(--display); font-weight: 400; font-size: clamp(44px, 4vw, 58px); line-height: 1.05; margin: 0 0 14px; }
 .pdp__meta { display: flex; align-items: baseline; flex-wrap: wrap; gap: 18px; margin-bottom: 26px; }
 .pdp__price { font-size: 22px; color: var(--clay); }
 .stars { color: var(--clay); letter-spacing: .1em; }
@@ -309,7 +312,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .story .plate { min-height: 520px; }
 .story__text { padding: clamp(48px, 5.6vw, 80px) clamp(24px, 4.4vw, 64px); display: flex; flex-direction: column; justify-content: center; }
 .story__text .eyebrow { color: rgba(242, 233, 206, .7); margin-bottom: 18px; }
-.story__text h2 { font-family: var(--display); font-weight: 300; font-size: clamp(32px, 3.1vw, 44px); line-height: 1.1; margin: 0 0 20px; }
+.story__text h2 { font-family: var(--display); font-weight: 400; font-size: clamp(32px, 3.1vw, 44px); line-height: 1.1; margin: 0 0 20px; }
 .story__text p { font-size: 16.5px; line-height: 1.75; color: rgba(242, 233, 206, .88); margin: 0 0 16px; max-width: 48ch; text-wrap: pretty; }
 .story__text p:last-child { margin-bottom: 0; }
 
