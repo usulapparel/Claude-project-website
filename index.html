@@ -46,11 +46,6 @@
     <linearGradient id="g-burner" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0a0a0a"/><stop offset=".25" stop-color="#5e5e5e"/><stop offset=".45" stop-color="#1a1a1a"/><stop offset="1" stop-color="#050505"/></linearGradient>
     <filter id="f-smoke" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
     <filter id="f-soft" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="2.5"/></filter>
-    <linearGradient id="g-fold-dark" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#050505"/><stop offset=".45" stop-color="#4a4a4a"/><stop offset=".6" stop-color="#1a1a1a"/><stop offset="1" stop-color="#050505"/></linearGradient>
-    <linearGradient id="g-fold-light" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#b9b9b4"/><stop offset=".45" stop-color="#fbfbf8"/><stop offset=".62" stop-color="#d9d9d4"/><stop offset="1" stop-color="#a9a9a4"/></linearGradient>
-    <pattern id="p-sadu-tri" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M0 60 30 0 60 60z" fill="#000"/></pattern>
-    <pattern id="p-sadu-dia" width="80" height="80" patternUnits="userSpaceOnUse"><path d="M40 6 74 40 40 74 6 40z" fill="none" stroke="#000" stroke-width="6"/><path d="M40 28 52 40 40 52 28 40z" fill="#000"/></pattern>
-    <pattern id="p-sadu-tooth" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M0 0h20v20H0zM20 20h20v20H20z" fill="#000"/></pattern>
 
     <!-- Night dunes under a full moon -->
     <symbol id="s-dunes" viewBox="0 0 1600 1000" preserveAspectRatio="xMidYMid slice">
@@ -145,93 +140,51 @@
       <ellipse cx="800" cy="760" rx="70" ry="6" fill="#fff" opacity=".18"/>
     </symbol>
 
-    <!-- Draped dark wool (bisht) -->
-    <symbol id="s-drape-dark" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
-      <rect width="900" height="1200" fill="#080808"/>
-      <g filter="url(#f-soft)">
-        <path d="M-40 -20 C80 300 20 700 120 1220 H-40Z" fill="url(#g-fold-dark)"/>
-        <path d="M60 -20 C220 260 120 640 260 1220 H120 C40 760 120 360 -20 -20Z" fill="url(#g-fold-dark)"/>
-        <path d="M230 -20 C380 300 300 700 440 1220 H270 C150 700 260 300 120 -20Z" fill="url(#g-fold-dark)"/>
-        <path d="M420 -20 C560 340 480 760 620 1220 H450 C330 740 420 340 300 -20Z" fill="url(#g-fold-dark)"/>
-        <path d="M600 -20 C740 300 660 740 800 1220 H630 C520 760 600 320 480 -20Z" fill="url(#g-fold-dark)"/>
-        <path d="M780 -20 C900 320 840 760 960 1220 H810 C690 760 780 320 660 -20Z" fill="url(#g-fold-dark)"/>
-      </g>
-    </symbol>
 
-    <!-- Washed linen in daylight -->
-    <symbol id="s-drape-light" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
-      <rect width="900" height="1200" fill="#e7e7e2"/>
-      <g filter="url(#f-soft)">
-        <path d="M-40 -20 C60 280 0 720 90 1220 H-40Z" fill="url(#g-fold-light)"/>
-        <path d="M40 -20 C190 300 110 680 230 1220 H90 C20 760 100 380 -20 -20Z" fill="url(#g-fold-light)"/>
-        <path d="M210 -20 C350 320 270 720 400 1220 H240 C130 720 230 320 100 -20Z" fill="url(#g-fold-light)"/>
-        <path d="M390 -20 C540 300 460 760 590 1220 H420 C300 740 390 340 270 -20Z" fill="url(#g-fold-light)"/>
-        <path d="M580 -20 C720 320 640 740 780 1220 H610 C500 760 580 320 460 -20Z" fill="url(#g-fold-light)"/>
-        <path d="M760 -20 C880 300 820 760 940 1220 H790 C670 760 760 320 640 -20Z" fill="url(#g-fold-light)"/>
-      </g>
-      <path d="M300 160 h300 v24 h-300z" fill="#111" opacity=".9"/>
-      <g fill="#111"><circle cx="450" cy="260" r="7"/><circle cx="450" cy="340" r="7"/><circle cx="450" cy="420" r="7"/></g>
-    </symbol>
 
-    <!-- Al Sadu weave bands, black on white -->
-    <symbol id="s-sadu" viewBox="0 0 900 1200" preserveAspectRatio="xMidYMid slice">
-      <rect width="900" height="1200" fill="#f4f4f0"/>
-      <rect y="80" width="900" height="60" fill="url(#p-sadu-tri)"/>
-      <rect y="170" width="900" height="16" fill="#000"/>
-      <rect y="216" width="900" height="80" fill="url(#p-sadu-dia)"/>
-      <rect y="326" width="900" height="16" fill="#000"/>
-      <rect y="372" width="900" height="40" fill="url(#p-sadu-tooth)"/>
-      <rect y="442" width="900" height="300" fill="#000"/>
-      <g fill="#f4f4f0"><path d="M450 480 560 592 450 704 340 592z"/><path d="M150 520 222 592 150 664 78 592z"/><path d="M750 520 822 592 750 664 678 592z"/></g>
-      <path d="M450 530 512 592 450 654 388 592z" fill="#000"/>
-      <rect y="772" width="900" height="40" fill="url(#p-sadu-tooth)"/>
-      <rect y="842" width="900" height="16" fill="#000"/>
-      <rect y="888" width="900" height="80" fill="url(#p-sadu-dia)"/>
-      <rect y="998" width="900" height="16" fill="#000"/>
-      <rect y="1044" width="900" height="60" fill="url(#p-sadu-tri)"/>
-    </symbol>
   </defs>
 </svg>
 
 
-<div class="announce caps micro" data-ar="اتبع · تعلّم · شارك">Follow · Learn · Share</div>
+<div class="announce" role="region" aria-label="Announcements">
+  <div class="announce__track">
+    <div class="announce__group"><span data-ar="إصدار جديد — تسوّق خط الجامعات">New drop — shop the Collegiate Line</span><span data-ar="شحن مجاني للطلبات فوق ١٠٠ دولار">Free shipping on orders over $100</span><span data-ar="كل طلب يُسهم في العطاء">Every order gives back</span></div>
+    <div class="announce__group" aria-hidden="true"><span data-ar="إصدار جديد — تسوّق خط الجامعات">New drop — shop the Collegiate Line</span><span data-ar="شحن مجاني للطلبات فوق ١٠٠ دولار">Free shipping on orders over $100</span><span data-ar="كل طلب يُسهم في العطاء">Every order gives back</span></div>
+  </div>
+</div>
 
 <header class="header" id="top">
   <div class="header__row">
     <nav class="nav caps" aria-label="Primary">
       <a href="index.html#apparel" data-ar="الأزياء">Apparel</a>
-      <a href="index.html#fragrance" data-ar="العطور">Fragrance</a>
-      <a href="index.html#who" data-ar="من نحن">Who We Are</a>
-      <a href="index.html#stories" data-ar="القصص">Stories</a>
+      <a href="index.html#fragrance" data-ar="العطور">Fragrances</a>
+      <a href="index.html#who" data-ar="قصتنا">Our story</a>
+      <a href="#contact" data-ar="تواصل معنا">Contact us</a>
     </nav>
     <button class="menu-toggle" aria-label="Menu" aria-expanded="false" aria-controls="mobile-nav"></button>
-    <a class="brand" href="index.html" aria-label="Usul Collective home">
-      <svg class="brand__mark" aria-hidden="true"><use href="#logo"/></svg>
-      <span class="brand__word"><span aria-hidden="true">UṢ<span class="macron">U</span>L</span><span class="visually-hidden">UṢŪL</span></span>
-    </a>
+    <a class="brand" href="index.html" aria-label="UṢŪL home"><span class="wordmark">U<span class="dot">S</span>ŪL</span></a>
     <div class="utility caps">
       <button class="lang-toggle" type="button" aria-label="Switch to Arabic">عربي</button>
-      <a class="hide-sm" href="#" data-ar="الحساب">Account</a>
-      <a href="#"><span data-ar="الحقيبة">Bag</span> <span class="bag-count">0</span></a>
+      <a class="bag-btn" href="#"><span data-ar="الحقيبة">Bag</span> (<span class="bag-count">0</span>)</a>
     </div>
   </div>
   <nav class="mobile-nav caps" id="mobile-nav" aria-label="Mobile">
     <a href="index.html#apparel"><span>Apparel</span><span class="ar">الأزياء</span></a>
-    <a href="index.html#fragrance"><span>Fragrance</span><span class="ar">العطور</span></a>
-    <a href="index.html#who"><span>Who We Are</span><span class="ar">من نحن</span></a>
-    <a href="index.html#stories"><span>Stories</span><span class="ar">القصص</span></a>
+    <a href="index.html#fragrance"><span>Fragrances</span><span class="ar">العطور</span></a>
+    <a href="index.html#who"><span>Our story</span><span class="ar">قصتنا</span></a>
+    <a href="#contact"><span>Contact us</span><span class="ar">تواصل معنا</span></a>
   </nav>
 </header>
 
 <main>
-  <section class="hero plate">
+  <section class="hero plate plate--shade">
     <img src="assets/img/olive-harvest.jpg" alt="A man in a keffiyeh harvesting olives into a woven basket" fetchpriority="high">
     <div class="caption">
       <h1 data-ar="قصص تصنعنا.">Stories That Shape Us.</h1>
-      <span class="hero__word" aria-hidden="true">UṢ<span class="macron">U</span>L</span>
+      <span class="hero__ar" lang="ar">قصص تصنعنا</span>
       <div class="hero__ctas">
-        <a class="link" href="#apparel" data-ar="تسوّق الأزياء">Shop apparel</a>
-        <a class="link" href="#fragrance" data-ar="تسوّق العطور">Shop fragrance</a>
+        <a class="btn btn--clay" href="#apparel" data-ar="تسوّق الأزياء">Shop apparel</a>
+        <a class="btn btn--ghost" href="#fragrance" data-ar="تسوّق العطور">Shop fragrance</a>
       </div>
     </div>
   </section>
@@ -264,12 +217,12 @@
   </section>
 
   <section class="houses" aria-label="Apparel and fragrance">
-    <a href="#apparel" class="plate">
-      <svg class="art" aria-hidden="true"><use href="#s-drape-dark" width="100%" height="100%"/></svg>
+    <a href="#apparel" class="plate plate--shade">
+      <img class="img-zoom" src="assets/img/sumud-tee.jpg" alt="The Ṣumūd tee on a hanger" loading="lazy">
       <div class="caption"><h2 data-ar="الأزياء">Apparel</h2><span class="link" data-ar="تسوّق">Shop</span></div>
     </a>
-    <a href="#fragrance" class="plate plate--light">
-      <svg class="art" aria-hidden="true"><use href="#s-bottle-light" width="100%" height="100%"/></svg>
+    <a href="#fragrance" class="plate plate--shade">
+      <img class="img-zoom" src="assets/img/levant.jpg" alt="Levant eau de parfum bottle in warm light" loading="lazy">
       <div class="caption"><h2 data-ar="العطور">Fragrance</h2><span class="link" data-ar="تسوّق">Shop</span></div>
     </a>
   </section>
@@ -323,7 +276,7 @@
   <section class="quote" aria-label="Quote">
     <div class="plate"><img src="assets/img/scholar.jpg" alt="Painting of a scholar in a red robe reading from a book on a carved wooden stand" loading="lazy"></div>
     <div class="quote__text reveal">
-      <span class="caps" style="color:var(--leaf);margin-bottom:28px" data-ar="من دفترنا">From our notebook</span>
+      <span class="eyebrow" style="color:var(--clay);margin-bottom:28px" data-ar="من دفترنا">From our notebook</span>
       <blockquote data-ar="ستتعلّم بالقراءة، لكنك ستفهم بالحب.">You will learn by reading, but you will understand with love.</blockquote>
       <p class="quote__ar">ستتعلّم بالقراءة، لكنك ستفهم بالحب.</p>
       <div><a class="link" href="#stories" data-ar="اقرأ القصص">Read the stories</a></div>
@@ -336,22 +289,22 @@
       <a class="link" href="#" data-ar="عرض الكل">View all</a>
     </div>
     <div class="products products--3">
-      <a class="tile" href="#">
-        <div class="plate"><svg class="art" aria-hidden="true"><use href="#s-drape-dark" width="100%" height="100%"/></svg></div>
-        <div class="tile__meta"><div><h3 class="tile__name">The Bisht Coat <span class="ar">بشت</span></h3><p class="tile__sub">Camel wool</p></div><span class="tile__price">$890</span></div>
+      <a class="tile" href="product.html">
+        <div class="plate"><img class="img-zoom" src="assets/img/sumud-tee.jpg" alt="The Ṣumūd tee in faded black" loading="lazy"></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Ṣumūd <span class="ar">صمود</span></h3><p class="tile__sub" data-ar="خط الأعلام · قطن ثقيل">Legends Line · Heavyweight cotton</p></div><span class="tile__price">$46.00</span></div>
       </a>
-      <a class="tile" href="#">
-        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-drape-light" width="100%" height="100%"/></svg></div>
-        <div class="tile__meta"><div><h3 class="tile__name">Linen Qamis Shirt <span class="ar">قميص</span></h3><p class="tile__sub">Washed linen</p></div><span class="tile__price">$260</span></div>
+      <a class="tile" href="product.html">
+        <div class="plate"><img class="img-zoom" src="assets/img/gibran.jpg" alt="Gibran tee with a portrait of Khalil Gibran on the back" loading="lazy"></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Gibran - The Prophet <span class="ar">جبران</span></h3><p class="tile__sub" data-ar="خط الأعلام · قطن ثقيل">Legends Line · Heavyweight cotton</p></div><span class="tile__price">$39.00</span></div>
       </a>
-      <a class="tile" href="#">
-        <div class="plate plate--light"><svg class="art" aria-hidden="true"><use href="#s-sadu" width="100%" height="100%"/></svg></div>
-        <div class="tile__meta"><div><h3 class="tile__name">Sadu Knit <span class="ar">سدو</span></h3><p class="tile__sub">Merino jacquard</p></div><span class="tile__price">$340</span></div>
+      <a class="tile" href="product.html">
+        <div class="plate"><img class="img-zoom" src="assets/img/zitouna.jpg" alt="Ez-Zitouna University crewneck sweatshirt" loading="lazy"></div>
+        <div class="tile__meta"><div><h3 class="tile__name">Ez-Zitouna Crewneck <span class="ar">الزيتونة</span></h3><p class="tile__sub" data-ar="خط الجامعات · قطن مُبطَّن">Collegiate Line · Fleece</p></div><span class="tile__price">$66.00</span></div>
       </a>
     </div>
   </section>
 
-  <section class="stories-hero plate" id="stories">
+  <section class="stories-hero plate plate--shade" id="stories">
     <img src="assets/img/courtyard.jpg" alt="Men in robes and turbans meeting in a tiled courtyard beneath a carved arch" loading="lazy">
     <div class="caption">
       <span class="caps" data-ar="القصص">Stories</span>
@@ -375,7 +328,7 @@
       <h2 data-ar="انضم إلى المجموعة">Join the Collective</h2>
       <p data-ar="قصص وإصدارات خاصة ودعوات، تصلك مباشرة.">Stories, private releases and invitations, sent straight to you.</p>
       <form class="newsletter" novalidate>
-        <div class="pill-field">
+        <div class="field">
           <label class="visually-hidden" for="email">Email address</label>
           <input id="email" type="email" name="email" placeholder="Email address" autocomplete="email" required>
           <button class="caps" type="submit" data-ar="اشترك">Subscribe</button>
@@ -386,17 +339,17 @@
   </section>
 </main>
 
-<footer class="footer">
+<footer class="footer" id="contact">
   <div class="footer__grid">
     <div class="footer__brand">
-      <a class="brand" href="index.html" aria-label="Usul Collective home"><svg class="brand__mark" aria-hidden="true"><use href="#logo"/></svg><span class="brand__word"><span aria-hidden="true">UṢ<span class="macron">U</span>L</span><span class="visually-hidden">UṢŪL</span></span></a>
-      <p>Stories That Shape Us. Apparel and fragrance rooted in Arab and Islamic history.</p>
+      <a class="brand" href="index.html" aria-label="UṢŪL home"><span class="wordmark">U<span class="dot">S</span>ŪL</span></a>
+      <p data-ar="أزياء خالدة تكرّم الثقافة العربية وأعلام الأدب العربي.">Timeless streetwear honoring Arab culture and the legends of Arabic literature.</p>
     </div>
-    <div><h4 class="caps" data-ar="تسوّق">Shop</h4><ul class="caps"><li><a href="index.html#fragrance">Fragrance</a></li><li><a href="index.html#apparel">Apparel</a></li><li><a href="#">Gifts</a></li></ul></div>
-    <div><h4 class="caps" data-ar="المجموعة">Collective</h4><ul class="caps"><li><a href="index.html#who">Who We Are</a></li><li><a href="index.html#stories">Stories</a></li><li><a href="https://www.instagram.com/usul_collective/" rel="noopener">Instagram</a></li></ul></div>
-    <div><h4 class="caps" data-ar="الخدمات">Services</h4><ul class="caps"><li><a href="#">Contact</a></li><li><a href="#">Shipping</a></li><li><a href="#">Returns</a></li></ul></div>
+    <div><h4 class="caps" data-ar="تسوّق">Shop</h4><ul><li><a href="index.html#apparel" data-ar="خط الأعلام">Legends Line</a></li><li><a href="index.html#apparel" data-ar="خط الجامعات">Collegiate Line</a></li><li><a href="index.html#fragrance" data-ar="العطور">Fragrance</a></li></ul></div>
+    <div><h4 class="caps" data-ar="المساعدة">Help</h4><ul><li><a href="#" data-ar="الشحن">Shipping</a></li><li><a href="#" data-ar="الإرجاع">Returns</a></li><li><a href="product.html#specs" data-ar="المقاسات">Sizing</a></li></ul></div>
+    <div><h4 class="caps" data-ar="تابعنا">Follow</h4><ul><li><a href="https://www.instagram.com/usul_collective/" rel="noopener" data-ar="إنستغرام">Instagram</a></li><li><a href="#" data-ar="تيك توك">TikTok</a></li></ul></div>
   </div>
-  <div class="footer__base caps micro"><span>© 2026 Usul Collective</span><span>Follow · Learn · Share</span></div>
+  <div class="footer__base caps micro"><span data-ar="© ٢٠٢٦ مجموعة أصول">© 2026 Usul Collective</span><span data-ar="اتبع · تعلّم · شارك">Follow · Learn · Share</span></div>
 </footer>
 
 <div class="toast caps" role="status" aria-live="polite"></div>
