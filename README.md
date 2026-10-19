@@ -6,38 +6,37 @@ It's a plain static site with no build step. Open `index.html` in a browser, or 
 
 ```
 index.html      Home: tagline hero, Who We Are, Follow·Learn·Share, apparel/fragrance, products, quote, stories, newsletter
-product.html    Product page: the "Layl" Eau de Parfum
+product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with)
 css/styles.css  Design system and layout
-css/fonts.css   Self-hosted fonts (EB Garamond, IBM Plex Sans Arabic; SIL Open Font License)
-js/main.js      Menu, English/Arabic (RTL) toggle, header on scroll, tabs, bag, newsletter, scroll reveals
-assets/         Logo mark, favicon, brand photography (assets/img)
+css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, IBM Plex Sans Arabic; SIL Open Font License)
+js/main.js      Menu, English/Arabic (RTL) toggle, tabs, product options, bag + upsell dialog, newsletter, scroll reveals
+assets/         Logo mark, favicon, brand and product photography (assets/img)
 ```
 
-## Brand (from the Usul Brand Guide)
+## Brand (from the Usul Brand Guide and the Ṣumūd product design)
 
-Everything brand-specific follows `Usul_Rebrand.pdf`:
+Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (the scrolling clay announcement bar, the pine header with a centred wordmark, Marcellus headings, Reem Kufi Arabic display lines, square corners, the product page layout and the footer) follows the owner's Ṣumūd product design made in Claude Design.
 
-- **Logo:** the teardrop أصول calligraphy mark, extracted from the guide as vector artwork (`assets/logo-mark.svg`, and inlined as `#logo` in each page). The **UṢŪL** wordmark sits beside it.
+- **Logo:** the **UṢŪL** wordmark, set in Marcellus and widely tracked. The teardrop أصول calligraphy mark from the guide is kept as `assets/logo-mark.svg` (inlined as `#logo` on the home page) and used on the newsletter panel.
 - **Colours:**
 
   | Name | Hex | Used for |
   |------|-----|----------|
-  | Pine | `#263530` | Text, dark panels, announcement bar, buttons |
-  | Olive | `#577343` | Button hover |
-  | Leaf | `#688C4F` | Small accents on dark panels |
-  | Cream | `#F2E9CE` | Light panels, type on photos and dark panels |
-  | Clay | `#A67C49` | Arabic sub-lines, footer headings |
+  | Pine | `#263530` | Header, footer, dark panels, text on cream |
+  | Olive | `#577343` | "Behind the stamp" panel, button hover, text links |
+  | Leaf | `#688C4F` | Reserved for small accents |
+  | Cream | `#F2E9CE` | Page background, type on pine |
+  | Clay | `#A67C49` | Announcement bar, prices, Arabic sub-lines, primary buttons, footer headings |
 
-- **Type:** Helvetica for Latin text and Snaga Arabic Text for Arabic, as the guide specifies. Headings, the tagline and the wordmark use a Garamond serif (EB Garamond), matching the guide's headings.
-- **Layout:** large rounded cream and pine panels inset from the page edge, as in the guide.
+- **Type:** Helvetica for Latin text and Snaga Arabic Text for Arabic, as the guide specifies. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
+- **Layout:** full-bleed, square-cornered sections stacked edge to edge, as in the product design.
 - **Photography:** the guide's sepia images (olive harvest, courtyard, scholar painting), in `assets/img`. The fourth image in the guide, a reel credited to @archiveafrica, is not used because it isn't Usul's to publish.
 - **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." and @usul_collective all come from the guide.
 
 ### Fonts to finish
 
-- **Snaga Arabic Text is an Adobe Font,** so it can't be bundled here. IBM Plex Sans Arabic stands in for it. To use Snaga, add your Adobe Fonts kit to the `<head>` of both pages (`<link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css">`). The CSS already lists `snaga-arabic-text` first, so it takes over automatically.
+- **Snaga Arabic Text is an Adobe Font,** so it can't be bundled here. IBM Plex Sans Arabic stands in for it in body text. To use Snaga, add your Adobe Fonts kit to the `<head>` of both pages (`<link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css">`). The CSS already lists `snaga-arabic-text` first, so it takes over automatically.
 - **Helvetica** comes from the visitor's system. Where it isn't installed, Arial is used.
-- **EB Garamond draws the macron on "Ū" off-centre,** so the wordmark's macron is drawn in CSS (`.macron`). Screen readers still get "UṢŪL".
 
 ## Layout references (from styles.refero.design)
 
@@ -50,6 +49,8 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 
 ## Placeholders to replace
 
-- **Product imagery.** Bottles, flasks, fabric and the Al Sadu weave are drawn SVG scenes, toned to match the photography. To use a product photo, replace the `<svg class="art">` inside a `.plate` with `<img src="..." alt="...">`; the CSS fills the frame.
+- **Product photos.** The Ṣumūd tee, Gibran, Darwish, Ez-Zitouna and Levant photos come from the product design. The Ṣumūd gallery has one photo; the design calls for four (embroidery detail, faded black, on the rack, faded bone). To add more, drop a `<button>` per photo into `.gallery__thumbs` on `product.html` (copy the existing one and change `data-src`, `data-label` and the `<img>`); the thumbnail column shows itself once there are two or more.
+- **Fragrance bottles and flasks** on the home page are still drawn SVG scenes, toned to match the photography. To use a product photo, replace the `<svg class="art">` inside a `.plate` with `<img src="..." alt="...">`.
+- **Reviews, the rating and the "38 reviews" count** on the product page are placeholders from the design. Replace them with real reviews before launch.
 - **Products, prices and descriptions** are illustrative.
-- **Commerce.** The bag count and newsletter are front-end only. Connect them to Shopify (or another store) and Klaviyo (or another email tool) when ready.
+- **Commerce.** The bag, the "added to bag" dialog and the newsletter are front-end only. Connect them to Shopify (or another store) and Klaviyo (or another email tool) when ready.
