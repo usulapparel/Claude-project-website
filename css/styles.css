@@ -20,13 +20,13 @@
   --rule: rgba(38, 53, 48, .16);        /* hairlines on cream */
   --rule-on-pine: rgba(166, 124, 73, .35);
 
-  /* Helvetica for Latin text and Snaga Arabic Text for Arabic (Brand Guide);
+  /* Helvetica for Latin text (Brand Guide) and Cairo for Arabic text (the owner's pick in place of Snaga Arabic);
      Marcellus, Roman inscriptional capitals with the same even stroke as Reem Kufi, for headings and the wordmark;
      Reem Kufi for Arabic display lines. */
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --display: "Marcellus", "Trajan Pro", "Cormorant Garamond", Georgia, serif;
-  --arabic: "snaga-arabic-text", "Snaga Arabic Text", "IBM Plex Sans Arabic", "Geeza Pro", sans-serif;
-  --kufi: "Reem Kufi", var(--arabic);
+  --arabic: "Cairo", var(--sans);            /* Cairo covers Arabic only, so Latin inside Arabic text falls to Helvetica */
+  --kufi: "Reem Kufi", "Marcellus", var(--arabic); /* Latin words in Arabic-mode headings (ṢUMŪD) stay in Marcellus */
 
   --gutter: clamp(18px, 2.8vw, 40px);
   --gap: clamp(14px, 1.6vw, 22px);
@@ -70,9 +70,11 @@ h1, h2, h3 { text-wrap: balance; }
 /* The UṢŪL wordmark */
 .brand { display: inline-flex; align-items: center; line-height: 1; }
 .wordmark { font-family: var(--display); font-weight: 400; font-size: 27px; letter-spacing: .3em; margin-inline-end: -.3em; }
-/* Marcellus has no Ṣ, so the dotted S in UṢŪL and ṢUMŪD is a plain S with the dot drawn beneath it. */
-.dot { position: relative; display: inline-block; line-height: 1; }
-.dot::after { content: ""; position: absolute; left: 50%; top: .9em; width: .11em; height: .11em; margin-left: -.055em; border-radius: 50%; background: currentColor; }
+/* Marcellus has no Ṣ, so the dotted S in UṢŪL and ṢUMŪD is a plain S with the dot drawn beneath it.
+   The span stays inline (not inline-block) so the letter keeps its place in the word when the page is RTL. */
+.dot { position: relative; }
+.dot::after { content: ""; position: absolute; left: 50%; bottom: .115em; width: .11em; height: .11em; margin-left: -.055em; border-radius: 50%; background: currentColor; }
+.wordmark .dot::after { margin-left: -.205em; } /* half the wordmark's .3em tracking, so the dot centres under the S */
 .brand__mark { fill: currentColor; }
 
 /* ---------- Announcement (scrolling) ---------- */
