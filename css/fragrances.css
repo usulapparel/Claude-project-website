@@ -30,6 +30,9 @@ html[dir="ltr"] .scent__body h2 .ar { text-align: left; }
 .notes dt { color: var(--muted); padding-top: 2px; }
 .notes dd { margin: 0; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 16px; }
 .notes dd .ar { color: var(--clay); }
+/* The Arabic name stays on the far side when it wraps to its own line (.ar sets its own direction, so use physical sides). */
+html[dir="ltr"] .notes dd .ar { margin-left: auto; }
+html[dir="rtl"] .notes dd .ar { margin-right: auto; }
 
 .scent__actions { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 28px; margin-top: 30px; }
 .scent__actions .link { color: var(--olive); }
