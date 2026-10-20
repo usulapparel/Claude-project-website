@@ -1,0 +1,38 @@
+/* All products page (shop.html). Builds on the tiles and type in styles.css. */
+
+.shop-head h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(36px, 4vw, 56px); line-height: 1.05; }
+.shop-head h1 .ar { display: block; font-size: 20px; color: var(--clay); margin-top: 10px; }
+html[dir="ltr"] .shop-head h1 .ar { text-align: left; }
+.shop-head p { margin: 0; }
+
+.shop-bar { display: flex; justify-content: space-between; align-items: center; gap: 18px 32px; flex-wrap: wrap; margin: 0 var(--gutter) 28px; padding: 16px 0; border-block: 1px solid var(--rule); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chips button { min-height: 38px; padding: 0 14px; border: 1px solid var(--rule); transition: border-color .2s, background .2s, color .2s; }
+.chips button:hover { border-color: var(--pine); }
+.chips button[aria-pressed="true"] { background: var(--pine); border-color: var(--pine); color: var(--cream); }
+.chips button[aria-pressed="true"] .muted { color: var(--muted-on-pine); }
+.shop-bar__selects { display: flex; gap: 22px; }
+.shop-bar__selects label { display: flex; align-items: center; gap: 10px; color: var(--muted); }
+.shop-bar__selects select { font: inherit; letter-spacing: inherit; text-transform: none; color: var(--pine); background: transparent; border: 0; border-bottom: 1px solid var(--clay); padding: 6px 2px; cursor: pointer; }
+
+/* Second photo shows on hover, like the store. */
+.shop-grid .plate { background: #ece6d4; }
+.tile__alt { opacity: 0; transition: opacity .4s; }
+.tile:hover .tile__alt, .tile:focus-visible .tile__alt { opacity: 1; }
+.tile__price s { margin-inline-end: 6px; }
+
+.shop-empty { padding: 0 var(--gutter) var(--section); }
+.shop-more { display: flex; justify-content: center; padding: 0 var(--gutter) var(--section); }
+.shop-more:has([hidden]) { display: none; }
+.shop-grid { padding-bottom: 40px; }
+
+[dir="rtl"] :is(.chips, .shop-bar__selects) { font-family: var(--arabic); letter-spacing: 0; text-transform: none; }
+
+@media (max-width: 820px) {
+  .shop-bar { display: grid; }
+  .chips { flex-wrap: nowrap; overflow-x: auto; margin-inline: calc(var(--gutter) * -1); padding-inline: var(--gutter); scrollbar-width: none; }
+  .chips button { flex: none; }
+  .shop-bar__selects { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; min-width: 0; }
+  .shop-bar__selects label { flex-direction: column; align-items: stretch; gap: 4px; }
+  .shop-bar__selects label, .shop-bar__selects select { min-width: 0; width: 100%; }
+}
