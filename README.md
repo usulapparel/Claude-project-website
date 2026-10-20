@@ -11,8 +11,8 @@ index.html      Home: tagline hero, Who We Are, Follow·Learn·Share, apparel/fr
 product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with)
 shop.html       All products: every item in the Shopify store, with category, country and sort controls (css/shop.css, js/shop.js)
 js/shop-data.js The catalog shop.html shows, copied from Shopify (names, prices, photos, categories, countries)
-fragrances.html Fragrances: Levant, Desert Rose, Rose Oud and Yasmin with their notes and an Add to bag button each (css/fragrances.css)
-fragrances-scroll.html  Fragrances, scroll version: each bottle stays pinned while its name, story and notes arrive as you scroll (css/fragrances-scroll.css, js/fragrances-scroll.js)
+fragrances.html Fragrances: Levant, Desert Rose, Rose Oud and Yasmin with their notes and an Add to bag button each (css/fragrances.css). Online but not linked from the menu.
+fragrances-scroll.html  Fragrances, scroll version: each bottle stays pinned while its name, story and notes arrive as you scroll. This is the page the menu links to (css/fragrances-scroll.css, js/fragrances-scroll.js)
 css/styles.css  Design system and layout
 css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, IBM Plex Sans Arabic; SIL Open Font License)
 js/main.js      Menu, English/Arabic (RTL) toggle, tabs, product options, bag + upsell dialog, newsletter, scroll reveals
