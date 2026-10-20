@@ -204,6 +204,15 @@
     renderProduct();
   }
 
+  // ---- One-tap add (fragrance page): the button carries its Shopify variant and price ----
+  document.querySelectorAll('[data-add-variant]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      addLine(btn.getAttribute('data-add-variant'), 1, parseFloat(btn.getAttribute('data-price')) || 0);
+      var name = (isAr() && btn.getAttribute('data-name-ar')) || btn.getAttribute('data-name');
+      toast((isAr() ? 'أُضيف إلى الحقيبة' : 'Added to bag') + ' — ' + name);
+    });
+  });
+
   if (upsell) {
     upsell.querySelectorAll('[data-close]').forEach(function (btn) {
       btn.addEventListener('click', function () { upsell.close(); });
