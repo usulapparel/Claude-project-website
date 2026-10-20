@@ -2,7 +2,9 @@
 
 **Stories That Shape Us.** A website for Usul Collective, an apparel and fragrance brand rooted in Arab and Islamic history, for those who refuse to forget where they come from.
 
-It's a plain static site with no build step. Open `index.html` in a browser, or deploy the folder to any static host (GitHub Pages, Netlify, Vercel).
+It's a plain static site with no build step. Open `index.html` in a browser.
+
+The live site is served by GitHub Pages from this branch at **shop.usulapparel.com** (`CNAME` names the domain; `.nojekyll` serves the files as they are). The Shopify store stays at usulapparel.com, and the site's Bag and product links point there.
 
 ```
 index.html      Home: tagline hero, Who We Are, Follow·Learn·Share, apparel/fragrance, products, quote, stories, newsletter
