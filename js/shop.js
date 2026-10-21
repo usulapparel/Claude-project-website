@@ -64,6 +64,15 @@
     return by ? list.sort(by) : list;
   }
 
+  // Star rating from Judge.me, when the product has reviews (r: average, rc: count in shop-data.js).
+  function rating(p) {
+    if (!p.rc) return '';
+    var full = Math.round(p.r);
+    var lbl = isAr() ? 'تقييم ' + p.r + ' من 5 من ' + p.rc + ' عملاء' : 'Rated ' + p.r + ' out of 5 by ' + p.rc + ' customers';
+    return '<span class="tile__rating" aria-label="' + lbl + '"><span aria-hidden="true">' +
+      '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full) + '</span> <span class="tile__rating-count" aria-hidden="true">(' + p.rc + ')</span></span>';
+  }
+
   function tile(p) {
     // The Ṣumūd tee has its own page on this site.
     var href = p.h === 'ṣumud' ? 'product.html' : SHOP_URL + '/products/' + encodeURIComponent(p.h);
@@ -77,7 +86,7 @@
         (p.img[1] ? '<img class="tile__alt" src="' + esc(sized(p.img[1], 720)) + '" alt="" loading="lazy">' : '') +
         (badge ? '<span class="badge">' + badge + '</span>' : '') +
       '</div>' +
-      '<div class="tile__meta"><div><h3 class="tile__name">' + dotted(p.t) + '</h3></div>' +
+      '<div class="tile__meta"><div><h3 class="tile__name">' + dotted(p.t) + '</h3>' + rating(p) + '</div>' +
       '<span class="tile__price">' + price + '</span></div></a>';
   }
 

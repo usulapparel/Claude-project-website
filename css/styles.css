@@ -192,6 +192,10 @@ html[dir="ltr"] .section-head h2 .ar { text-align: left; }
 .section-head__note { color: var(--clay); margin: 10px 0 0; }
 .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); padding: 0 var(--gutter) var(--section); }
 .products--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.products--tight { padding-bottom: 44px; }
+/* Customer quotes under the top sellers */
+.testimonials { margin: 0 var(--gutter); padding: 40px 0 var(--section); border-top: 1px solid var(--rule); }
+.testimonials .eyebrow { color: var(--clay); margin: 0 0 22px; }
 .tile { display: block; color: inherit; }
 .tile .plate { aspect-ratio: 4 / 5; }
 .tile__meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 14px; }
@@ -200,6 +204,9 @@ html[dir="ltr"] .section-head h2 .ar { text-align: left; }
 html[dir="ltr"] .tile__name .ar { text-align: left; }
 .tile__sub { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
 .tile__price { white-space: nowrap; font-size: 15px; color: var(--clay); }
+.tile__rating { display: block; margin-top: 6px; font-size: 12px; letter-spacing: .1em; color: var(--clay); }
+.tile__rating-count { color: var(--muted); letter-spacing: 0; }
+.panel--pine .tile__rating-count { color: var(--muted-on-pine); }
 .panel--pine .tile__sub { color: var(--muted-on-pine); }
 
 /* ---------- Quote over painting ---------- */
@@ -341,6 +348,12 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .review .stars { margin-bottom: 12px; }
 .review blockquote { margin: 0 0 18px; font-size: 16px; line-height: 1.7; color: rgba(242, 233, 206, .85); }
 .review figcaption { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(242, 233, 206, .5); }
+.review figcaption a:hover { color: var(--clay); }
+.reviews--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.reviews__note { color: var(--muted-on-pine); max-width: 60ch; margin: -14px 0 30px; }
+.review--cream { border-color: var(--rule); }
+.review--cream blockquote { color: rgba(38, 53, 48, .85); }
+.review--cream figcaption { color: var(--muted); }
 
 /* Pairs well with */
 .pairs { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0; }
