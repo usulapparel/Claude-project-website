@@ -12,7 +12,7 @@ product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, 
 shop.html       All products: every item in the Shopify store, with category, country and sort controls (css/shop.css, js/shop.js)
 js/shop-data.js The catalog shop.html shows, copied from Shopify (names, prices, photos, categories, countries)
 css/styles.css  Design system and layout
-css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, IBM Plex Sans Arabic; SIL Open Font License)
+css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, Cairo; SIL Open Font License)
 js/main.js      Menu, English/Arabic (RTL) toggle, tabs, product options, bag + upsell dialog, newsletter, scroll reveals
 assets/         Logo mark, favicon, brand and product photography (assets/img)
 ```
@@ -32,14 +32,14 @@ Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (
   | Cream | `#F2E9CE` | Page background, type on pine |
   | Clay | `#A67C49` | Announcement bar, prices, Arabic sub-lines, primary buttons, footer headings |
 
-- **Type:** Helvetica for Latin text and Snaga Arabic Text for Arabic, as the guide specifies. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
+- **Type:** Helvetica for Latin text, as the guide specifies, and Cairo for Arabic text. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
 - **Layout:** full-bleed, square-cornered sections stacked edge to edge, as in the product design.
 - **Photography:** the guide's sepia images (olive harvest, courtyard, scholar painting), in `assets/img`. The fourth image in the guide, a reel credited to @archiveafrica, is not used because it isn't Usul's to publish.
 - **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." and @usul_collective all come from the guide.
 
 ### Fonts to finish
 
-- **Snaga Arabic Text is an Adobe Font,** so it can't be bundled here. IBM Plex Sans Arabic stands in for it in body text. To use Snaga, add your Adobe Fonts kit to the `<head>` of both pages (`<link rel="stylesheet" href="https://use.typekit.net/XXXXXXX.css">`). The CSS already lists `snaga-arabic-text` first, so it takes over automatically.
+- **Arabic text is set in Cairo** (free, self-hosted), chosen by the owner in place of the brand guide's Snaga Arabic, which is an Adobe Font and can't be bundled. To switch to Snaga later, add the Adobe Fonts web project link to the `<head>` of both pages and put its family name first in `--arabic` in `css/styles.css`.
 - **Helvetica** comes from the visitor's system. Where it isn't installed, Arial is used.
 
 ## Layout references (from styles.refero.design)
