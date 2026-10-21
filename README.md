@@ -35,7 +35,7 @@ Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (
 - **Type:** Helvetica for Latin text, as the guide specifies, and Cairo for Arabic text. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
 - **Layout:** full-bleed, square-cornered sections stacked edge to edge, as in the product design.
 - **Photography:** the guide's sepia images (olive harvest, courtyard, scholar painting), in `assets/img`. The fourth image in the guide, a reel credited to @archiveafrica, is not used because it isn't Usul's to publish.
-- **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." and @usul_collective all come from the guide.
+- **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." all come from the guide. The Instagram handles are the real accounts, @usulcollective and @apparelbyusul (owner, 2026-10-21).
 
 ### Fonts to finish
 
@@ -55,8 +55,8 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 
 - **Product photos.** The Ṣumūd tee, Gibran, Darwish, Ez-Zitouna and Levant photos come from the product design. The Ṣumūd gallery has one photo; the design calls for four (embroidery detail, faded black, on the rack, faded bone). To add more, drop a `<button>` per photo into `.gallery__thumbs` on `product.html` (copy the existing one and change `data-src`, `data-label` and the `<img>`); the thumbnail column shows itself once there are two or more.
 - **Fragrance bottles and flasks** on the home page are still drawn SVG scenes, toned to match the photography. To use a product photo, replace the `<svg class="art">` inside a `.plate` with `<img src="..." alt="...">`.
-- **Reviews, the rating and the "38 reviews" count** on the product page are placeholders from the design. Replace them with real reviews before launch.
-- **Products and prices** match the Usul Apparel Shopify store (October 2026). Update them here if they change in Shopify. The product page reviews are still placeholders.
+- **Reviews** are the real ones from Judge.me on the Shopify store (two so far, both on the Gaza University Crewneck), copied by hand into `index.html`, `product.html` and `js/shop-data.js` (`r` / `rc`). Copy new ones over when they come in; "Write a review" links go to the store's Judge.me form.
+- **Products and prices** match the Usul Apparel Shopify store (October 2026). Update them here if they change in Shopify.
 - **Commerce.** Product tiles link to their pages on usulapparel.com. The bag keeps Shopify variant IDs (`data-variants` / `data-variant` on the product form and upsell buttons) and hands them to Shopify with a cart permalink (`usulapparel.com/cart/<variant>:<qty>,…`) when the shopper clicks Bag or Checkout.
 - **All products page.** `js/shop-data.js` is a copy of the Shopify catalog from October 2026, so new products, price changes and removals in Shopify don't show on `shop.html` until that file is updated. Three products have no or a mismatched type in Shopify and are filed here by hand: Yasmin (Fragrance), Another Day in the South (T-shirts) and The South Welcomes You (Hats).
 - **Newsletter.** The signup form subscribes emails to the Klaviyo "Newsletter" list (double opt-in, so subscribers confirm by email). The site and list IDs are at the top of the newsletter block in `js/main.js`.

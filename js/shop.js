@@ -51,10 +51,6 @@
   var dotted = function (s) { return esc(s).replace(/Ṣ/g, '<span class="dot">S</span>').replace(/ṣ/g, '<span class="dot">s</span>'); };
   // Shopify's CDN resizes on request.
   var sized = function (url, w) { return url + (url.indexOf('?') < 0 ? '?' : '&') + 'width=' + w; };
-  var catName = function (key) {
-    for (var i = 0; i < CATEGORIES.length; i++) if (CATEGORIES[i][0] === key) return label(CATEGORIES[i][1], CATEGORIES[i][2]);
-    return '';
-  };
 
   function inCountry(p) { return !state.country || (p.co || []).indexOf(state.country) >= 0; }
   function filtered() {
@@ -68,11 +64,18 @@
     return by ? list.sort(by) : list;
   }
 
+  // Star rating from Judge.me, when the product has reviews (r: average, rc: count in shop-data.js).
+  function rating(p) {
+    if (!p.rc) return '';
+    var full = Math.round(p.r);
+    var lbl = isAr() ? 'تقييم ' + p.r + ' من 5 من ' + p.rc + ' عملاء' : 'Rated ' + p.r + ' out of 5 by ' + p.rc + ' customers';
+    return '<span class="tile__rating" aria-label="' + lbl + '"><span aria-hidden="true">' +
+      '★★★★★'.slice(0, full) + '☆☆☆☆☆'.slice(0, 5 - full) + '</span> <span class="tile__rating-count" aria-hidden="true">(' + p.rc + ')</span></span>';
+  }
+
   function tile(p) {
     // The Ṣumūd tee has its own page on this site.
     var href = p.h === 'ṣumud' ? 'product.html' : SHOP_URL + '/products/' + encodeURIComponent(p.h);
-    var sub = [catName(p.c)];
-    if (p.n) sub.push(isAr() ? p.n + ' ألوان' : p.n + ' colors');
     var price = p.was
       ? '<s class="muted">' + money(p.was) + '</s> ' + money(p.p)
       : money(p.p);
@@ -83,7 +86,7 @@
         (p.img[1] ? '<img class="tile__alt" src="' + esc(sized(p.img[1], 720)) + '" alt="" loading="lazy">' : '') +
         (badge ? '<span class="badge">' + badge + '</span>' : '') +
       '</div>' +
-      '<div class="tile__meta"><div><h3 class="tile__name">' + dotted(p.t) + '</h3><p class="tile__sub">' + esc(sub.join(' · ')) + '</p></div>' +
+      '<div class="tile__meta"><div><h3 class="tile__name">' + dotted(p.t) + '</h3>' + rating(p) + '</div>' +
       '<span class="tile__price">' + price + '</span></div></a>';
   }
 
