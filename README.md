@@ -2,11 +2,15 @@
 
 **Stories That Shape Us.** A website for Usul Collective, an apparel and fragrance brand rooted in Arab and Islamic history, for those who refuse to forget where they come from.
 
-It's a plain static site with no build step. Open `index.html` in a browser, or deploy the folder to any static host (GitHub Pages, Netlify, Vercel).
+It's a plain static site with no build step. Open `index.html` in a browser.
+
+The live site is served by GitHub Pages from this branch at **shop.usulapparel.com** (`CNAME` names the domain; `.nojekyll` serves the files as they are). The Shopify store stays at usulapparel.com, and the site's Bag and product links point there.
 
 ```
 index.html      Home: tagline hero, Who We Are, Follow·Learn·Share, apparel/fragrance, products, quote, stories, newsletter
 product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with)
+shop.html       All products: every item in the Shopify store, with category, country and sort controls (css/shop.css, js/shop.js)
+js/shop-data.js The catalog shop.html shows, copied from Shopify (names, prices, photos, categories, countries)
 css/styles.css  Design system and layout
 css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, Cairo; SIL Open Font License)
 js/main.js      Menu, English/Arabic (RTL) toggle, tabs, product options, bag + upsell dialog, newsletter, scroll reveals
@@ -54,4 +58,5 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 - **Reviews, the rating and the "38 reviews" count** on the product page are placeholders from the design. Replace them with real reviews before launch.
 - **Products and prices** match the Usul Apparel Shopify store (October 2026). Update them here if they change in Shopify. The product page reviews are still placeholders.
 - **Commerce.** Product tiles link to their pages on usulapparel.com. The bag keeps Shopify variant IDs (`data-variants` / `data-variant` on the product form and upsell buttons) and hands them to Shopify with a cart permalink (`usulapparel.com/cart/<variant>:<qty>,…`) when the shopper clicks Bag or Checkout.
+- **All products page.** `js/shop-data.js` is a copy of the Shopify catalog from October 2026, so new products, price changes and removals in Shopify don't show on `shop.html` until that file is updated. Three products have no or a mismatched type in Shopify and are filed here by hand: Yasmin (Fragrance), Another Day in the South (T-shirts) and The South Welcomes You (Hats).
 - **Newsletter.** The signup form subscribes emails to the Klaviyo "Newsletter" list (double opt-in, so subscribers confirm by email). The site and list IDs are at the top of the newsletter block in `js/main.js`.
