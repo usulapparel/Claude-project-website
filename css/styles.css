@@ -189,6 +189,7 @@ html[dir="ltr"] .section-head h2 .ar { text-align: left; }
 .tabs button { color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: color .2s; }
 .tabs button[aria-selected="true"] { color: var(--pine); border-color: var(--clay); }
 
+.section-head__note { color: var(--clay); margin: 10px 0 0; }
 .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); padding: 0 var(--gutter) var(--section); }
 .products--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .tile { display: block; color: inherit; }
