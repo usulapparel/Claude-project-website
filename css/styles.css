@@ -170,6 +170,12 @@ html[dir="ltr"] .step h3 .ar { text-align: left; }
 .step p { margin: 0; color: rgba(242, 233, 206, .8); line-height: 1.7; }
 
 /* ---------- Two houses ---------- */
+/* Intro band: a cream pause between the hero and the two houses */
+.intro { background: var(--cream); border-bottom: 1px solid var(--rule); padding: 64px var(--gutter); text-align: center; }
+.intro .eyebrow { color: var(--clay); margin: 0 0 16px; }
+.intro__line { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.4vw, 34px); line-height: 1.3; max-width: 26em; margin: 0 auto; text-wrap: balance; }
+.intro__ar { display: block; font-family: var(--kufi); font-size: 20px; color: var(--clay); margin-top: 14px; }
+[dir="rtl"] .intro__ar { display: none; }
 .houses { display: grid; grid-template-columns: 1fr 1fr; }
 .houses .plate { aspect-ratio: 4 / 5; max-height: 92vh; width: 100%; }
 
@@ -418,6 +424,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .step, .step + .step { padding: 24px 0; border-inline-start: 0; border-bottom: 1px solid var(--rule-on-pine); }
   .products--3 { grid-template-columns: 1fr 1fr; }
   .section-head { flex-direction: column; align-items: flex-start; }
+  .intro { padding: 44px var(--gutter); }
   .trust { grid-template-columns: 1fr; }
   .trust > div + div { border-inline-start: 0; border-top: 1px solid var(--rule); }
   .trust > div { padding: 16px var(--gutter); }
