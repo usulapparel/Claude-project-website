@@ -35,7 +35,7 @@ Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (
 - **Type:** Helvetica for Latin text, as the guide specifies, and Cairo for Arabic text. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
 - **Layout:** full-bleed, square-cornered sections stacked edge to edge, as in the product design.
 - **Photography:** the guide's sepia images (olive harvest, courtyard, scholar painting), in `assets/img`. The fourth image in the guide, a reel credited to @archiveafrica, is not used because it isn't Usul's to publish.
-- **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." and @usul_collective all come from the guide.
+- **Copy:** the tagline, "Who We Are", "Follow. Learn. Share.", the quote "You will learn by reading, but you will understand with love." all come from the guide. The Instagram handles are the real accounts, @usulcollective and @apparelbyusul (owner, 2026-10-21).
 
 ### Fonts to finish
 
