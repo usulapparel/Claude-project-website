@@ -1,7 +1,7 @@
 // USUL — small progressive enhancements. The site works without JS.
 (function () {
   var root = document.documentElement;
-  var FREE_SHIP = 100; // free shipping threshold, in dollars
+  var FREE_SHIP = 75; // free shipping threshold, in dollars
   var money = function (n) { return '$' + n.toFixed(2); };
   // Marcellus (the display face) has no Ṣ: write it as an S with the dot drawn by CSS (see .dot in styles.css).
   function dotted(text) {
@@ -121,7 +121,7 @@
 
   // ---- Product page: options, quantity, add to bag, upsell dialog ----
   var form = document.querySelector('.add-form');
-  var upsell = document.querySelector('.upsell');
+  var upsell = document.querySelector('.upsell:not(.sizeguide)');
   var qty = 1;
 
   function checked(name) { return form.querySelector('input[name="' + name + '"]:checked'); }
@@ -212,6 +212,30 @@
       toast((isAr() ? 'أُضيف إلى الحقيبة' : 'Added to bag') + ' — ' + name);
     });
   });
+
+  // ---- Size guide dialog: opens over the page, highlights the size picked, switches inches/cm ----
+  var sizeGuide = document.getElementById('size-guide');
+  if (sizeGuide && typeof sizeGuide.showModal === 'function') {
+    document.querySelectorAll('[data-size-guide]').forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        e.preventDefault();
+        var picked = document.querySelector('input[name="size"]:checked');
+        sizeGuide.querySelectorAll('tbody tr').forEach(function (tr) {
+          tr.classList.toggle('is-picked', !!picked && tr.querySelector('th').textContent === picked.value);
+        });
+        sizeGuide.showModal();
+      });
+    });
+    sizeGuide.querySelectorAll('[data-units]').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var unit = btn.getAttribute('data-units');
+        sizeGuide.querySelectorAll('[data-units]').forEach(function (b) { b.setAttribute('aria-pressed', String(b === btn)); });
+        sizeGuide.querySelectorAll('[data-unit]').forEach(function (el) { el.hidden = el.getAttribute('data-unit') !== unit; });
+      });
+    });
+    sizeGuide.querySelector('[data-close]').addEventListener('click', function () { sizeGuide.close(); });
+    sizeGuide.addEventListener('click', function (e) { if (e.target === sizeGuide) sizeGuide.close(); });
+  }
 
   if (upsell) {
     upsell.querySelectorAll('[data-close]').forEach(function (btn) {
