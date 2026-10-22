@@ -1,7 +1,7 @@
 // USUL — small progressive enhancements. The site works without JS.
 (function () {
   var root = document.documentElement;
-  var FREE_SHIP = 100; // free shipping threshold, in dollars
+  var FREE_SHIP = 75; // free shipping threshold, in dollars
   var money = function (n) { return '$' + n.toFixed(2); };
   // Marcellus (the display face) has no Ṣ: write it as an S with the dot drawn by CSS (see .dot in styles.css).
   function dotted(text) {
