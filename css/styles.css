@@ -391,6 +391,26 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .upsell__actions { display: flex; gap: 14px; margin-top: 26px; }
 .upsell__actions > * { flex: 1; }
 
+/* Size guide dialog (shares the added-to-bag dialog frame) */
+.sizeguide__body { padding: 26px 30px 30px; }
+.sizeguide__head { display: flex; gap: 18px; align-items: flex-start; justify-content: space-between; margin-bottom: 20px; }
+.sizeguide__fit { margin: 0; font-size: 15px; line-height: 1.55; max-width: 46ch; }
+.sizeguide__units { display: flex; flex: none; border: 1px solid var(--pine); }
+.sizeguide__units button { padding: 7px 14px; font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--pine); }
+.sizeguide__units button[aria-pressed="true"] { background: var(--pine); color: var(--cream); }
+.sizeguide__table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; }
+.sizeguide__table th, .sizeguide__table td { padding: 12px 10px; border-bottom: 1px solid var(--rule); text-align: start; }
+.sizeguide__table thead th { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--clay); font-weight: 400; }
+.sizeguide__table tbody th { font-weight: 600; }
+.sizeguide__table tbody tr.is-picked { background: var(--sand); }
+.sizeguide__note { margin: 18px 0 0; font-size: 13px; line-height: 1.6; color: var(--muted); }
+[dir="rtl"] :is(.sizeguide__table thead th, .sizeguide__units button) { font-family: var(--arabic); letter-spacing: 0; text-transform: none; }
+@media (max-width: 640px) {
+  .sizeguide__body { padding: 20px var(--gutter) 24px; }
+  .sizeguide__head { flex-direction: column; }
+}
+
+
 /* ---------- Toast ---------- */
 .toast { position: fixed; z-index: 50; left: 50%; bottom: 24px; transform: translate(-50%, 16px); background: var(--pine); color: var(--cream); padding: 14px 24px; opacity: 0; pointer-events: none; transition: opacity .3s, transform .3s; }
 .toast.show { opacity: 1; transform: translate(-50%, 0); }
