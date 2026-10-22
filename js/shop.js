@@ -7,6 +7,7 @@
   var root = document.documentElement;
   var SHOP_URL = 'https://usulapparel.com';
   var PAGE = 12;
+  var FRAGRANCES = { perfume: 'levant', 'deset-rose': 'desert-rose', 'rose-oud': 'rose-oud', yasmin: 'yasmin' };
 
   var CATEGORIES = [
     ['', 'All', 'الكل'],
@@ -74,8 +75,10 @@
   }
 
   function tile(p) {
-    // The Ṣumūd tee has its own page on this site.
-    var href = p.h === 'ṣumud' ? 'product.html' : SHOP_URL + '/products/' + encodeURIComponent(p.h);
+    // The Ṣumūd tee and the fragrances have their own pages on this site.
+    var href = p.h === 'ṣumud' ? 'product.html'
+      : FRAGRANCES[p.h] ? 'fragrances-scroll.html#' + FRAGRANCES[p.h]
+      : SHOP_URL + '/products/' + encodeURIComponent(p.h);
     var price = p.was
       ? '<s class="muted">' + money(p.was) + '</s> ' + money(p.p)
       : money(p.p);
