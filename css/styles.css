@@ -20,13 +20,13 @@
   --rule: rgba(38, 53, 48, .16);        /* hairlines on cream */
   --rule-on-pine: rgba(166, 124, 73, .35);
 
-  /* Helvetica for Latin text and Snaga Arabic Text for Arabic (Brand Guide);
+  /* Helvetica for Latin text (Brand Guide) and Cairo for Arabic text (the owner's pick in place of Snaga Arabic);
      Marcellus, Roman inscriptional capitals with the same even stroke as Reem Kufi, for headings and the wordmark;
      Reem Kufi for Arabic display lines. */
   --sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --display: "Marcellus", "Trajan Pro", "Cormorant Garamond", Georgia, serif;
-  --arabic: "snaga-arabic-text", "Snaga Arabic Text", "IBM Plex Sans Arabic", "Geeza Pro", sans-serif;
-  --kufi: "Reem Kufi", var(--arabic);
+  --arabic: "Cairo", var(--sans);            /* Cairo covers Arabic only, so Latin inside Arabic text falls to Helvetica */
+  --kufi: "Reem Kufi", "Marcellus", var(--arabic); /* Latin words in Arabic-mode headings (ṢUMŪD) stay in Marcellus */
 
   --gutter: clamp(18px, 2.8vw, 40px);
   --gap: clamp(14px, 1.6vw, 22px);
@@ -70,9 +70,11 @@ h1, h2, h3 { text-wrap: balance; }
 /* The UṢŪL wordmark */
 .brand { display: inline-flex; align-items: center; line-height: 1; }
 .wordmark { font-family: var(--display); font-weight: 400; font-size: 27px; letter-spacing: .3em; margin-inline-end: -.3em; }
-/* Marcellus has no Ṣ, so the dotted S in UṢŪL and ṢUMŪD is a plain S with the dot drawn beneath it. */
-.dot { position: relative; display: inline-block; line-height: 1; }
-.dot::after { content: ""; position: absolute; left: 50%; top: .9em; width: .11em; height: .11em; margin-left: -.055em; border-radius: 50%; background: currentColor; }
+/* Marcellus has no Ṣ, so the dotted S in UṢŪL and ṢUMŪD is a plain S with the dot drawn beneath it.
+   The span stays inline (not inline-block) so the letter keeps its place in the word when the page is RTL. */
+.dot { position: relative; }
+.dot::after { content: ""; position: absolute; left: 50%; bottom: .115em; width: .11em; height: .11em; margin-left: -.055em; border-radius: 50%; background: currentColor; }
+.wordmark .dot::after { margin-left: -.205em; } /* half the wordmark's .3em tracking, so the dot centres under the S */
 .brand__mark { fill: currentColor; }
 
 /* ---------- Announcement (scrolling) ---------- */
@@ -168,6 +170,12 @@ html[dir="ltr"] .step h3 .ar { text-align: left; }
 .step p { margin: 0; color: rgba(242, 233, 206, .8); line-height: 1.7; }
 
 /* ---------- Two houses ---------- */
+/* Intro band: a cream pause between the hero and the two houses */
+.intro { background: var(--cream); border-bottom: 1px solid var(--rule); padding: 64px var(--gutter); text-align: center; }
+.intro .eyebrow { color: var(--clay); margin: 0 0 16px; }
+.intro__line { font-family: var(--display); font-weight: 400; font-size: clamp(22px, 2.4vw, 34px); line-height: 1.3; max-width: 26em; margin: 0 auto; text-wrap: balance; }
+.intro__ar { display: block; font-family: var(--kufi); font-size: 20px; color: var(--clay); margin-top: 14px; }
+[dir="rtl"] .intro__ar { display: none; }
 .houses { display: grid; grid-template-columns: 1fr 1fr; }
 .houses .plate { aspect-ratio: 4 / 5; max-height: 92vh; width: 100%; }
 
@@ -181,8 +189,13 @@ html[dir="ltr"] .section-head h2 .ar { text-align: left; }
 .tabs button { color: var(--muted); padding-bottom: 3px; border-bottom: 1px solid transparent; transition: color .2s; }
 .tabs button[aria-selected="true"] { color: var(--pine); border-color: var(--clay); }
 
+.section-head__note { color: var(--clay); margin: 10px 0 0; }
 .products { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--gap); padding: 0 var(--gutter) var(--section); }
 .products--3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.products--tight { padding-bottom: 44px; }
+/* Customer quotes under the top sellers */
+.testimonials { margin: 0 var(--gutter); padding: 40px 0 var(--section); border-top: 1px solid var(--rule); }
+.testimonials .eyebrow { color: var(--clay); margin: 0 0 22px; }
 .tile { display: block; color: inherit; }
 .tile .plate { aspect-ratio: 4 / 5; }
 .tile__meta { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 14px; }
@@ -191,6 +204,9 @@ html[dir="ltr"] .section-head h2 .ar { text-align: left; }
 html[dir="ltr"] .tile__name .ar { text-align: left; }
 .tile__sub { margin: 4px 0 0; color: var(--muted); font-size: 13px; }
 .tile__price { white-space: nowrap; font-size: 15px; color: var(--clay); }
+.tile__rating { display: block; margin-top: 6px; font-size: 12px; letter-spacing: .1em; color: var(--clay); }
+.tile__rating-count { color: var(--muted); letter-spacing: 0; }
+.panel--pine .tile__rating-count { color: var(--muted-on-pine); }
 .panel--pine .tile__sub { color: var(--muted-on-pine); }
 
 /* ---------- Quote over painting ---------- */
@@ -332,6 +348,12 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 .review .stars { margin-bottom: 12px; }
 .review blockquote { margin: 0 0 18px; font-size: 16px; line-height: 1.7; color: rgba(242, 233, 206, .85); }
 .review figcaption { font-size: 12px; letter-spacing: .14em; text-transform: uppercase; color: rgba(242, 233, 206, .5); }
+.review figcaption a:hover { color: var(--clay); }
+.reviews--2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.reviews__note { color: var(--muted-on-pine); max-width: 60ch; margin: -14px 0 30px; }
+.review--cream { border-color: var(--rule); }
+.review--cream blockquote { color: rgba(38, 53, 48, .85); }
+.review--cream figcaption { color: var(--muted); }
 
 /* Pairs well with */
 .pairs { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0; }
@@ -416,6 +438,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .step, .step + .step { padding: 24px 0; border-inline-start: 0; border-bottom: 1px solid var(--rule-on-pine); }
   .products--3 { grid-template-columns: 1fr 1fr; }
   .section-head { flex-direction: column; align-items: flex-start; }
+  .intro { padding: 44px var(--gutter); }
   .trust { grid-template-columns: 1fr; }
   .trust > div + div { border-inline-start: 0; border-top: 1px solid var(--rule); }
   .trust > div { padding: 16px var(--gutter); }
