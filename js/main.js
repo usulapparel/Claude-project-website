@@ -35,6 +35,20 @@
       if (!el.hasAttribute('data-en')) el.setAttribute('data-en', el.innerHTML);
       el.innerHTML = ar ? el.getAttribute('data-ar') : el.getAttribute('data-en');
     });
+    // The search description follows the language too (the <title> is swapped by the loop above).
+    document.querySelectorAll('meta[data-ar-content]').forEach(function (m) {
+      if (!m.hasAttribute('data-en-content')) m.setAttribute('data-en-content', m.content);
+      m.content = ar ? m.getAttribute('data-ar-content') : m.getAttribute('data-en-content');
+    });
+    // Keep the address in step, so a shared or bookmarked link opens in the same language (?lang=ar).
+    if (window.history && history.replaceState && /^https?:$/.test(location.protocol)) {
+      var params = new URLSearchParams(location.search);
+      if (ar) params.set('lang', 'ar'); else params.delete('lang');
+      var q = params.toString();
+      history.replaceState(history.state, '', location.pathname + (q ? '?' + q : '') + location.hash);
+    }
+    var canon = document.querySelector('link[rel="canonical"][data-self]'); // written in each page's <head>
+    if (canon) canon.href = canon.href.replace(/\?lang=ar$/, '') + (ar ? '?lang=ar' : '');
     if (langBtn) {
       langBtn.textContent = ar ? 'English' : 'عربي';
       langBtn.setAttribute('aria-label', ar ? 'Switch to English' : 'Switch to Arabic');
@@ -44,9 +58,12 @@
   }
   if (langBtn) {
     langBtn.addEventListener('click', function () { setLang(isAr() ? 'en' : 'ar'); });
+    // ?lang=ar (or ?lang=en) in the address wins; otherwise use the visitor's last choice.
+    var asked = new URLSearchParams(location.search).get('lang');
     var saved = null;
     try { saved = localStorage.getItem('usul-lang'); } catch (e) {}
-    if (saved === 'ar') setLang('ar');
+    if (asked === 'ar' || (asked !== 'en' && saved === 'ar')) setLang('ar');
+    else if (asked === 'en') setLang('en');
   }
 
   // ---- Fragrance tabs ----

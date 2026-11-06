@@ -16,6 +16,8 @@ fragrances-scroll.html  Fragrances, scroll version: each bottle stays pinned whi
 css/styles.css  Design system and layout
 css/fonts.css   Self-hosted fonts (Marcellus, Reem Kufi, Cairo; SIL Open Font License)
 js/main.js      Menu, English/Arabic (RTL) toggle, tabs, product options, bag + upsell dialog, newsletter, scroll reveals
+sitemap.xml     Every page, in English and Arabic, for Google Search Console (update lastmod when a page changes)
+robots.txt      Lets search engines crawl everything and points them to the sitemap
 assets/         Logo mark, favicon, brand and product photography (assets/img)
 ```
 
@@ -62,3 +64,13 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 - **Commerce.** Product tiles link to their pages on usulapparel.com. The bag keeps Shopify variant IDs (`data-variants` / `data-variant` on the product form and upsell buttons) and hands them to Shopify with a cart permalink (`usulapparel.com/cart/<variant>:<qty>,…`) when the shopper clicks Bag or Checkout.
 - **All products page.** `js/shop-data.js` is a copy of the Shopify catalog from October 2026, so new products, price changes and removals in Shopify don't show on `shop.html` until that file is updated. Three products have no or a mismatched type in Shopify and are filed here by hand: Yasmin (Fragrance), Another Day in the South (T-shirts) and The South Welcomes You (Hats).
 - **Newsletter.** The signup form subscribes emails to the Klaviyo "Newsletter" list (double opt-in, so subscribers confirm by email). The site and list IDs are at the top of the newsletter block in `js/main.js`.
+
+## Search (Google)
+
+Each page has an English and an Arabic address: `/shop.html` and `/shop.html?lang=ar`. They are the same file; `?lang=ar` makes `js/main.js` switch the page to Arabic, and the language toggle keeps the address in step. Every page's `<head>` has:
+
+- a `<title>` and `<meta name="description">` in English, with the Arabic in `data-ar` / `data-ar-content` (swapped in by the toggle);
+- `hreflang` links that tie the two versions together;
+- a small script that writes the canonical link, so each language version names itself.
+
+When you add a page, give it the same head tags and add both of its addresses to `sitemap.xml`.

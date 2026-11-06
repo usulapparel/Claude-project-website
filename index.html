@@ -3,16 +3,45 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UṢŪL — Usul Collective · Stories That Shape Us</title>
-  <meta name="description" content="Usul Collective: apparel and fragrance rooted in Arab and Islamic history, for those who refuse to forget where they come from.">
-  <link rel="canonical" href="https://shop.usulapparel.com/">
+  <title data-ar="مجموعة أصول — ملابس وعطور من روح التراث العربي">Usul Collective — Arab heritage streetwear and fragrance</title>
+  <meta name="description" content="UṢŪL tees, crewnecks and hoodies honor Arab culture and the poets of Arabic literature, alongside four perfumes from Levant to Rose Oud. Free shipping over $75." data-ar-content="تيشيرتات وكنزات وهوديز من «أصول» تكرّم الثقافة العربية وشعراء الأدب العربي، وأربعة عطور من الشام إلى ورد وعود. شحن مجاني للطلبات فوق ٧٥ دولارًا.">
+  <!-- Search: this page in English is /, in Arabic /?lang=ar (same file; js/main.js switches the language).
+       The canonical link is written here, not as a plain tag, so each language version names itself. -->
+  <script>(function (d) { var ar = /[?&]lang=ar(&|$)/.test(location.search), c = d.createElement('link'); c.rel = 'canonical'; c.setAttribute('data-self', ''); c.href = 'https://shop.usulapparel.com/' + (ar ? '?lang=ar' : ''); d.head.appendChild(c); if (ar) { d.documentElement.lang = 'ar'; d.documentElement.dir = 'rtl'; } })(document);</script>
+  <link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/">
+  <link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/?lang=ar">
+  <link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/">
   <meta property="og:site_name" content="Usul Collective">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:locale:alternate" content="ar_AR">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="UṢŪL — Usul Collective · Stories That Shape Us">
-  <meta property="og:description" content="Usul Collective: apparel and fragrance rooted in Arab and Islamic history, for those who refuse to forget where they come from.">
+  <meta property="og:title" content="Usul Collective — Arab heritage streetwear and fragrance">
+  <meta property="og:description" content="UṢŪL tees, crewnecks and hoodies honor Arab culture and the poets of Arabic literature, alongside four perfumes from Levant to Rose Oud. Free shipping over $75.">
   <meta property="og:url" content="https://shop.usulapparel.com/">
   <meta property="og:image" content="https://shop.usulapparel.com/assets/img/olive-harvest.jpg">
   <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://shop.usulapparel.com/#org",
+        "name": "Usul Collective",
+        "alternateName": ["UṢŪL", "Usul Apparel", "مجموعة أصول"],
+        "url": "https://shop.usulapparel.com/",
+        "sameAs": ["https://usulapparel.com", "https://www.instagram.com/usulcollective/", "https://www.instagram.com/apparelbyusul/", "https://www.tiktok.com/@usul.collective"]
+      },
+      {
+        "@type": "WebSite",
+        "name": "Usul Collective",
+        "url": "https://shop.usulapparel.com/",
+        "inLanguage": ["en", "ar"],
+        "publisher": { "@id": "https://shop.usulapparel.com/#org" }
+      }
+    ]
+  }
+  </script>
   <meta name="theme-color" content="#263530">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/fonts.css">

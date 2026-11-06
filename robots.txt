@@ -1,0 +1,5 @@
+# shop.usulapparel.com: everything may be crawled.
+User-agent: *
+Allow: /
+
+Sitemap: https://shop.usulapparel.com/sitemap.xml
