@@ -110,11 +110,25 @@
     gallery.classList.toggle('gallery--single', thumbs.length < 2);
     var mainImg = gallery.querySelector('.gallery__main img');
     var shotLabel = gallery.querySelector('.shot-label');
+    function showShot(btn) {
+      thumbs.forEach(function (b) { b.setAttribute('aria-current', String(b === btn)); });
+      mainImg.src = btn.getAttribute('data-src');
+      if (btn.getAttribute('data-alt')) mainImg.alt = btn.getAttribute('data-alt');
+      if (shotLabel) shotLabel.textContent = (isAr() && btn.getAttribute('data-label-ar')) || btn.getAttribute('data-label');
+    }
     thumbs.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        thumbs.forEach(function (b) { b.setAttribute('aria-current', String(b === btn)); });
-        mainImg.src = btn.getAttribute('data-src');
-        if (shotLabel) shotLabel.textContent = (isAr() && btn.getAttribute('data-label-ar')) || btn.getAttribute('data-label');
+      btn.addEventListener('click', function () { showShot(btn); });
+    });
+    // Picking a color shows that color's photos and opens the first of them.
+    document.querySelectorAll('input[name="color"]').forEach(function (input) {
+      input.addEventListener('change', function () {
+        var first = null;
+        thumbs.forEach(function (b) {
+          var match = !b.getAttribute('data-color') || b.getAttribute('data-color') === input.value;
+          b.hidden = !match;
+          if (match && !first) first = b;
+        });
+        if (first) showShot(first);
       });
     });
   }
