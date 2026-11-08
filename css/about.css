@@ -1,0 +1,32 @@
+/* About us page (about.html). Builds on the hero, panels and type in styles.css. */
+
+.about-hero { height: min(78vh, 760px); }
+.about-hero .caption { gap: 14px; }
+
+.team__head { display: flex; justify-content: space-between; align-items: end; gap: 16px 40px; flex-wrap: wrap; margin-bottom: 44px; }
+.team__head h2 { margin: 0; }
+.team__head h2 .ar { display: block; font-size: 20px; color: var(--clay); margin-top: 10px; }
+html[dir="ltr"] .team__head h2 .ar { text-align: left; }
+.team__head p { margin: 0; max-width: 42ch; line-height: 1.7; }
+
+.team__grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: clamp(24px, 3vw, 44px); }
+.member__photo { aspect-ratio: 4 / 5; margin-bottom: 22px; }
+.member__photo > img { object-position: 50% 25%; }
+/* Placeholder until a real portrait goes in: the logo mark, small, on pine. */
+.member__photo--empty { background: var(--pine); }
+.member__photo--empty > img { inset: 50% auto auto 50%; width: 22%; height: auto; transform: translate(-50%, -50%); opacity: .35; }
+.member__name { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.15; margin: 0; }
+.member__name .ar { display: block; font-size: 18px; color: var(--clay); margin-top: 6px; }
+html[dir="ltr"] .member__name .ar { text-align: left; }
+.member__role { color: var(--olive); margin: 12px 0 10px; }
+.member__bio { margin: 0; line-height: 1.7; max-width: 44ch; }
+
+@media (max-width: 1080px) {
+  .team__grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); }
+}
+@media (max-width: 560px) {
+  .team__grid { gap: 28px 16px; }
+  .member__photo { margin-bottom: 14px; }
+  .member__name { font-size: 20px; }
+  .member__name .ar { font-size: 15px; }
+}

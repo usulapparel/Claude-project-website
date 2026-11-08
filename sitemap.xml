@@ -3,14 +3,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://shop.usulapparel.com/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/"/>
   </url>
   <url>
     <loc>https://shop.usulapparel.com/?lang=ar</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-08</lastmod>
     <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/"/>
@@ -56,5 +56,19 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/product.html"/>
     <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/product.html?lang=ar"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/product.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/about.html</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/about.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/about.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/about.html?lang=ar</loc>
+    <lastmod>2026-11-08</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/about.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/about.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/about.html"/>
   </url>
 </urlset>
