@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Every page in English and Arabic (?lang=ar). Add new pages here, and update lastmod when a page changes. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://shop.usulapparel.com/</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/?lang=ar</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/shop.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/shop.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/shop.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/shop.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/shop.html?lang=ar</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/shop.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/shop.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/shop.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/fragrances-scroll.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/fragrances-scroll.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/fragrances-scroll.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/fragrances-scroll.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/fragrances-scroll.html?lang=ar</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/fragrances-scroll.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/fragrances-scroll.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/fragrances-scroll.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/product.html</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/product.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/product.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/product.html"/>
+  </url>
+  <url>
+    <loc>https://shop.usulapparel.com/product.html?lang=ar</loc>
+    <lastmod>2026-11-06</lastmod>
+    <xhtml:link rel="alternate" hreflang="en" href="https://shop.usulapparel.com/product.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://shop.usulapparel.com/product.html?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://shop.usulapparel.com/product.html"/>
+  </url>
+</urlset>
