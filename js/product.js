@@ -163,6 +163,41 @@
     return { lead: lead, rest: box };
   }
 
+  // How each photo sits in the frame. A mockup on a flat background is shown whole, with the frame painted in that
+  // background color so no box shows around it; a photo with a real scene behind it fills the frame instead.
+  // The four corners of a tiny copy of each photo tell the two apart.
+  function frameShots(sources, mainImg) {
+    var frame = mainImg.parentNode;
+    var looks = {}; // photo file -> { photo: true } or { bg: 'rgb(...)' }
+    function apply() {
+      var look = looks[fileName(mainImg.getAttribute('src') || '')];
+      frame.classList.toggle('is-photo', !!(look && look.photo));
+      frame.style.backgroundColor = (look && look.bg) || '';
+    }
+    sources.forEach(function (src) {
+      var probe = new Image();
+      probe.crossOrigin = 'anonymous';
+      probe.onload = function () {
+        try {
+          var size = 24, canvas = document.createElement('canvas');
+          canvas.width = canvas.height = size;
+          var ctx = canvas.getContext('2d');
+          ctx.drawImage(probe, 0, 0, size, size);
+          var corners = [[1, 1], [size - 2, 1], [1, size - 2], [size - 2, size - 2]].map(function (xy) { return ctx.getImageData(xy[0], xy[1], 1, 1).data; });
+          var spread = 0, sum = [0, 0, 0];
+          corners.forEach(function (c) {
+            for (var k = 0; k < 3; k++) { sum[k] += c[k]; spread = Math.max(spread, Math.abs(c[k] - corners[0][k])); }
+          });
+          looks[fileName(src)] = spread > 14 ? { photo: true }
+            : { bg: 'rgb(' + sum.map(function (v) { return Math.round(v / 4); }).join(', ') + ')' };
+          apply();
+        } catch (e) {} // the photo stays whole on white
+      };
+      probe.src = sized(src, 48);
+    });
+    if (window.MutationObserver) new MutationObserver(apply).observe(mainImg, { attributes: true, attributeFilter: ['src'] });
+  }
+
   function render(p) {
     var title = p.title;
     var url = SITE_URL + '/product.html?p=' + encodeURIComponent(handle);
@@ -227,11 +262,12 @@
     thumbs.innerHTML = shots.map(function (s, i) {
       return '<button type="button" aria-current="' + (s === opening) + '"' + (s.color ? ' data-color="' + esc(s.color) + '"' : '') +
         (shown.indexOf(s) < 0 ? ' hidden' : '') + ' data-src="' + esc(sized(s.src, 1200)) + '" data-alt="' + esc(title + (s.color ? ', ' + s.color : '')) + '">' +
-        '<img src="' + esc(sized(s.src, 200)) + '" alt="" loading="lazy"><span class="visually-hidden">' + esc('Photo ' + (i + 1)) + '</span></button>';
+        '<img src="' + esc(sized(s.src, 200)) + '" alt=""' + (i > 5 ? ' loading="lazy"' : '') + '><span class="visually-hidden">' + esc('Photo ' + (i + 1)) + '</span></button>';
     }).join('');
     var mainImg = document.querySelector('.gallery__main img');
     if (opening) { mainImg.src = sized(opening.src, 1200); mainImg.alt = title + (opening.color ? ', ' + opening.color : ''); }
     else mainImg.removeAttribute('src');
+    frameShots(shots.map(function (s) { return s.src; }), mainImg);
     if (p.compare_at_price && p.compare_at_price > p.price) {
       var badge = document.querySelector('.gallery__main .badge');
       if (badge) { badge = fresh(badge, 'Sale'); badge.setAttribute('data-ar', 'تخفيض'); badge.hidden = false; }

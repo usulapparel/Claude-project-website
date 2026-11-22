@@ -385,6 +385,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 /* Store photos are mostly square mockups on white, so they are shown whole instead of cropped to the frame. */
 .gallery--fit .gallery__main { height: auto; min-height: 0; aspect-ratio: 4 / 5; max-height: calc(100vh - 130px); background: #fff; }
 .gallery--fit .gallery__main img { object-fit: contain; }
+.gallery--fit .gallery__main.is-photo img { object-fit: cover; } /* set by js/product.js for photos with a scene behind them */
 .gallery__thumbs { max-height: min(820px, calc(100vh - 160px)); overflow-y: auto; scrollbar-width: none; }
 .gallery__thumbs::-webkit-scrollbar { display: none; }
 .gallery__thumbs button { flex: none; }
