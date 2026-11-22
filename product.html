@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta property="product:price:amount" content="46.00">
   <meta property="product:price:currency" content="USD">
-  <script type="application/ld+json">
+  <script type="application/ld+json" data-own>
   {
     "@context": "https://schema.org",
     "@type": "Product",
@@ -43,6 +43,9 @@
     }
   }
   </script>
+  <!-- This file is also the template for every other product: product.html?p=<Shopify handle> is filled in from the store
+       by js/product.js. Hide the Ṣumūd content straight away on those addresses so it never flashes before the real product. -->
+  <script>(function (q) { var m = /[?&]p=([^&]+)/.exec(q), h = ''; try { h = m ? decodeURIComponent(m[1]).normalize('NFC') : ''; } catch (e) {} if (h && h !== '\u1E63umud') document.documentElement.classList.add('pdp-loading'); })(location.search);</script>
   <meta name="theme-color" content="#263530">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="css/fonts.css">
@@ -102,17 +105,17 @@
       </div>
       <div class="gallery__main">
         <img src="assets/img/sumud-tee.jpg" alt="The Ṣumūd tee in faded black on a hanger, the UṢŪL mark at the chest" fetchpriority="high">
-        <span class="badge" data-ar="المميّز هذا الشهر">This month's standout</span>
-        <span class="shot-label" aria-hidden="true" data-ar="تفاصيل الأمام">Front detail</span>
+        <span class="badge" data-own data-ar="المميّز هذا الشهر">This month's standout</span>
+        <span class="shot-label" data-own aria-hidden="true" data-ar="تفاصيل الأمام">Front detail</span>
       </div>
     </div>
 
     <div class="buybox">
       <nav class="crumbs eyebrow" aria-label="Breadcrumb"><a href="index.html#apparel" data-ar="الأزياء">Apparel</a> / <span data-ar="صمود">Ṣumūd</span></nav>
-      <p class="pdp__ar" lang="ar">صمود</p>
+      <p class="pdp__ar" data-own lang="ar">صمود</p>
       <h1 class="pdp__title"><span class="dot">S</span>UMŪD</h1>
       <div class="pdp__meta">
-        <span class="pdp__price">$46.00</span>
+        <span class="pdp__price" data-price-label>$46.00</span>
         <a class="pdp__rating" href="https://usulapparel.com/products/%E1%B9%A3umud#judgeme_product_reviews" rel="noopener" data-ar="جديد · كن أول من يقيّمه">New · Be the first to review</a>
       </div>
       <p class="pdp__desc" data-ar="صُمّمت هذه القطعة على هيئة طابع بريدي، لأن الطابع تخليد. هو ما يصنعه مكانٌ حين يقرّر أن لحظةً ما تستحق أن تُحفظ، مختصرةً في شيء صغير يكفي لتحمله معك.">This one is built as a stamp because a stamp is a commemoration. It's what a place makes when it decides a moment is worth keeping, reduced to something small enough to carry.</p>
@@ -128,7 +131,7 @@
         </fieldset>
 
         <fieldset class="opt size">
-          <legend class="opt__head eyebrow"><span><span data-ar="المقاس">Size</span> — <span data-opt-label="size">M</span></span><a class="link" href="#size-guide" data-size-guide aria-haspopup="dialog" data-ar="دليل المقاسات">Size guide</a></legend>
+          <legend class="opt__head eyebrow"><span><span data-ar="المقاس">Size</span> — <span data-opt-label="size">M</span></span><a class="link" href="#size-guide" data-own data-size-guide aria-haspopup="dialog" data-ar="دليل المقاسات">Size guide</a></legend>
           <div class="choices">
             <label><input type="radio" name="size" value="S"><span>S</span></label>
             <label><input type="radio" name="size" value="M" checked><span>M</span></label>
@@ -160,12 +163,12 @@
   </section>
 
   <div class="trust eyebrow">
-    <div data-ar="قطن ثقيل ١٠٠٪">Heavyweight 100% cotton</div>
+    <div data-trust-first data-ar="قطن ثقيل ١٠٠٪">Heavyweight 100% cotton</div>
     <div data-ar="شحن مجاني فوق ٧٥ دولارًا">Free shipping over $75</div>
     <div data-ar="كل طلب يُسهم في العطاء">Every order gives back</div>
   </div>
 
-  <section class="story">
+  <section class="story" data-own>
     <div class="plate"><img src="assets/img/sumud-tee.jpg" alt="Close-up of the UṢŪL mark on the Ṣumūd tee" loading="lazy"></div>
     <div class="story__text">
       <p class="eyebrow" data-ar="خلف الطابع">Behind the stamp</p>
@@ -175,7 +178,7 @@
     </div>
   </section>
 
-  <section class="block panel--cream" id="specs">
+  <section class="block panel--cream" id="specs" data-own>
     <div class="block__head"><h2 data-ar="المواصفات والمقاس">Specs and fit</h2></div>
     <dl class="specs">
       <div><dt data-ar="القماش">Fabric</dt><dd data-ar="قطن ممشّط ١٠٠٪ بوزن ٢٤٠ غرامًا، مصبوغ ومنكمش مسبقًا">240 gsm, 100% carded cotton, garment-dyed and pre-shrunk</dd></div>
@@ -187,7 +190,7 @@
 
   <!-- Real customer reviews, copied from Judge.me on the Shopify store (October 2026). The Ṣumūd tee has none yet,
        so the section shows reviews from the collection and sends new ones to the store's review form. -->
-  <section class="block panel--pine" id="reviews">
+  <section class="block panel--pine" id="reviews" data-own>
     <div class="block__head">
       <h2 data-ar="ماذا يقول الناس">What people say</h2>
       <a class="link" href="https://usulapparel.com/products/%E1%B9%A3umud#judgeme_product_reviews" rel="noopener" data-ar="اكتب مراجعة">Write a review</a>
@@ -205,15 +208,15 @@
       <a class="link" href="index.html#apparel" style="color:var(--olive)" data-ar="كل المنتجات">All products →</a>
     </div>
     <div class="products pairs">
-      <a class="tile" href="https://usulapparel.com/products/unisex-oversized-t-shirt-3"><div class="plate"><img class="img-zoom" src="assets/img/gibran.jpg" alt="Gibran tee with a portrait of Khalil Gibran on the back" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Gibran - The Prophet</h3><span class="tile__price">$39.00</span></div></a>
-      <a class="tile" href="https://usulapparel.com/products/unisex-oversized-t-shirt-2"><div class="plate"><img class="img-zoom" src="assets/img/darwish.jpg" alt="Darwish tee with a portrait of Mahmoud Darwish and his signature" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Darwish - The Poet of Exile</h3><span class="tile__price">$39.00</span></div></a>
-      <a class="tile" href="https://usulapparel.com/products/unisex-sweatshirt-2"><div class="plate"><img class="img-zoom" src="assets/img/zitouna.jpg" alt="Ez-Zitouna University crewneck sweatshirt" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Ez-Zitouna Crewneck</h3><span class="tile__price">$52.00</span></div></a>
-      <a class="tile" href="https://usulapparel.com/products/perfume"><div class="plate"><img class="img-zoom" src="assets/img/levant.jpg" alt="Levant eau de parfum bottle in warm light" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Levant</h3><span class="tile__price">$54.00</span></div></a>
+      <a class="tile" href="product.html?p=unisex-oversized-t-shirt-3"><div class="plate"><img class="img-zoom" src="assets/img/gibran.jpg" alt="Gibran tee with a portrait of Khalil Gibran on the back" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Gibran - The Prophet</h3><span class="tile__price">$39.00</span></div></a>
+      <a class="tile" href="product.html?p=unisex-oversized-t-shirt-2"><div class="plate"><img class="img-zoom" src="assets/img/darwish.jpg" alt="Darwish tee with a portrait of Mahmoud Darwish and his signature" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Darwish - The Poet of Exile</h3><span class="tile__price">$39.00</span></div></a>
+      <a class="tile" href="product.html?p=unisex-sweatshirt-2"><div class="plate"><img class="img-zoom" src="assets/img/zitouna.jpg" alt="Ez-Zitouna University crewneck sweatshirt" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Ez-Zitouna Crewneck</h3><span class="tile__price">$52.00</span></div></a>
+      <a class="tile" href="fragrances.html#levant"><div class="plate"><img class="img-zoom" src="assets/img/levant.jpg" alt="Levant eau de parfum bottle in warm light" loading="lazy"></div><div class="tile__meta"><h3 class="tile__name">Levant</h3><span class="tile__price">$54.00</span></div></a>
     </div>
   </section>
 
   <div class="sticky-add">
-    <div class="sticky-add__info">ṢUMŪD — <span data-opt-label="size">M</span><span>$46.00</span></div>
+    <div class="sticky-add__info">ṢUMŪD — <span data-opt-label="size">M</span><span data-price-label>$46.00</span></div>
     <button class="add" type="button" data-add-proxy data-ar="أضف">Add</button>
   </div>
 </main>
@@ -294,6 +297,7 @@
 </dialog>
 
 <div class="toast caps" role="status" aria-live="polite"></div>
+<script src="js/product.js"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

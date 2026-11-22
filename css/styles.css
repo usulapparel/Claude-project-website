@@ -376,6 +376,37 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 /* Pairs well with */
 .pairs { grid-template-columns: repeat(4, minmax(0, 1fr)); padding: 0; }
 
+/* Products filled in from the store (product.html?p=<handle>, js/product.js) */
+/* While the product loads, the Ṣumūd content written into the page stays out of sight and a thin clay line runs under the header. */
+.pdp-loading main { position: relative; min-height: 80vh; }
+.pdp-loading main > * { visibility: hidden; }
+.pdp-loading main::before { content: ""; position: absolute; top: 0; inset-inline: 0; height: 2px; background: var(--clay); transform-origin: 0 50%; animation: usul-loading 1.4s ease-in-out infinite; }
+@keyframes usul-loading { 0% { transform: scaleX(0); } 60% { transform: scaleX(1); opacity: 1; } 100% { transform: scaleX(1); opacity: 0; } }
+/* Store photos are mostly square mockups on white, so they are shown whole instead of cropped to the frame. */
+.gallery--fit .gallery__main { height: auto; min-height: 0; aspect-ratio: 4 / 5; max-height: calc(100vh - 130px); background: #fff; }
+.gallery--fit .gallery__main img { object-fit: contain; }
+.gallery__thumbs { max-height: min(820px, calc(100vh - 160px)); overflow-y: auto; scrollbar-width: none; }
+.gallery__thumbs::-webkit-scrollbar { display: none; }
+.gallery__thumbs button { flex: none; }
+.pdp__title--long { font-size: clamp(30px, 2.8vw, 42px); line-height: 1.12; }
+.pdp__price s { color: var(--muted-on-pine); margin-inline-end: 8px; font-size: .8em; }
+.add:disabled { background: transparent; color: var(--muted-on-pine); border: 1px solid rgba(242, 233, 206, .35); cursor: default; }
+/* The store's own description text, inside "Details and fit" */
+.rte { margin: 0 0 22px; font-size: 14.5px; line-height: 1.75; color: rgba(242, 233, 206, .75); max-width: 52ch; }
+.rte p { margin: 0 0 14px; font-size: inherit; color: inherit; }
+.rte ul, .rte ol { margin: 0 0 14px; padding-inline-start: 18px; }
+.rte li { margin-bottom: 6px; }
+.rte strong, .rte b { color: var(--cream); font-weight: 600; }
+.rte img { max-width: 100%; height: auto; margin: 6px 0; background: #fff; }
+.rte table { width: 100%; border-collapse: collapse; margin: 0 0 14px; font-size: 13px; }
+.rte td, .rte th { padding: 6px 8px; border: 1px solid var(--rule-on-pine); text-align: start; }
+.rte > :last-child { margin-bottom: 0; }
+/* Shown in place of the product when the store can't be reached */
+.pdp-missing { text-align: center; padding-block: clamp(72px, 10vw, 140px); }
+.pdp-missing h1 { font-weight: 400; font-size: clamp(30px, 3.4vw, 46px); margin: 0 0 14px; }
+.pdp-missing p { max-width: 52ch; margin: 0 auto 28px; color: var(--muted); }
+.pdp-missing__actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
 /* Mobile add bar */
 .sticky-add { display: none; }
 
@@ -441,6 +472,7 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .img-zoom { transition: none; }
   .announce__track { animation: none; }
   .sticky-add { transition: none; }
+  .pdp-loading main::before { animation: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -488,7 +520,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   /* Product page, as in the mobile frame of the design */
   .gallery { position: static; display: flex; flex-direction: column-reverse; padding: 0; gap: 0; }
   .gallery__main { height: min(470px, 40vh); height: min(470px, 40svh); min-height: 0; } /* short enough that the title and price show on the first screen */
-  .gallery__thumbs { flex-direction: row; overflow-x: auto; padding: 10px var(--gutter) 14px; gap: 10px; }
+  .gallery__thumbs { flex-direction: row; max-height: none; overflow-x: auto; overflow-y: visible; padding: 10px var(--gutter) 14px; gap: 10px; }
+  .gallery--fit .gallery__main { aspect-ratio: auto; height: min(470px, 40vh); height: min(470px, 40svh); }
+  .pdp__title.pdp__title--long { font-size: 28px; }
   .gallery__thumbs button { flex: 0 0 74px; height: 88px; }
   .badge { font-size: 9px; top: 14px; inset-inline-start: 14px; padding: 6px 10px; }
   .shot-label { display: none; }
