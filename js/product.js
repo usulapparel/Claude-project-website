@@ -41,6 +41,86 @@
   };
   var SIZE_ORDER = ['XXS', 'XS', 'S', 'S/M', 'M', 'M/L', 'L', 'L/XL', 'XL', '2XL', 'XXL', '3XL', '4XL', '5XL'];
 
+  // Size charts, moved over from the store theme (snippets/nov-size-guide.liquid on usulapparel.com). As there, a product's
+  // chart is chosen by its "chart-…" tag in Shopify, which names the blank it is printed on. Measurements are of the
+  // garment laid flat, each as [inches, centimeters]. To add a chart: add it here and tag the products in Shopify.
+  var CHART_TAGS = {
+    'chart-18500': 'g18500', 'chart-18000': 'g18000', 'chart-m2580': 'm2580', 'chart-2480': 'c2480',
+    'chart-4810': 'bc4810', 'chart-oversized': 'bc4810', 'chart-tee': 'tee', 'chart-64000': 'tee',
+    'chart-cap': 'cap', 'chart-kids': 'kids',
+    'chart-5082': 'page' // the oversized faded tee: the same garment as the Ṣumūd tee, whose chart is written into product.html
+  };
+  var LW = ['Length', 'Width'];
+  var SIZE_CHARTS = {
+    // Gildan 18500 hoodie
+    g18500: { name: 'Hoodie', ar: 'هودي', cols: LW, rows: [
+      ['S', ['27', '69'], ['20', '51']], ['M', ['28', '71'], ['22', '56']], ['L', ['29', '74'], ['24', '61']], ['XL', ['30', '76'], ['26', '66']],
+      ['2XL', ['31', '79'], ['28', '71']], ['3XL', ['32', '81'], ['30', '76']], ['4XL', ['33', '84'], ['32', '81']], ['5XL', ['34', '86'], ['34', '86']]] },
+    // Gildan 18000 crewneck
+    g18000: { name: 'Crewneck', ar: 'كنزة برقبة دائرية', cols: LW, rows: [
+      ['S', ['27', '69'], ['20', '51']], ['M', ['28', '71'], ['22', '56']], ['L', ['29', '74'], ['24', '61']], ['XL', ['30', '76'], ['26', '66']],
+      ['2XL', ['31', '79'], ['28', '71']], ['3XL', ['32', '81'], ['30', '76']], ['4XL', ['33', '84'], ['32', '81']], ['5XL', ['34', '86'], ['34', '86']]] },
+    // Cotton Heritage M2580 hoodie
+    m2580: { name: 'Hoodie', ar: 'هودي', cols: ['Length', 'Width', 'Sleeve'], rows: [
+      ['S', ['27', '69'], ['20', '51'], ['23½', '60']], ['M', ['28', '71'], ['21', '53'], ['24', '61']], ['L', ['29', '74'], ['23', '58'], ['24', '61']],
+      ['XL', ['30', '76'], ['25', '64'], ['24', '61']], ['2XL', ['31', '79'], ['26½', '67'], ['24', '61']], ['3XL', ['32', '81'], ['28', '71'], ['24', '61']]] },
+    // Cotton Heritage 2480 crewneck
+    c2480: { name: 'Crewneck', ar: 'كنزة برقبة دائرية', cols: LW, rows: [
+      ['S', ['27', '69'], ['20', '51']], ['M', ['28', '71'], ['21', '53']], ['L', ['29', '74'], ['23', '58']],
+      ['XL', ['30', '76'], ['25', '64']], ['2XL', ['31', '79'], ['26½', '67']], ['3XL', ['32', '81'], ['28', '71']]] },
+    // Unisex tee: Bella+Canvas 3001 and Gildan 64000 Softstyle
+    tee: { name: 'T-shirt', ar: 'تيشيرت', cols: LW, rows: [
+      ['S', ['28', '71'], ['18', '46']], ['M', ['29', '74'], ['20', '51']], ['L', ['30', '76'], ['22', '56']],
+      ['XL', ['31', '79'], ['24', '61']], ['2XL', ['32', '81'], ['26', '66']], ['3XL', ['33', '84'], ['28', '71']]] },
+    // Oversized heavyweight tee: Bella+Canvas 4810GD
+    bc4810: { name: 'Oversized heavyweight tee', ar: 'تيشيرت واسع ثقيل', cols: LW, rows: [
+      ['XS', ['26¾', '68'], ['18¾', '48']], ['S', ['27¾', '70'], ['19¾', '50']], ['M', ['28¾', '73'], ['20¾', '53']], ['L', ['29¾', '76'], ['22¾', '58']],
+      ['XL', ['30¾', '78'], ['24¾', '63']], ['2XL', ['31¾', '81'], ['26¾', '68']], ['3XL', ['32¾', '83'], ['28¾', '73']]] },
+    cap: { name: 'Caps and hats', ar: 'القبعات', oneSize: true },
+    kids: { name: 'USUL Junior (youth)', ar: 'أصول جونيور (للصغار)', cols: ['Age', 'Length', 'Width'], rows: [
+      ['XS', '4–5', ['19', '48'], ['16', '41']], ['S', '6–7', ['20½', '52'], ['17', '43']], ['M', '8–10', ['22', '56'], ['18', '46']],
+      ['L', '12–14', ['24', '61'], ['19', '48']], ['XL', '16–18', ['25', '64'], ['20', '51']]] },
+    // The store's general chart, for tops with no chart tag. These are body measurements, not the garment's.
+    general: { body: true, cols: ['To fit chest', 'Length'], rows: [
+      ['S', ['34–37', '86–94'], ['28', '71']], ['M', ['38–41', '97–104'], ['29', '74']], ['L', ['42–45', '107–114'], ['30', '76']],
+      ['XL', ['46–49', '117–124'], ['31', '79']], ['2XL', ['50–53', '127–135'], ['32', '81']]] }
+  };
+  var COLS_AR = { 'Size': 'المقاس', 'Length': 'الطول', 'Width': 'العرض', 'Sleeve': 'الكم', 'Age': 'العمر', 'To fit chest': 'محيط الصدر' };
+
+  function chartFor(p, sizes) {
+    var tags = p.tags || [];
+    for (var i = 0; i < tags.length; i++) { if (CHART_TAGS[tags[i]]) return CHART_TAGS[tags[i]]; }
+    // No tag: the general chart, but only where it makes sense — tops sold in S, M, L.
+    var top = !p.type || /crewneck|t-?shirt|tee|hood/i.test(p.type);
+    return top && sizes.indexOf('M') > -1 && sizes.indexOf('L') > -1 ? 'general' : '';
+  }
+  // Fill the size guide dialog that is already in the page (written for the Ṣumūd tee) with this product's chart.
+  function writeChart(key) {
+    var dialog = document.getElementById('size-guide'), chart = SIZE_CHARTS[key];
+    if (!dialog || !chart) return;
+    var cell = function (c) { return typeof c === 'string' ? esc(c) : '<span data-unit="in">' + esc(c[0]) + '</span><span data-unit="cm" hidden>' + esc(c[1]) + '</span>'; };
+    var intro = dialog.querySelector('.sizeguide__fit'), note = dialog.querySelector('.sizeguide__note');
+    var table = dialog.querySelector('.sizeguide__table'), units = dialog.querySelector('.sizeguide__units');
+    var name = chart.name ? '<strong>' + esc(chart.name) + '.</strong> ' : '', nameAr = chart.ar ? '<strong>' + esc(chart.ar) + '.</strong> ' : '';
+    if (chart.oneSize) {
+      intro = fresh(intro, name + 'One size fits most, with an adjustable strap. Fits a head circumference of about 21¼–23½ in (54–60 cm).');
+      intro.setAttribute('data-ar', nameAr + 'مقاس واحد يناسب الأغلب، بحزام قابل للتعديل. يناسب محيط رأس من ٥٤ إلى ٦٠ سم تقريبًا.');
+      table.hidden = units.hidden = note.hidden = true;
+      return;
+    }
+    intro = fresh(intro, name + (chart.body ? 'Find your chest measurement to pick a size. Length is the garment’s.' : 'Garment measurements, laid flat. They may vary by up to 2 in (5 cm).'));
+    intro.setAttribute('data-ar', nameAr + (chart.body ? 'اختر مقاسك بحسب محيط صدرك. الطول هو طول القطعة.' : 'قياسات القطعة وهي ممدّدة. قد تختلف بمقدار ٥ سم تقريبًا.'));
+    table.innerHTML = '<thead><tr>' + ['Size'].concat(chart.cols).map(function (c) { return '<th scope="col" data-ar="' + COLS_AR[c] + '">' + c + '</th>'; }).join('') + '</tr></thead>' +
+      '<tbody>' + chart.rows.map(function (r) { return '<tr><th scope="row">' + esc(r[0]) + '</th>' + r.slice(1).map(function (c) { return '<td>' + cell(c) + '</td>'; }).join('') + '</tr>'; }).join('') + '</tbody>';
+    var sleeve = chart.cols.indexOf('Sleeve') > -1;
+    note = fresh(note, chart.body ? 'Compare with a similar item you already own.'
+      : 'Length is from the highest point of the shoulder straight down to the hem. Width is across the chest, seam to seam, laid flat.' +
+        (sleeve ? ' Sleeve is from the center back of the neck to the cuff.' : '') + ' Tip: compare with a similar item you already own.');
+    note.setAttribute('data-ar', chart.body ? 'قارنها بقطعة مشابهة تملكها.'
+      : 'الطول من أعلى نقطة في الكتف نزولًا إلى الحافة. العرض عبر الصدر من الدرزة إلى الدرزة والقطعة ممدّدة.' +
+        (sleeve ? ' الكم من منتصف الرقبة من الخلف إلى طرف الكم.' : '') + ' نصيحة: قارنها بقطعة مشابهة تملكها.');
+  }
+
   function esc(text) {
     return String(text).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; });
   }
@@ -310,6 +390,16 @@
         }).join('') + '</div>';
       form.insertBefore(fieldset, buyRow);
     });
+    // -- Size guide: the product's chart, opened from a link beside the size picker --
+    var sizeAt = names.indexOf('size');
+    var chartKey = chartFor(p, sizeAt > -1 ? options[sizeAt].values : []);
+    if (chartKey) {
+      if (chartKey !== 'page') writeChart(chartKey);
+      var guide = '<a class="link" href="#size-guide" data-size-guide aria-haspopup="dialog" data-ar="دليل المقاسات">Size guide</a>';
+      var legend = form.querySelector('input[name="size"]') ? form.querySelector('input[name="size"]').closest('fieldset').querySelector('legend') : null;
+      if (legend) legend.insertAdjacentHTML('beforeend', guide);
+      else buyRow.insertAdjacentHTML('beforebegin', '<p class="opt opt--guide">' + guide + '</p>');
+    }
     form.setAttribute('data-name', title);
     form.setAttribute('data-price', (start.price / 100).toFixed(2));
     form.setAttribute('data-img', opening ? sized(opening.src, 300) : '');
