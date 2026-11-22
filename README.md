@@ -70,7 +70,7 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 
 ## Version stamps
 
-Every page links its stylesheets and scripts with a stamp on the end, e.g. `css/styles.css?v=20261122`. Browsers keep these files for a while, and without the stamp a returning visitor can get a new page with an old script (wrong prices on Add to bag, in the worst case). **Whenever a file in `css/` or `js/` changes, change the stamp to today's date in every `.html` file** (find and replace `?v=20261122`).
+Every page links its stylesheets and scripts with a stamp on the end, e.g. `css/styles.css?v=20261123`. Browsers keep these files for a while, and without the stamp a returning visitor can get a new page with an old script (wrong prices on Add to bag, in the worst case). **Whenever a file in `css/` or `js/` changes, change the stamp to today's date in every `.html` file** (find and replace the current stamp, e.g. `?v=20261123`).
 
 ## Product pages
 
@@ -80,6 +80,7 @@ Every product except the fragrances opens in `product.html`. Tiles on the home p
 - **The Ṣumūd tee** is written into `product.html` by hand (story, specs, Arabic copy, its own photos). Elements marked `data-own` belong to it and are hidden for every other product. Its prices and stock are still refreshed from the store.
 - **Photos.** A mockup on a flat background is shown whole, with the frame painted to match; a photo with a scene behind it fills the frame. `js/product.js` tells them apart from the photo's corners.
 - **What a store product shows.** The opening paragraph of the Shopify description sits under the title and the rest goes in "Details and fit" (plain formatting only: paragraphs, lists, bold, tables, and images hosted on Shopify). Colour names the site knows get a swatch (`COLORS` in `js/product.js`); any other colour shows as a text button, so add new colour names there. A variant that is out of stock or doesn't exist shows "Sold out".
+- **Size guides.** The charts from the store theme live in `SIZE_CHARTS` in `js/product.js`. A product gets the chart named by its `chart-…` tag in Shopify (`chart-18000`, `chart-18500`, `chart-2480`, `chart-m2580`, `chart-4810`/`chart-oversized`, `chart-tee`/`chart-64000`, `chart-cap`, `chart-kids`; `chart-5082` uses the Ṣumūd tee's chart). Tops with no tag get the store's general chart; bags, hats, baby sizes, sweatpants and fragrances with no tag get no size guide link.
 - **Arabic.** Buttons and labels switch to Arabic; product names and descriptions stay as written in Shopify.
 - **If the store can't be reached**, the Ṣumūd page works from what is written in it, and other products show a short message with a link to the product on the store.
 - **Fragrances** keep their own page: `product.html?p=perfume` (or another fragrance handle) forwards to `fragrances.html`.

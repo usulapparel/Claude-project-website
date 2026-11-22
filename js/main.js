@@ -310,15 +310,15 @@
   // ---- Size guide dialog: opens over the page, highlights the size picked, switches inches/cm ----
   var sizeGuide = document.getElementById('size-guide');
   if (sizeGuide && typeof sizeGuide.showModal === 'function') {
-    document.querySelectorAll('[data-size-guide]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        e.preventDefault();
-        var picked = document.querySelector('input[name="size"]:checked');
-        sizeGuide.querySelectorAll('tbody tr').forEach(function (tr) {
-          tr.classList.toggle('is-picked', !!picked && tr.querySelector('th').textContent === picked.value);
-        });
-        sizeGuide.showModal();
+    // Listened for on the page, not on each link: js/product.js adds its link after this runs.
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest || !e.target.closest('[data-size-guide]')) return;
+      e.preventDefault();
+      var picked = document.querySelector('input[name="size"]:checked');
+      sizeGuide.querySelectorAll('tbody tr').forEach(function (tr) {
+        tr.classList.toggle('is-picked', !!picked && tr.querySelector('th').textContent === picked.value);
       });
+      sizeGuide.showModal();
     });
     sizeGuide.querySelectorAll('[data-units]').forEach(function (btn) {
       btn.addEventListener('click', function () {
