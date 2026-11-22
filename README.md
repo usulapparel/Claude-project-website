@@ -68,12 +68,17 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 - **All products page.** `js/shop-data.js` is a copy of the Shopify catalog from October 2026, so new products, price changes and removals in Shopify don't show on `shop.html` until that file is updated. Three products have no or a mismatched type in Shopify and are filed here by hand: Yasmin (Fragrance), Another Day in the South (T-shirts) and The South Welcomes You (Hats).
 - **Newsletter.** The signup form subscribes emails to the Klaviyo "Newsletter" list (double opt-in, so subscribers confirm by email). The site and list IDs are at the top of the newsletter block in `js/main.js`.
 
+## Version stamps
+
+Every page links its stylesheets and scripts with a stamp on the end, e.g. `css/styles.css?v=20261122`. Browsers keep these files for a while, and without the stamp a returning visitor can get a new page with an old script (wrong prices on Add to bag, in the worst case). **Whenever a file in `css/` or `js/` changes, change the stamp to today's date in every `.html` file** (find and replace `?v=20261122`).
+
 ## Product pages
 
 Every product except the fragrances opens in `product.html`. Tiles on the home page, the All products page and "Pairs well with" link to `product.html?p=<handle>`, where the handle is the last part of the product's address on usulapparel.com.
 
 - **Where the content comes from.** When the page opens, `js/product.js` reads the product from the store's public feed (`usulapparel.com/products/<handle>.js`): name, photos, colours, sizes, prices, what is in stock, and the description. Nothing is copied into this site, so a price or stock change in Shopify shows up here on the next page load. A new product needs no page of its own; it only needs adding to `js/shop-data.js` to appear on the All products page.
 - **The Ṣumūd tee** is written into `product.html` by hand (story, specs, Arabic copy, its own photos). Elements marked `data-own` belong to it and are hidden for every other product. Its prices and stock are still refreshed from the store.
+- **Photos.** A mockup on a flat background is shown whole, with the frame painted to match; a photo with a scene behind it fills the frame. `js/product.js` tells them apart from the photo's corners.
 - **What a store product shows.** The opening paragraph of the Shopify description sits under the title and the rest goes in "Details and fit" (plain formatting only: paragraphs, lists, bold, tables, and images hosted on Shopify). Colour names the site knows get a swatch (`COLORS` in `js/product.js`); any other colour shows as a text button, so add new colour names there. A variant that is out of stock or doesn't exist shows "Sold out".
 - **Arabic.** Buttons and labels switch to Arabic; product names and descriptions stay as written in Shopify.
 - **If the store can't be reached**, the Ṣumūd page works from what is written in it, and other products show a short message with a link to the product on the store.
