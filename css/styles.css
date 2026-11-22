@@ -57,6 +57,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 [hidden] { display: none !important; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ar { font-family: var(--kufi); direction: rtl; unicode-bidi: isolate; letter-spacing: 0 !important; text-transform: none !important; }
+/* Reem Kufi is a display face and gets hard to read small, so Arabic sub-lines of 18px and under are set in Cairo. */
+.tile__name .ar, .section-head h2 .ar, .step h3 .ar, .chapter .ar, .mobile-nav a .ar, .frag-jump .ar, .notes dd .ar, .member__name .ar { font-family: var(--arabic); font-weight: 500; }
 h1, h2, h3 { text-wrap: balance; }
 
 /* Dark surfaces switch clay text to its lighter shade; cream surfaces nested inside them switch back. */
@@ -75,6 +77,10 @@ h1, h2, h3 { text-wrap: balance; }
   padding-bottom: 3px; border-bottom: 1px solid currentColor; transition: color .2s, opacity .2s;
 }
 .link:hover { opacity: .65; }
+
+/* Small text controls get a larger invisible touch area (about 44px tall) without moving anything. */
+.link, .lang-toggle, .bag-btn, .footer .brand { position: relative; }
+.link::after, .lang-toggle::after, .bag-btn::after { content: ""; position: absolute; inset: -12px -8px; }
 
 /* The UṢŪL wordmark */
 .brand { display: inline-flex; align-items: center; line-height: 1; }
@@ -100,7 +106,7 @@ h1, h2, h3 { text-wrap: balance; }
 .header .brand { justify-self: center; }
 .nav, .utility { display: flex; align-items: center; gap: 28px; font-size: 12.5px; }
 .utility { justify-content: flex-end; gap: 22px; }
-.nav a, .utility a, .utility button { transition: color .2s; }
+.nav a, .utility a, .utility button { transition: color .2s; white-space: nowrap; }
 .nav a:hover, .utility a:hover, .utility button:hover { color: var(--clay-text); }
 .bag-btn { border: 1px solid rgba(166, 124, 73, .6); color: var(--clay-text); padding: 9px 16px; white-space: nowrap; }
 .utility .bag-btn:hover { background: var(--clay); color: var(--pine); }
@@ -449,7 +455,10 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
 /* ---------- Responsive ---------- */
 @media (max-width: 1080px) {
-  .products, .pairs { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  /* Four menu links no longer fit beside the centred wordmark, so the menu button takes over here. */
+  .nav { display: none; }
+  .menu-toggle { display: block; box-sizing: content-box; border: solid transparent; border-width: 15px 10px; margin: -15px -10px; } /* the border is touch area only */
+  .shop-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .chapters { grid-template-columns: 1fr 1fr; }
   .chapter:nth-child(3) { padding-inline-start: 0; border-inline-start: 0; }
   .footer__grid { grid-template-columns: 1fr 1fr; }
@@ -457,8 +466,8 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .reviews { grid-template-columns: 1fr; }
 }
 @media (max-width: 820px) {
-  .nav, .utility .hide-sm { display: none; }
-  .menu-toggle { display: block; }
+  .utility .hide-sm { display: none; }
+  .products, .pairs, .shop-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .header__row { min-height: 60px; gap: 12px; }
   .wordmark { font-size: 22px; }
   .bag-btn { border: 0; padding: 0; }
@@ -478,12 +487,13 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 
   /* Product page, as in the mobile frame of the design */
   .gallery { position: static; display: flex; flex-direction: column-reverse; padding: 0; gap: 0; }
-  .gallery__main { height: 470px; min-height: 0; }
+  .gallery__main { height: min(470px, 40vh); height: min(470px, 40svh); min-height: 0; } /* short enough that the title and price show on the first screen */
   .gallery__thumbs { flex-direction: row; overflow-x: auto; padding: 10px var(--gutter) 14px; gap: 10px; }
   .gallery__thumbs button { flex: 0 0 74px; height: 88px; }
   .badge { font-size: 9px; top: 14px; inset-inline-start: 14px; padding: 6px 10px; }
   .shot-label { display: none; }
-  .buybox { min-height: 0; padding: 26px var(--gutter) 30px; }
+  .buybox { min-height: 0; padding: 20px var(--gutter) 30px; }
+  .crumbs { margin-bottom: 14px; }
   .pdp__ar { font-size: 18px; margin-bottom: 6px; }
   .pdp__title { font-size: 40px; margin-bottom: 10px; }
   .pdp__desc { font-size: 15px; margin-bottom: 26px; }
@@ -493,6 +503,9 @@ fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
   .pairs { display: flex; overflow-x: auto; scrollbar-width: none; }
   .pairs::-webkit-scrollbar { display: none; }
   .pairs .tile { flex: none; width: 180px; }
+  .footer ul { gap: 0; }
+  .footer li a { display: inline-block; padding: 11px 0; }
+  .footer h4 { margin-bottom: 4px; }
   .sticky-add { position: sticky; bottom: 0; z-index: 20; display: flex; align-items: center; gap: 12px; padding: 12px var(--gutter); background: rgba(38, 53, 48, .96); border-top: 1px solid rgba(166, 124, 73, .4); color: var(--cream); }
   .sticky-add { transition: transform .25s ease, visibility .25s; }
   .sticky-add.is-off { transform: translateY(100%); visibility: hidden; } /* set by main.js until the main button scrolls away */

@@ -7,7 +7,7 @@ It's a plain static site with no build step. Open `index.html` in a browser.
 The live site is served by GitHub Pages from this branch at **shop.usulapparel.com** (`CNAME` names the domain; `.nojekyll` serves the files as they are). The Shopify store stays at usulapparel.com, and the site's Bag and product links point there.
 
 ```
-index.html      Home: tagline hero, Who We Are, Follow·Learn·Share, apparel/fragrance, products, quote, stories, newsletter
+index.html      Home: tagline hero, apparel/fragrance, products, Who We Are, quote, stories, newsletter (Follow·Learn·Share lives on about.html only)
 product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with)
 shop.html       All products: every item in the Shopify store, with category, country and sort controls (css/shop.css, js/shop.js)
 js/shop-data.js The catalog shop.html shows, copied from Shopify (names, prices, photos, categories, countries)
