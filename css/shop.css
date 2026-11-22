@@ -1,7 +1,7 @@
 /* All products page (shop.html). Builds on the tiles and type in styles.css. */
 
 .shop-head h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(36px, 4vw, 56px); line-height: 1.05; }
-.shop-head h1 .ar { display: block; font-size: 20px; color: var(--clay); margin-top: 10px; }
+.shop-head h1 .ar { display: block; font-size: 20px; color: var(--clay-text); margin-top: 10px; }
 html[dir="ltr"] .shop-head h1 .ar { text-align: left; }
 .shop-head p { margin: 0; }
 

@@ -5,21 +5,21 @@
 
 .fx {
   --hdr: 76px;
-  --fx-bg: var(--cream); --fx-fg: var(--pine); --fx-accent: var(--clay);
+  --fx-bg: var(--cream); --fx-fg: var(--pine); --fx-accent: var(--clay); --fx-accent-text: var(--clay-text);
   --fx-muted: var(--muted); --fx-rule: var(--rule); --fx-plate: #ece6d4;
   background: var(--fx-bg); color: var(--fx-fg);
   transition: background-color .9s ease, color .9s ease;
 }
-.fx[data-tone="pine"] { --fx-bg: var(--pine); --fx-fg: var(--cream); --fx-accent: var(--clay); --fx-muted: var(--muted-on-pine); --fx-rule: rgba(242, 233, 206, .18); --fx-plate: #2f413b; }
+.fx[data-tone="pine"] { --clay-text: var(--clay-on-pine); --fx-bg: var(--pine); --fx-fg: var(--cream); --fx-accent: var(--clay); --fx-muted: var(--muted-on-pine); --fx-rule: rgba(242, 233, 206, .18); --fx-plate: #2f413b; }
 .fx[data-tone="sand"] { --fx-bg: var(--sand); --fx-plate: #d6ccae; }
-.fx[data-tone="clay"] { --fx-bg: var(--clay); --fx-fg: var(--pine); --fx-accent: var(--cream); --fx-muted: rgba(38, 53, 48, .74); --fx-rule: rgba(38, 53, 48, .22); --fx-plate: #b38a59; }
+.fx[data-tone="clay"] { --fx-bg: var(--clay); --fx-fg: var(--pine); --fx-accent: var(--cream); --fx-accent-text: var(--cream); --fx-muted: rgba(38, 53, 48, .74); --fx-rule: rgba(38, 53, 48, .22); --fx-plate: #b38a59; }
 
 /* ---------- Opening ---------- */
 .fx-intro { min-height: calc(88vh - var(--hdr)); display: flex; flex-direction: column; justify-content: center; gap: 22px; padding: var(--section) var(--gutter); }
 .fx-intro h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(60px, 10vw, 150px); line-height: .95; }
-.fx-intro h1 .ar { display: block; font-size: clamp(26px, 3vw, 40px); color: var(--fx-accent); margin-top: 18px; }
+.fx-intro h1 .ar { display: block; font-size: clamp(26px, 3vw, 40px); color: var(--fx-accent-text); margin-top: 18px; }
 html[dir="ltr"] .fx-intro h1 .ar { text-align: left; }
-.fx-meta { margin: 0; color: var(--fx-accent); }
+.fx-meta { margin: 0; color: var(--fx-accent-text); }
 .fx-lede { margin: 0; max-width: 34ch; font-size: 18px; color: var(--fx-muted); }
 .fx-cue { width: 1px; height: 64px; background: var(--fx-rule); position: relative; overflow: hidden; margin-top: 18px; }
 .fx-cue::after { content: ""; position: absolute; inset: 0; background: var(--fx-accent); animation: fx-cue 2.2s ease-in-out infinite; }
@@ -41,11 +41,11 @@ html[dir="ltr"] .fx-intro h1 .ar { text-align: left; }
 .fx-steps { padding: 12vh 0 18vh; }
 .fx-step { min-height: 64vh; display: flex; flex-direction: column; justify-content: center; gap: 16px; max-width: 540px; }
 .fx-title h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(52px, 6.4vw, 104px); line-height: 1; }
-.fx-title h2 .ar { display: block; font-size: clamp(24px, 2.4vw, 34px); color: var(--fx-accent); margin-top: 14px; }
+.fx-title h2 .ar { display: block; font-size: clamp(24px, 2.4vw, 34px); color: var(--fx-accent-text); margin-top: 14px; }
 html[dir="ltr"] .fx-title h2 .ar { text-align: left; }
-.fx-price { margin: 6px 0 0; font-size: 20px; color: var(--fx-accent); }
+.fx-price { margin: 6px 0 0; font-size: 20px; color: var(--fx-accent-text); }
 .fx-copy { margin: 0; font-size: clamp(19px, 1.6vw, 24px); line-height: 1.5; }
-.fx-tier { margin: 0; color: var(--fx-accent); }
+.fx-tier { margin: 0; color: var(--fx-accent-text); }
 .fx-note__name { margin: 0; font-family: var(--display); font-size: clamp(44px, 5.4vw, 88px); line-height: 1.02; }
 .fx-note__ar { margin: 0; font-size: clamp(22px, 2.2vw, 32px); color: var(--fx-muted); }
 html[dir="ltr"] .fx-note__ar { text-align: left; }

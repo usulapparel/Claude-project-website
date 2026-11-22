@@ -5,7 +5,7 @@
 
 .team__head { display: flex; justify-content: space-between; align-items: end; gap: 16px 40px; flex-wrap: wrap; margin-bottom: 44px; }
 .team__head h2 { margin: 0; }
-.team__head h2 .ar { display: block; font-size: 20px; color: var(--clay); margin-top: 10px; }
+.team__head h2 .ar { display: block; font-size: 20px; color: var(--clay-text); margin-top: 10px; }
 html[dir="ltr"] .team__head h2 .ar { text-align: left; }
 .team__head p { margin: 0; max-width: 42ch; line-height: 1.7; }
 
@@ -16,7 +16,7 @@ html[dir="ltr"] .team__head h2 .ar { text-align: left; }
 .member__photo--empty { background: var(--pine); }
 .member__photo--empty > img { inset: 50% auto auto 50%; width: 22%; height: auto; transform: translate(-50%, -50%); opacity: .35; }
 .member__name { font-family: var(--display); font-weight: 400; font-size: 28px; line-height: 1.15; margin: 0; }
-.member__name .ar { display: block; font-size: 18px; color: var(--clay); margin-top: 6px; }
+.member__name .ar { display: block; font-size: 18px; color: var(--clay-text); margin-top: 6px; }
 html[dir="ltr"] .member__name .ar { text-align: left; }
 .member__role { color: var(--olive); margin: 12px 0 10px; }
 .member__bio { margin: 0; line-height: 1.7; max-width: 44ch; }
