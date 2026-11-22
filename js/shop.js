@@ -77,7 +77,7 @@
   function tile(p) {
     // The Ṣumūd tee and the fragrances have their own pages on this site.
     var href = p.h === 'ṣumud' ? 'product.html'
-      : FRAGRANCES[p.h] ? 'fragrances-scroll.html#' + FRAGRANCES[p.h]
+      : FRAGRANCES[p.h] ? 'fragrances.html#' + FRAGRANCES[p.h]
       : SHOP_URL + '/products/' + encodeURIComponent(p.h);
     var price = p.was
       ? '<s class="muted">' + money(p.was) + '</s> ' + money(p.p)
