@@ -27,14 +27,17 @@
 
   // ---- English / Arabic toggle (flips the whole layout to RTL) ----
   var langBtn = document.querySelector('.lang-toggle');
-  function setLang(lang) {
-    var ar = lang === 'ar';
-    root.lang = ar ? 'ar' : 'en';
-    root.dir = ar ? 'rtl' : 'ltr';
+  function translate(ar) {
     document.querySelectorAll('[data-ar]').forEach(function (el) {
       if (!el.hasAttribute('data-en')) el.setAttribute('data-en', el.innerHTML);
       el.innerHTML = ar ? el.getAttribute('data-ar') : el.getAttribute('data-en');
     });
+  }
+  function setLang(lang) {
+    var ar = lang === 'ar';
+    root.lang = ar ? 'ar' : 'en';
+    root.dir = ar ? 'rtl' : 'ltr';
+    translate(ar);
     // The search description follows the language too (the <title> is swapped by the loop above).
     document.querySelectorAll('meta[data-ar-content]').forEach(function (m) {
       if (!m.hasAttribute('data-en-content')) m.setAttribute('data-en-content', m.content);
@@ -121,8 +124,10 @@
   saveBag();
 
   // ---- Product gallery ----
-  var gallery = document.querySelector('[data-gallery]');
-  if (gallery) {
+  // Set up by initProduct() below, once the product is on the page (js/product.js may still be loading it from the store).
+  function initGallery() {
+    var gallery = document.querySelector('[data-gallery]');
+    if (!gallery) return;
     var thumbs = gallery.querySelectorAll('.gallery__thumbs button');
     gallery.classList.toggle('gallery--single', thumbs.length < 2);
     var mainImg = gallery.querySelector('.gallery__main img');
@@ -139,21 +144,52 @@
     // Picking a color shows that color's photos and opens the first of them.
     document.querySelectorAll('input[name="color"]').forEach(function (input) {
       input.addEventListener('change', function () {
-        var first = null;
+        var first = null, own = null;
         thumbs.forEach(function (b) {
           var match = !b.getAttribute('data-color') || b.getAttribute('data-color') === input.value;
           b.hidden = !match;
           if (match && !first) first = b;
+          if (!own && b.getAttribute('data-color') === input.value) own = b; // a photo of this color beats a shared one
         });
-        if (first) showShot(first);
+        if (own || first) showShot(own || first);
       });
     });
   }
 
   // ---- Product page: options, quantity, add to bag, upsell dialog ----
-  var form = document.querySelector('.add-form');
+  var form = null; // set by initProduct()
   var upsell = document.querySelector('.upsell:not(.sizeguide)');
   var qty = 1;
+
+  // The options a product has, as the names of their radio groups. The Ṣumūd page has color and size;
+  // pages filled in by js/product.js list theirs in data-option-names (it may be empty: one variant, nothing to pick).
+  function optionNames() {
+    var names = form.getAttribute('data-option-names');
+    return names === null ? ['color', 'size'] : names.split('|').filter(Boolean);
+  }
+  function optionSummary() {
+    return optionNames().map(optionLabel).filter(Boolean).join(' / ');
+  }
+  // The variant that matches the picked options: { id, p: price in dollars, a: in stock }.
+  // data-variant-list (written by js/product.js from the store) is a list of { id, o: [option values], p, a };
+  // without it, the page's own data-variants map (color -> size -> id) and data-price are used.
+  function selectedVariant() {
+    var list = null;
+    try { list = JSON.parse(form.getAttribute('data-variant-list')); } catch (e) {}
+    if (list) {
+      var picked = optionNames().map(function (n) { var input = checked(n); return input ? input.value : null; });
+      for (var i = 0; i < list.length; i++) {
+        var match = true;
+        for (var j = 0; j < picked.length; j++) { if (list[i].o[j] !== picked[j]) { match = false; break; } }
+        if (match) return list[i];
+      }
+      return null;
+    }
+    try {
+      var id = JSON.parse(form.getAttribute('data-variants'))[checked('color').value][checked('size').value];
+      return id ? { id: id, p: parseFloat(form.getAttribute('data-price')) || 0, a: true } : null;
+    } catch (e) { return null; }
+  }
 
   function checked(name) { return form.querySelector('input[name="' + name + '"]:checked'); }
   function optionLabel(name) {
@@ -163,14 +199,23 @@
   }
   function renderProduct() {
     if (!form) return;
-    var price = parseFloat(form.getAttribute('data-price')) || 0;
+    var variant = selectedVariant();
+    var soldOut = !variant || variant.a === false;
+    var price = variant ? variant.p : parseFloat(form.getAttribute('data-price')) || 0;
     var line = price * qty;
     var ar = isAr();
+    // Prices can differ by variant (larger sizes, for one), so the shown price follows the pick.
+    document.querySelectorAll('[data-price-label]').forEach(function (el) { el.textContent = money(price); });
     form.querySelector('output[name="qty"]').textContent = qty;
-    document.querySelectorAll('[data-opt-label="color"]').forEach(function (el) { el.textContent = optionLabel('color'); });
-    document.querySelectorAll('[data-opt-label="size"]').forEach(function (el) { el.textContent = optionLabel('size'); });
+    optionNames().forEach(function (name) {
+      document.querySelectorAll('[data-opt-label="' + name + '"]').forEach(function (el) { el.textContent = optionLabel(name); });
+    });
     var addBtn = form.querySelector('[data-add-label]');
-    if (!addBtn.classList.contains('is-added')) {
+    addBtn.disabled = soldOut;
+    document.querySelectorAll('[data-add-proxy]').forEach(function (btn) { btn.disabled = soldOut; });
+    if (soldOut) {
+      addBtn.textContent = ar ? 'نفدت الكمية' : 'Sold out';
+    } else if (!addBtn.classList.contains('is-added')) {
       addBtn.textContent = (ar ? 'أضف إلى الحقيبة — ' : 'Add to bag — ') + money(line);
     }
     var ship = form.querySelector('[data-ship-line]');
@@ -191,7 +236,11 @@
     upsell.querySelector('[data-checkout]').textContent = (ar ? 'الدفع — ' : 'Checkout — ') + money(bag.total);
   }
 
-  if (form) {
+  function initProduct() {
+    if (isAr()) translate(true); // anything js/product.js added after the language was applied
+    initGallery();
+    form = document.querySelector('.add-form');
+    if (!form) return;
     form.querySelectorAll('input[type="radio"]').forEach(function (input) {
       input.addEventListener('change', renderProduct);
     });
@@ -203,14 +252,10 @@
     });
 
     var addedTimer;
-    function selectedVariant() {
-      try { return JSON.parse(form.getAttribute('data-variants'))[checked('color').value][checked('size').value]; } catch (e) { return null; }
-    }
     function addToBag() {
-      var price = parseFloat(form.getAttribute('data-price')) || 0;
       var variant = selectedVariant();
-      if (!variant) return;
-      addLine(variant, qty, price);
+      if (!variant || variant.a === false) return;
+      addLine(String(variant.id), qty, variant.p);
 
       var addBtn = form.querySelector('[data-add-label]');
       addBtn.classList.add('is-added');
@@ -219,13 +264,14 @@
       addedTimer = setTimeout(function () { addBtn.classList.remove('is-added'); renderProduct(); }, 1800);
 
       if (upsell && typeof upsell.showModal === 'function') {
-        var name = form.getAttribute('data-name') + ' — ' + optionLabel('color') + ' / ' + optionLabel('size') + (qty > 1 ? ' × ' + qty : '');
+        var picked = optionSummary();
+        var name = form.getAttribute('data-name') + (picked ? ' — ' + picked : '') + (qty > 1 ? ' × ' + qty : '');
         upsell.querySelector('[data-added-name]').innerHTML = dotted(name);
         upsell.querySelector('.upsell__item img').src = form.getAttribute('data-img');
         renderUpsell();
         upsell.showModal();
       } else {
-        toast((isAr() ? 'أُضيف إلى الحقيبة' : 'Added to bag') + ' — ' + optionLabel('size'));
+        toast((isAr() ? 'أُضيف إلى الحقيبة' : 'Added to bag') + ' — ' + (optionSummary() || form.getAttribute('data-name')));
       }
     }
     form.addEventListener('submit', function (e) { e.preventDefault(); addToBag(); });
@@ -246,6 +292,11 @@
     }
     renderProduct();
   }
+  // js/product.js sets USUL_PRODUCT_READY while it fetches a product from the store; wait for it, then wire the page up
+  // whether or not the fetch worked. It calls USUL_renderProduct after refreshing prices and stock on a page that is already set up.
+  window.USUL_renderProduct = renderProduct;
+  if (window.USUL_PRODUCT_READY && window.USUL_PRODUCT_READY.then) window.USUL_PRODUCT_READY.then(initProduct, initProduct);
+  else initProduct();
 
   // ---- One-tap add (fragrance page): the button carries its Shopify variant and price ----
   document.querySelectorAll('[data-add-variant]').forEach(function (btn) {
@@ -291,7 +342,8 @@
         // Apparel picks are added in the size chosen on this page.
         var variant = btn.getAttribute('data-variant');
         if (!variant && form) {
-          try { variant = JSON.parse(btn.getAttribute('data-variants'))[checked('size').value]; } catch (e) {}
+          // Apparel picks are added in the size chosen on this page, or M when this product has no such size.
+          try { var sizes = JSON.parse(btn.getAttribute('data-variants')), size = checked('size'); variant = (size && sizes[size.value]) || sizes.M; } catch (e) {}
         }
         if (!variant) return;
         addLine(variant, 1, parseFloat(btn.getAttribute('data-price')) || 0);

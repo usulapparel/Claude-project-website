@@ -75,10 +75,11 @@
   }
 
   function tile(p) {
-    // The Ṣumūd tee and the fragrances have their own pages on this site.
+    // Fragrances have their own page; every other product opens in the product template (product.html?p=<handle>),
+    // which js/product.js fills in from the store. The Ṣumūd tee is that page's built-in product.
     var href = p.h === 'ṣumud' ? 'product.html'
       : FRAGRANCES[p.h] ? 'fragrances.html#' + FRAGRANCES[p.h]
-      : SHOP_URL + '/products/' + encodeURIComponent(p.h);
+      : 'product.html?p=' + encodeURIComponent(p.h);
     var price = p.was
       ? '<s class="muted">' + money(p.was) + '</s> ' + money(p.p)
       : money(p.p);

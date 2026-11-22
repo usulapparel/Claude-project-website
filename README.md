@@ -8,7 +8,8 @@ The live site is served by GitHub Pages from this branch at **shop.usulapparel.c
 
 ```
 index.html      Home: tagline hero, apparel/fragrance, products, Who We Are, quote, stories, newsletter (Follow·Learn·Share lives on about.html only)
-product.html    Product page: the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with)
+product.html    Product page and product template. On its own it is the "Ṣumūd" tee (gallery, colour/size pickers, "added to bag" dialog, specs, reviews, pairs well with). As product.html?p=<Shopify handle> it is any other product, filled in from the store (see "Product pages" below)
+js/product.js   Fills product.html in from the Shopify store: name, photos, colours, sizes, prices, stock and description
 shop.html       All products: every item in the Shopify store, with category, country and sort controls (css/shop.css, js/shop.js)
 js/shop-data.js The catalog shop.html shows, copied from Shopify (names, prices, photos, categories, countries)
 fragrances.html Fragrances: Levant, Desert Rose, Rose Oud and Yasmin with their notes and an Add to bag button each (css/fragrances.css). This is the page the menu, the home page and the All products page link to.
@@ -63,9 +64,20 @@ The page structure keeps the restraint of three Refero styles: [YSL](https://sty
 - **Fragrance bottles and flasks** on the home page are still drawn SVG scenes, toned to match the photography. To use a product photo, replace the `<svg class="art">` inside a `.plate` with `<img src="..." alt="...">`.
 - **Reviews** are the real ones from Judge.me on the Shopify store (two so far, both on the Gaza University Crewneck), copied by hand into `index.html`, `product.html` and `js/shop-data.js` (`r` / `rc`). Copy new ones over when they come in; "Write a review" links go to the store's Judge.me form.
 - **Products and prices** match the Usul Apparel Shopify store (October 2026). Update them here if they change in Shopify.
-- **Commerce.** Product tiles link to their pages on usulapparel.com. The bag keeps Shopify variant IDs (`data-variants` / `data-variant` on the product form and upsell buttons) and hands them to Shopify with a cart permalink (`usulapparel.com/cart/<variant>:<qty>,…`) when the shopper clicks Bag or Checkout.
+- **Commerce.** Product tiles open the product template on this site (see "Product pages"). The bag keeps Shopify variant IDs (`data-variants` / `data-variant` on the product form and upsell buttons) and hands them to Shopify with a cart permalink (`usulapparel.com/cart/<variant>:<qty>,…`) when the shopper clicks Bag or Checkout.
 - **All products page.** `js/shop-data.js` is a copy of the Shopify catalog from October 2026, so new products, price changes and removals in Shopify don't show on `shop.html` until that file is updated. Three products have no or a mismatched type in Shopify and are filed here by hand: Yasmin (Fragrance), Another Day in the South (T-shirts) and The South Welcomes You (Hats).
 - **Newsletter.** The signup form subscribes emails to the Klaviyo "Newsletter" list (double opt-in, so subscribers confirm by email). The site and list IDs are at the top of the newsletter block in `js/main.js`.
+
+## Product pages
+
+Every product except the fragrances opens in `product.html`. Tiles on the home page, the All products page and "Pairs well with" link to `product.html?p=<handle>`, where the handle is the last part of the product's address on usulapparel.com.
+
+- **Where the content comes from.** When the page opens, `js/product.js` reads the product from the store's public feed (`usulapparel.com/products/<handle>.js`): name, photos, colours, sizes, prices, what is in stock, and the description. Nothing is copied into this site, so a price or stock change in Shopify shows up here on the next page load. A new product needs no page of its own; it only needs adding to `js/shop-data.js` to appear on the All products page.
+- **The Ṣumūd tee** is written into `product.html` by hand (story, specs, Arabic copy, its own photos). Elements marked `data-own` belong to it and are hidden for every other product. Its prices and stock are still refreshed from the store.
+- **What a store product shows.** The opening paragraph of the Shopify description sits under the title and the rest goes in "Details and fit" (plain formatting only: paragraphs, lists, bold, tables, and images hosted on Shopify). Colour names the site knows get a swatch (`COLORS` in `js/product.js`); any other colour shows as a text button, so add new colour names there. A variant that is out of stock or doesn't exist shows "Sold out".
+- **Arabic.** Buttons and labels switch to Arabic; product names and descriptions stay as written in Shopify.
+- **If the store can't be reached**, the Ṣumūd page works from what is written in it, and other products show a short message with a link to the product on the store.
+- **Fragrances** keep their own page: `product.html?p=perfume` (or another fragrance handle) forwards to `fragrances.html`.
 
 ## Search (Google)
 
