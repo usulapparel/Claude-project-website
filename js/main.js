@@ -232,6 +232,18 @@
     document.querySelectorAll('[data-add-proxy]').forEach(function (btn) {
       btn.addEventListener('click', addToBag);
     });
+
+    // The phone add bar only appears once the main Add to bag row has scrolled off the top,
+    // so it never sits over the title and price or doubles the button that is already on screen.
+    var stickyAdd = document.querySelector('.sticky-add');
+    var buyRow = form.querySelector('.buy-row');
+    if (stickyAdd && buyRow && 'IntersectionObserver' in window) {
+      stickyAdd.classList.add('is-off');
+      new IntersectionObserver(function (entries) {
+        var entry = entries[entries.length - 1];
+        stickyAdd.classList.toggle('is-off', entry.isIntersecting || entry.boundingClientRect.top > 0);
+      }).observe(buyRow);
+    }
     renderProduct();
   }
 

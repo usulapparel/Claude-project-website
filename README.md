@@ -36,6 +36,8 @@ Colours, copy and photography follow `Usul_Rebrand.pdf`. The look of the pages (
   | Cream | `#F2E9CE` | Page background, type on pine |
   | Clay | `#A67C49` | Announcement bar, prices, Arabic sub-lines, primary buttons, footer headings |
 
+  Clay is about 3:1 against cream and pine, too faint for small text, so clay-coloured text (prices, Arabic sub-lines, small labels) uses two shades of it instead: `--clay-on-cream` `#755733` on light backgrounds and `--clay-on-pine` `#C4A278` on dark ones, both above 4.5:1. Write `color: var(--clay-text)` and it picks the right one; `--clay` itself stays for fills, borders and buttons.
+
 - **Type:** Helvetica for Latin text, as the guide specifies, and Cairo for Arabic text. Headings and the wordmark use Marcellus, Roman inscriptional capitals chosen because their even stroke and open shapes sit naturally beside Reem Kufi, which sets the Arabic display lines (product names, sub-lines). Marcellus has no Ṣ (and no combining dot to build one), so in display text the letter is written as a plain `S` wrapped in `<span class="dot">`, and the dot is drawn beneath it by CSS; `dotted()` in `js/main.js` does the same for the name shown in the "added to bag" dialog. Body text keeps the real Ṣ character.
 - **Layout:** full-bleed, square-cornered sections stacked edge to edge, as in the product design.
 - **Photography:** the guide's sepia images (olive harvest, courtyard, scholar painting), in `assets/img`. The fourth image in the guide, a reel credited to @archiveafrica, is not used because it isn't Usul's to publish.
